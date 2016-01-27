@@ -9,7 +9,7 @@ import byui.cit260.theHunt.model.Player;
 
 /**
  *
- * @author Ann
+ * @author Ann Lloyd
  */
 public class TheHunt {
 
