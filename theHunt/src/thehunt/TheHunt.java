@@ -7,6 +7,7 @@ package thehunt;
 
 import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Location;
+import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.Player;
 
 /**
@@ -34,6 +35,17 @@ public class TheHunt {
     
     String locationInfo = newLocation.toString();
     System.out.println(locationInfo);
+    
+    Map currentMap = new Map();
+    
+    currentMap.setRowCount(5);
+    currentMap.setColumnCount(5);
+    currentMap.setLocationTileLayout(2);
+    
+    String mapInfo = currentMap.toString();
+    System.out.println(mapInfo);
+    
+    
     }
             
     
@@ -44,6 +56,7 @@ public class TheHunt {
         
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
+  
         
 
     }
