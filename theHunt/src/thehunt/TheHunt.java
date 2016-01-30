@@ -6,6 +6,7 @@
 package thehunt;
 
 import byui.cit260.theHunt.model.Game;
+import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Player;
 
 /**
@@ -25,6 +26,14 @@ public class TheHunt {
     
     String gameInfo = newGame.toString();
     System.out.println(gameInfo);
+    
+    Location newLocation = new Location();
+    
+    newLocation.setHasQuestion(true);
+    newLocation.setHasAttribute(false);
+    
+    String locationInfo = newLocation.toString();
+    System.out.println(locationInfo);
     }
             
     
