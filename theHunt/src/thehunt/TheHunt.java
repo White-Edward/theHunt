@@ -7,6 +7,7 @@ package thehunt;
 
 import byui.cit260.theHunt.model.Clue;
 import byui.cit260.theHunt.model.Game;
+import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.Player;
@@ -20,7 +21,7 @@ public class TheHunt {
     /**
      * @param args the command line arguments
      */
-    void RyanTestModules() {
+    private static void RyanFunderburkTests() {
     Game newGame = new Game();
     
     newGame.setName("Jim");
@@ -56,8 +57,21 @@ public class TheHunt {
     
     }
             
+    private static void AnnLloydTests() {
+        Item item = new Item(); 
+        item.setItemType("SomeItemType");
+        item.setUsed(false);
+        System.out.println(item.toString());
+    }
+    
+    private static void EdwardWhiteTests() {
+        
+    }
     
     public static void main(String[] args) {
+        AnnLloydTests();
+        RyanFunderburkTests();
+        EdwardWhiteTests();
         Player playerOne = new Player();
         
         playerOne.setCharacterName("Mr Bob");
