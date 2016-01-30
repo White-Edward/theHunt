@@ -5,6 +5,7 @@
  */
 package thehunt;
 
+import byui.cit260.theHunt.model.Clue;
 import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
@@ -45,6 +46,13 @@ public class TheHunt {
     String mapInfo = currentMap.toString();
     System.out.println(mapInfo);
     
+    Clue clueOne = new Clue();
+    
+    clueOne.setClue("Here is your Clue.");
+    clueOne.setViewed(true);
+    
+    String clueInfo = clueOne.toString ();
+    System.out.println(clueInfo);
     
     }
             
