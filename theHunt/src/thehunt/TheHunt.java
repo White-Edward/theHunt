@@ -68,19 +68,20 @@ public class TheHunt {
         
     }
     
-    public static void main(String[] args) {
-        AnnLloydTests();
-        RyanFunderburkTests();
-        EdwardWhiteTests();
+    private static void GroupAssignmentTests() {
         Player playerOne = new Player();
         
         playerOne.setCharacterName("Mr Bob");
         
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
-  
-        
-
+    }
+    
+    public static void main(String[] args) {
+        AnnLloydTests();
+        RyanFunderburkTests();
+        EdwardWhiteTests();  
+        GroupAssignmentTests();
     }
     
 }
