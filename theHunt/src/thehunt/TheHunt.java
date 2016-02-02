@@ -15,7 +15,11 @@ import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.Monkey;
 import byui.cit260.theHunt.model.OldCell;
 import byui.cit260.theHunt.model.Player;
-
+import byui.cit260.theHunt.model.Question;
+import byui.cit260.theHunt.model.TwoTrainSquare;
+import byui.cit260.theHunt.model.TeaspoonSquare;
+import byui.cit260.theHunt.model.WaterSquare;
+        
 /**
  *
  * @author Ann Lloyd
@@ -95,7 +99,27 @@ public class TheHunt {
     }
     
     private static void EdwardWhiteTests() {
+        //Question Class
+        Question questionType = new Question();
+        questionType.setHasTeaspoonSquare(true);
+        System.out.println(questionType.toString());
         
+        //Teaspoon Square Class
+        TeaspoonSquare teaspoonSquare = new TeaspoonSquare();
+        teaspoonSquare.setUsed(true);
+        System.out.println(teaspoonSquare.toString());
+        
+        //Two Train Square Class
+        TwoTrainSquare twoTrainSquare = new TwoTrainSquare();
+        teaspoonSquare.setUsed(false);
+        System.out.println(teaspoonSquare.toString());
+        
+        //Water Square Class
+        WaterSquare waterSquare = new WaterSquare();
+        waterSquare.setUsed(false);
+        System.out.println(waterSquare.toString());
+                
+            
     }
     
     private static void GroupAssignmentTests() {
