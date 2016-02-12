@@ -132,4 +132,102 @@ public class QuestionControlTest {
         result = instance.calculateTwoTrains(milesTravelledTrainOne, milesTravelledTrainTwo, milesPerHourTrainOne, milesPerHourTrainTwo);
         assertEquals(expResult, result, 0.01);
     }
+
+    /**
+     * Test of calculateCostOfTrip method, of class QuestionControl.
+     * Ann Lloyd's individual assignment
+     */
+    @Test
+    public void testCalculateCostOfTrip() {
+        System.out.println("calculateCostOfTrip");
+        
+        /****************
+         * Test Case #1
+         ****************/
+        System.out.println("\tTest Case #1");
+        double milesTravelled = 150;
+        double gasPrice = 1.50;
+        double fuelEfficiency = 30;
+        QuestionControl instance = new QuestionControl();
+        double expResult = 7.5;
+        double result = instance.calculateCostOfTrip(milesTravelled, gasPrice, fuelEfficiency);
+        assertEquals(expResult, result, 0.01);
+        
+        /****************
+         * Test Case #2
+         ****************/
+        System.out.println("\tTest Case #2");
+        milesTravelled = 0;
+        gasPrice = 78;
+        fuelEfficiency = 60;
+        expResult = -1;
+        result = instance.calculateCostOfTrip(milesTravelled, gasPrice, fuelEfficiency);
+        assertEquals(expResult, result, 0.01);
+        
+        /****************
+         * Test Case #3
+         ****************/
+        System.out.println("\tTest Case #3");
+        milesTravelled = 150;
+        gasPrice = 0;
+        fuelEfficiency = 60;
+        expResult = -2;
+        result = instance.calculateCostOfTrip(milesTravelled, gasPrice, fuelEfficiency);
+        assertEquals(expResult, result, 0.01);
+        
+        /****************
+         * Test Case #4
+         ****************/
+        System.out.println("\tTest Case #4");
+        milesTravelled = 150;
+        gasPrice = 78;
+        fuelEfficiency = 0;
+        expResult = -3;
+        result = instance.calculateCostOfTrip(milesTravelled, gasPrice, fuelEfficiency);
+        assertEquals(expResult, result, 0.01);
+        
+        /****************
+         * Test Case #5
+         ****************/
+        System.out.println("\tTest Case #5");
+        milesTravelled = 1;
+        gasPrice = 0.01;
+        fuelEfficiency = 1;
+        expResult = 0.01;
+        result = instance.calculateCostOfTrip(milesTravelled, gasPrice, fuelEfficiency);
+        assertEquals(expResult, result, 0.01);
+        
+        /****************
+         * Test Case #6
+         ****************/
+        System.out.println("\tTest Case #6");
+        milesTravelled = 1;
+        gasPrice = 10;
+        fuelEfficiency = 100;
+        expResult = 0.1;
+        result = instance.calculateCostOfTrip(milesTravelled, gasPrice, fuelEfficiency);
+        assertEquals(expResult, result, 0.01);
+        
+        /****************
+         * Test Case #7
+         ****************/
+        System.out.println("\tTest Case #7");
+        milesTravelled = 1000;
+        gasPrice = 0.01;
+        fuelEfficiency = 30;
+        expResult = 0.33;
+        result = instance.calculateCostOfTrip(milesTravelled, gasPrice, fuelEfficiency);
+        assertEquals(expResult, result, 0.01);
+        
+        /****************
+         * Test Case #8
+         ****************/
+        System.out.println("\tTest Case #8");
+        milesTravelled = 100;
+        gasPrice = 5;
+        fuelEfficiency = 1;
+        expResult = 500;
+        result = instance.calculateCostOfTrip(milesTravelled, gasPrice, fuelEfficiency);
+        assertEquals(expResult, result, 0.01);
+    }
 }

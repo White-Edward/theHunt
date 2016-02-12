@@ -43,4 +43,19 @@ public class QuestionControl {
         double hours = hoursTrainOne + hoursTrainTwo;
         return hours;
     }
+    
+    public double calculateCostOfTrip(double milesTravelled, double gasPrice, double fuelEfficiency) {
+        if (milesTravelled < 1) {
+            return -1;
+        }
+        if (gasPrice < 0.01) {
+            return -2;
+        }
+        if (fuelEfficiency < 1) {
+            return -3;
+        }
+        double totalGallons = milesTravelled / fuelEfficiency;
+        double tripCost = totalGallons * gasPrice;
+        return tripCost;
+    }
 }
