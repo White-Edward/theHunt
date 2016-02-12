@@ -25,7 +25,7 @@ public class QuestionControlTest {
         /****************
          * Test Case #1
          ****************/
-        System.out.println("calculateTwoTrains");
+        System.out.println("calculateTwoTrains (team assignment)");
         System.out.println("\tTest Case #1");
         int milesTravelledTrainOne = 150;
         int milesTravelledTrainTwo = 78;
@@ -139,7 +139,7 @@ public class QuestionControlTest {
      */
     @Test
     public void testCalculateCostOfTrip() {
-        System.out.println("calculateCostOfTrip");
+        System.out.println("calculateCostOfTrip (Ann Lloyd's individual assignment)");
         
         /****************
          * Test Case #1
