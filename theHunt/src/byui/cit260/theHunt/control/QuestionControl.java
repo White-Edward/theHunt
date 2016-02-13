@@ -70,6 +70,18 @@ public class QuestionControl {
     return test;
     }
   
- 
-    }
+    public double calculateWater(double numOfGallons, double gallonsPerMinute, double numOfFills) {
+        if (numOfGallons <= 0) {
+            return -1;
+        }
+        if (gallonsPerMinute <=0) {
+            return -1;
+        }
+        if (numOfFills <=0){
+            return -1;
+        }
+        double timeToFillTub = (numOfGallons / gallonsPerMinute) * numOfFills;
+        return timeToFillTub;
+        }
+}
   
