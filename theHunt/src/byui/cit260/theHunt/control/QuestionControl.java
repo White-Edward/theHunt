@@ -58,4 +58,18 @@ public class QuestionControl {
         double tripCost = totalGallons * gasPrice;
         return tripCost;
     }
-}
+
+    public char calculateTeaspoon (double containerDivisor, double userAnswer) {
+        
+        double teaspoonAns = 3 * 16 * (1 / containerDivisor);
+        double teaspoonAnswer = (Math.round(teaspoonAns * 100) / 100);
+
+        if (userAnswer != teaspoonAnswer) {
+           char test = 'f';}
+    char test = 't';
+    return test;
+    }
+  
+ 
+    }
+  

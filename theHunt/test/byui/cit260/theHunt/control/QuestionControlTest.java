@@ -230,4 +230,63 @@ public class QuestionControlTest {
         result = instance.calculateCostOfTrip(milesTravelled, gasPrice, fuelEfficiency);
         assertEquals(expResult, result, 0.01);
     }
+
+    /**
+     * Test of calculateTeaspoon method, of class QuestionControl.
+     */
+    @Test
+    public void testCalculateTeaspoon() {
+        System.out.println("calculateTeaspoon");
+         /****************
+         * Test Case #1
+         ****************/
+        System.out.println("\tTest Case #1");
+        double containerDivisor = 2.0;
+        double userAnswer = 768.0;
+        QuestionControl instance = new QuestionControl();
+        char expResult = 't';
+        char result = instance.calculateTeaspoon(containerDivisor, userAnswer);
+        assertEquals(expResult, result, 0.0001);
+        
+             /****************
+         * Test Case #2
+         ****************/
+        System.out.println("\tTest Case #2");
+        containerDivisor = 2.0;
+        userAnswer = 768;
+        expResult = 't';
+        result = instance.calculateTeaspoon(containerDivisor, userAnswer);
+        assertEquals(expResult, result, 0.0001);
+        
+                     /****************
+         * Test Case #3
+         ****************/
+        System.out.println("\tTest Case #3");
+        containerDivisor = 2.0;
+        userAnswer = 768.1;
+        expResult = 't';
+        result = instance.calculateTeaspoon(containerDivisor, userAnswer);
+        assertEquals(expResult, result, 0.0001);
+        
+                     /****************
+         * Test Case #4
+         ****************/
+        System.out.println("\tTest Case #4");
+        containerDivisor = 2.0;
+        userAnswer = 767.99;
+        expResult = 't';
+        result = instance.calculateTeaspoon(containerDivisor, userAnswer);
+        assertEquals(expResult, result, 0.0001);
+        
+                     /****************
+         * Test Case #5
+         ****************/
+        System.out.println("\tTest Case #5");
+        containerDivisor = 2.0;
+        userAnswer = -768.0;
+        expResult = 't';
+        result = instance.calculateTeaspoon(containerDivisor, userAnswer);
+        assertEquals(expResult, result, 0.0001);
+
+    }
 }
