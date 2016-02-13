@@ -236,7 +236,7 @@ public class QuestionControlTest {
      */
     @Test
     public void testCalculateTeaspoon() {
-        System.out.println("calculateTeaspoon");
+        System.out.println("calculateTeaspoon (Ryan Funderburk's Individual Assignment)");
          /****************
          * Test Case #1
          ****************/
@@ -288,5 +288,104 @@ public class QuestionControlTest {
         result = instance.calculateTeaspoon(containerDivisor, userAnswer);
         assertEquals(expResult, result, 0.0001);
 
+    }
+
+    /**
+     * Test of calculateWater method, of class QuestionControl.
+     */
+    @Test
+    public void testCalculateWater() {
+        System.out.println("calculateWater (Edward White's Individual Assignment)");
+        
+          
+        /****************
+         * Test Case #1
+         ****************/   
+        System.out.println("\tTest Case #1");
+        double numOfGallons = 40;
+        double gallonsPerMinute = 2;
+        double numOfFills = 2;
+        QuestionControl instance = new QuestionControl();
+        double expResult = 40;
+        double result = instance.calculateWater(numOfGallons, gallonsPerMinute, numOfFills);
+        assertEquals(expResult, result, 0.0);
+        
+        /****************
+         * Test Case #2
+         ****************/    
+        System.out.println("\tTest Case #2");
+        numOfGallons = 40;
+        gallonsPerMinute = 2;
+        numOfFills = -1;
+        expResult = -1;
+        result = instance.calculateWater(numOfGallons, gallonsPerMinute, numOfFills);
+        assertEquals(expResult, result, 0.0);
+        
+        /****************
+         * Test Case #3
+         ****************/    
+        System.out.println("\tTest Case #3");
+        numOfGallons = 1;
+        gallonsPerMinute = -2;
+        numOfFills = 1;
+        expResult = -1;
+        result = instance.calculateWater(numOfGallons, gallonsPerMinute, numOfFills);
+        assertEquals(expResult, result, 0.0);
+
+        /****************
+         * Test Case #4
+         ****************/    
+        System.out.println("\tTest Case #4");
+        numOfGallons = 40;
+        gallonsPerMinute = -3;
+        numOfFills = 1;
+        expResult = -1;
+        result = instance.calculateWater(numOfGallons, gallonsPerMinute, numOfFills);
+        assertEquals(expResult, result, 0.0);
+
+        /****************
+         * Test Case #5
+         ****************/    
+        System.out.println("\tTest Case #5");
+        numOfGallons = 100;
+        gallonsPerMinute = 100;
+        numOfFills = 100;
+        expResult = 100;
+        result = instance.calculateWater(numOfGallons, gallonsPerMinute, numOfFills);
+        assertEquals(expResult, result, 0.0);
+        
+         /****************
+         * Test Case #6
+         ****************/    
+        System.out.println("\tTest Case #6");
+        numOfGallons = 100;
+        gallonsPerMinute = 100;
+        numOfFills = 1;
+        expResult = 1;
+        result = instance.calculateWater(numOfGallons, gallonsPerMinute, numOfFills);
+        assertEquals(expResult, result, 0.0);
+        
+        /****************
+         * Test Case #7
+         ****************/    
+        System.out.println("\tTest Case #7");
+        numOfGallons = 1;
+        gallonsPerMinute = 100;
+        numOfFills = 100;
+        expResult = 1;
+        result = instance.calculateWater(numOfGallons, gallonsPerMinute, numOfFills);
+        assertEquals(expResult, result, 0.0);
+
+        /****************
+         * Test Case #8
+         ****************/    
+        System.out.println("\tTest Case #8");
+        numOfGallons = 100;
+        gallonsPerMinute = 1;
+        numOfFills = 100;
+        expResult = 10000;
+        result = instance.calculateWater(numOfGallons, gallonsPerMinute, numOfFills);
+        assertEquals(expResult, result, 0.0);        
+       
     }
 }
