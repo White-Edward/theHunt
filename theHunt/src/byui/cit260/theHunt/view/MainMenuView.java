@@ -74,19 +74,43 @@ public class MainMenuView {
                 this.startNewGame();
                 break;
             case 'L': // get and start existing game
-                this.startExistingGame;
+                this.startExistingGame();
             case 'S': // save a game in progress
-                this.startSaveGame;
+                this.startSaveGame();
             case 'H': // load help menu
-                this.startHelpMenu;
+                this.startHelpMenu();
             case 'Q': // quit game
-                this.startQuitGame;
+                this.startQuitGame();
             case 'A': // load about us 
-                this.startAboutUs;
+                this.startAboutUs();
             default:
                 System.out.println("\n*** Invalid selection*** Try again");
                     
         }
+    }
+
+    private void startNewGame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void startExistingGame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void startSaveGame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void startHelpMenu() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void startQuitGame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void startAboutUs() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
