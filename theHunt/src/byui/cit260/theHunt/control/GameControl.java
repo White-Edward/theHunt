@@ -5,10 +5,27 @@
  */
 package byui.cit260.theHunt.control;
 
+import byui.cit260.theHunt.model.Player;
+import thehunt.TheHunt;
+
 /**
  *
  * @author Ann
  */
 public class GameControl {
+
+    public static Player createPlayer(String name) {
+        
+        if (name == null) {
+            return null;
+        }
+        
+        Player player = new Player();
+        player.setCharacterName(name);
+        
+        TheHunt.setPlayer(player); // save the player
+        
+        return player;
+    }
     
 }

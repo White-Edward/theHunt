@@ -19,6 +19,7 @@ import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.model.TwoTrainSquare;
 import byui.cit260.theHunt.model.TeaspoonSquare;
 import byui.cit260.theHunt.model.WaterSquare;
+import byui.cit260.theHunt.view.StartProgramView;
         
 /**
  *
@@ -26,116 +27,32 @@ import byui.cit260.theHunt.model.WaterSquare;
  */
 public class TheHunt {
 
-    /**
-     * @param args the command line arguments
-     */
-    private static void RyanFunderburkTests() {
-        Game newGame = new Game();
 
-        newGame.setName("Jim");
-        newGame.setWelcomeMessage("Hi Jim, welcome to The Hunt!");
+        public static Game getCurrentGame() {
+            return currentGame;
+        }
 
-        String gameInfo = newGame.toString();
-        System.out.println(gameInfo);
+        public static void setCurrentGame(Game currentGame) {
+            TheHunt.currentGame = currentGame;
+        }
 
-        Location newLocation = new Location();
+        public static Player getPlayer() {
+            return player;
+        }
 
-        newLocation.setHasQuestion(true);
-        newLocation.setHasAttribute(false);
-
-        String locationInfo = newLocation.toString();
-        System.out.println(locationInfo);
-
-        Map currentMap = new Map();
-
-        currentMap.setRowCount(5);
-        currentMap.setColumnCount(5);
-        currentMap.setLocationTileLayout(2);
-
-        String mapInfo = currentMap.toString();
-        System.out.println(mapInfo);
-
-        Clue clueOne = new Clue();
-
-        clueOne.setClue("Here is your Clue.");
-        clueOne.setViewed(true);
-
-        String clueInfo = clueOne.toString ();
-        System.out.println(clueInfo);
-
-    }
-            
-    private static void AnnLloydTests() {
-        // Item Class
-        Item item = new Item(); 
-        item.setItemType("SomeItemType");
-        item.setUsed(false);
-        System.out.println(item.toString());
-        
-        // ClueBag Class
-        ClueBag clueBag = new ClueBag();
-        clueBag.setItemType("ClueBag");
-        clueBag.setNumClues(0);
-        clueBag.setUsed(false);
-        System.out.println(clueBag.toString());
-        
-        // OldCell Class
-        OldCell oldCell = new OldCell();
-        oldCell.setItemType("OldCell");
-        oldCell.setUsed(true);
-        System.out.println(oldCell.toString());
-        
-        // Monkey Class
-        Monkey monkey = new Monkey();
-        monkey.setItemType("Monkey");
-        monkey.setUsed(false);
-        System.out.println(monkey.toString());
-        
-        // AidBag Class
-        AidBag aidBag = new AidBag();
-        aidBag.setItemType("AidBag");
-        aidBag.setUsed(true);
-        System.out.println(aidBag.toString());
-    }
+        public static void setPlayer(Player player) {
+            TheHunt.player = player;
+        }
+        private static Game currentGame = null;
+        private static Player player = null;
     
-    private static void EdwardWhiteTests() {
-        //Question Class
-        Question questionType = new Question();
-        questionType.setHasTeaspoonSquare(true);
-        System.out.println(questionType.toString());
-        
-        //Teaspoon Square Class
-        TeaspoonSquare teaspoonSquare = new TeaspoonSquare();
-        teaspoonSquare.setUsed(true);
-        System.out.println(teaspoonSquare.toString());
-        
-        //Two Train Square Class
-        TwoTrainSquare twoTrainSquare = new TwoTrainSquare();
-        teaspoonSquare.setUsed(false);
-        System.out.println(teaspoonSquare.toString());
-        
-        //Water Square Class
-        WaterSquare waterSquare = new WaterSquare();
-        waterSquare.setUsed(false);
-        System.out.println(waterSquare.toString());
-                
-            
-    }
-    
-    private static void GroupAssignmentTests() {
-        Player playerOne = new Player();
-        
-        playerOne.setCharacterName("Mr Bob");
-        
-        String playerInfo = playerOne.toString();
-        System.out.println(playerInfo);
-    }
     
     public static void main(String[] args) {
-        AnnLloydTests();
-        RyanFunderburkTests();
-        EdwardWhiteTests();  
-        GroupAssignmentTests();
+        
+        //creat StartProgramViewOrig and display the start program view
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.displayStartProgramView();
+
     }
     
 }
