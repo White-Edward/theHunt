@@ -5,6 +5,8 @@
  */
 package byui.cit260.theHunt.view;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Edward
@@ -22,6 +24,7 @@ public class MainMenuView {
             +"\n Q - Quit Game"
             +"\n A - About Us"
             +"\n---------------------------------------------------------------";
+    private String promptMessage;
     
     public void displayMenu() {
         
@@ -40,6 +43,50 @@ public class MainMenuView {
 
     void displayMainMenuView() {
         System.out.println("\n*** displayMenu() funcation called***");
+    }
+
+    private String getInput() {
+        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
+        String value = ""; // value to be returned
+        boolean valid = false; // initialize to not valid
+        
+        while (!valid) { // loop while an invalid value in entered
+            System.out.println("\n" + this.promptMessage);
+            
+            value = keyboard.nextLine(); //get next line typed on keyboard
+            value = value.trim(); // trim off leading and trailing blanks
+            
+            if (value.length() < 1) { //value is blank
+                System.out.println("\nInvalid value: value can not be blank");
+                continue;
+            }
+            
+            break; // end the loop
+        }
+        
+        return value; // return the value entered
+    }
+
+    private void doAction(char choice) {
+        
+        switch (choice) {
+            case 'N': // create and start a new game
+                this.startNewGame();
+                break;
+            case 'L': // get and start existing game
+                this.startExistingGame;
+            case 'S': // save a game in progress
+                this.startSaveGame;
+            case 'H': // load help menu
+                this.startHelpMenu;
+            case 'Q': // quit game
+                this.startQuitGame;
+            case 'A': // load about us 
+                this.startAboutUs;
+            default:
+                System.out.println("\n*** Invalid selection*** Try again");
+                    
+        }
     }
     
 }
