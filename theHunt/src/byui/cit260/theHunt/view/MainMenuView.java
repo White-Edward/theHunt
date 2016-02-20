@@ -5,7 +5,9 @@
  */
 package byui.cit260.theHunt.view;
 
+import byui.cit260.theHunt.control.GameControl;
 import java.util.Scanner;
+import thehunt.TheHunt;
 
 /**
  *
@@ -24,7 +26,7 @@ public class MainMenuView {
             +"\n Q - Quit Game"
             +"\n A - About Us"
             +"\n---------------------------------------------------------------";
-    private String promptMessage;
+    private String promptMessage = "Select an option: ";
     
     public void displayMenu() {
         
@@ -33,7 +35,7 @@ public class MainMenuView {
             
         System.out.println(MENU); // display the main menu
             
-        String input = this.getInput(); // get the user's selection
+        String input = this.getInput().toUpperCase(); // get the user's selection
         selection = input.charAt(0); //get first character of string
             
         this.doAction(selection); // do action based on selection
@@ -41,17 +43,13 @@ public class MainMenuView {
     } while (selection != 'Q'); // an selection is not "Quit"
 }
 
-    void displayMainMenuView() {
-        System.out.println("\n*** displayMenu() funcation called***");
-    }
-
     private String getInput() {
         Scanner keyboard = new Scanner(System.in); //get infile for keyboard
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
         
         while (!valid) { // loop while an invalid value in entered
-            System.out.println("\n" + this.promptMessage);
+            System.out.print("\n" + this.promptMessage);
             
             value = keyboard.nextLine(); //get next line typed on keyboard
             value = value.trim(); // trim off leading and trailing blanks
@@ -75,42 +73,52 @@ public class MainMenuView {
                 break;
             case 'L': // get and start existing game
                 this.startExistingGame();
+                break;
             case 'S': // save a game in progress
                 this.startSaveGame();
+                break;
             case 'H': // load help menu
                 this.startHelpMenu();
+                break;
             case 'Q': // quit game
                 this.startQuitGame();
+                break;
             case 'A': // load about us 
                 this.startAboutUs();
+                break;
             default:
                 System.out.println("\n*** Invalid selection*** Try again");
-                    
+                break;
         }
     }
 
     private void startNewGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        GameControl.createNewGame(TheHunt.getPlayer());
+        
+        // display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayMenu();
     }
 
     private void startExistingGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** startExistingGame function called ***");
     }
 
     private void startSaveGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** startSaveGame function called ***");
     }
 
     private void startHelpMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.displayMenu();
     }
 
     private void startQuitGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** startQuitGame function called ***");
     }
 
     private void startAboutUs() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("*** startAboutUs function called ***");
     }
     
 }
