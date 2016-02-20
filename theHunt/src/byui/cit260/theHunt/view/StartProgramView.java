@@ -29,6 +29,12 @@ public class StartProgramView {
 
 
     private void displayBanner() {
+        System.out.println("\n"
++ "\n _____ _  _ ___   _  _ _  _ __  _ _____  "
++ "\n|_   _| || | __| | || | || |  \\| |_   _| "
++ "\n  | | | >< | _|  | >< | \\/ | | ' | | |   "
++ "\n  |_| |_||_|___| |_||_|\\__/|_|\\__| |_|   "
+                            );
         System.out.println("\n\n**************************************************************");
         
         System.out.println("*                                                            *"
@@ -73,7 +79,7 @@ public class StartProgramView {
         boolean valid = false; // initialize to not valid
         
         while (!valid) { // loop while an invalid value in entered
-            System.out.println("\n" + this.promptMessage);
+            System.out.print("\n" + this.promptMessage);
             
             value = keyboard.nextLine(); //get next line typed on keyboard
             value = value.trim(); // trim off leading and trailing blanks
@@ -121,7 +127,7 @@ public class StartProgramView {
         MainMenuView mainMenuView = new MainMenuView();
         
         // Display the main menu view
-        mainMenuView.displayMainMenuView();
+        mainMenuView.displayMenu();
     }
     
 }
