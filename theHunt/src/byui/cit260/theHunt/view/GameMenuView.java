@@ -21,6 +21,7 @@ public class GameMenuView {
             +"\n M - Show game map"
             +"\n S - Save game progress"
             +"\n H - Help menu"
+            +"\n I - Item menu"
             +"\n Q - Quit game"
             +"\n R - Return to main menu"
             +"\n G - Return to game"
@@ -76,6 +77,9 @@ public class GameMenuView {
             case 'H': // View Help Menu
                 this.startHelpMenu();
                 break;
+            case 'I': // View Help Menu
+                this.startItemMenu();
+                break;                
             case 'Q': // Quit game
                 this.startQuitGame();
                 break;
@@ -104,7 +108,12 @@ public class GameMenuView {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.displayMenu();
     }
-
+    
+    private void startItemMenu() {
+                // display the game menu
+        ItemMenuView itemMenu = new ItemMenuView();
+        itemMenu.displayMenu();
+    }
     private void startQuitGame() {
         System.out.println("*** startQuitGame function called ***");
     }
