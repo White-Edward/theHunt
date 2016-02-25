@@ -86,6 +86,12 @@ public class MainMenuView {
             case 'A': // load about us 
                 this.startAboutUs();
                 break;
+            case 'I': // load Item Menu (temporary, hidden)
+                this.startItemMenu();
+                break;
+            case 'T': // load TwoTrains Question (temporary, hidden)
+                this.startTwoTrainsQuestionView();
+                break;
             default:
                 System.out.println("\n*** Invalid selection*** Try again");
                 break;
@@ -121,4 +127,19 @@ public class MainMenuView {
         System.out.println("*** startAboutUs function called ***");
     }
     
+    /**
+     * Temporary function to test item menu
+     */
+    private void startItemMenu() {
+        ItemMenuView itemMenu = new ItemMenuView();
+        itemMenu.displayMenu();
+    }
+    
+    /**
+     * Temporary function to test two trains question
+     */
+    private void startTwoTrainsQuestionView() {
+        TwoTrainsQuestionView question = new TwoTrainsQuestionView();
+        question.displayQuestion();
+    }
 }
