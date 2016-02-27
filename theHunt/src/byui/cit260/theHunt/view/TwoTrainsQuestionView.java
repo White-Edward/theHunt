@@ -77,7 +77,7 @@ public class TwoTrainsQuestionView {
             value = value.trim(); // trim off leading and trailing blanks
             
             if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value can not be blank");
+                System.out.println("\nInvalid value: value cannot be blank");
                 continue;
             }
             

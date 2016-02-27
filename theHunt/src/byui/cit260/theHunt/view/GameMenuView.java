@@ -71,7 +71,7 @@ public class GameMenuView {
             case 'M': // Open Game map
                 this.startGameMap();
                 break;
-            case 's': // View Saved games
+            case 'S': // Save game progress
                 this.startSaveGame();
                 break;
             case 'H': // View Help Menu

@@ -92,6 +92,8 @@ public class MainMenuView {
             case 'T': // load TwoTrains Question (temporary, hidden)
                 this.startTwoTrainsQuestionView();
                 break;
+            case 'W': // load Water questoin
+                this.startWaterQuestionView();
             default:
                 System.out.println("\n*** Invalid selection*** Try again");
                 break;
@@ -141,5 +143,13 @@ public class MainMenuView {
     private void startTwoTrainsQuestionView() {
         TwoTrainsQuestionView question = new TwoTrainsQuestionView();
         question.displayQuestion();
+    }
+    
+    /**
+     * Temporary function to test two trains question
+     */
+    private void startWaterQuestionView() {
+        WaterQuestionView water = new WaterQuestionView();
+        water.displayQuestion();
     }
 }
