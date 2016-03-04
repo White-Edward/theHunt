@@ -13,9 +13,10 @@ import thehunt.TheHunt;
  *
  * @author Edward
  */
-public class MainMenuView {
+public class MainMenuView extends View {
     
-    private final String MENU = "\n"
+    public MainMenuView() {
+        super("\n"
             +"\n---------------------------------------------------------------"
             +"\n| Main Menu                                                   |"
             +"\n---------------------------------------------------------------"
@@ -25,48 +26,12 @@ public class MainMenuView {
             +"\n H - Help"
             +"\n Q - Quit Game"
             +"\n A - About Us"
-            +"\n---------------------------------------------------------------";
-    private String promptMessage = "Select an option: ";
-    
-    public void displayMenu() {
-        
-    char selection = ' ';
-    do {
-            
-        System.out.println(MENU); // display the main menu
-            
-        String input = this.getInput().toUpperCase(); // get the user's selection
-        selection = input.charAt(0); //get first character of string
-            
-        this.doAction(selection); // do action based on selection
-            
-    } while (selection != 'Q'); // an selection is not "Quit"
-}
-
-    private String getInput() {
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while an invalid value in entered
-            System.out.print("\n" + this.promptMessage);
-            
-            value = keyboard.nextLine(); //get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break; // end the loop
-        }
-        
-        return value; // return the value entered
+            +"\n---------------------------------------------------------------");
     }
-
-    private void doAction(char choice) {
-        
+    
+    @Override
+    public boolean doAction(String value) {
+        char choice = value.charAt(0);  // get the first character in the string
         switch (choice) {
             case 'N': // create and start a new game
                 this.startNewGame();
@@ -86,6 +51,8 @@ public class MainMenuView {
             case 'A': // load about us 
                 this.startAboutUs();
                 break;
+            case 'B': // go back to previous menu
+                return true;                
             case 'I': // load Item Menu (temporary, hidden)
                 this.startItemMenu();
                 break;
@@ -98,6 +65,7 @@ public class MainMenuView {
                 System.out.println("\n*** Invalid selection*** Try again");
                 break;
         }
+        return false;
     }
 
     private void startNewGame() {
@@ -105,7 +73,7 @@ public class MainMenuView {
         
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayMenu();
+        gameMenu.display();
     }
 
     private void startExistingGame() {
@@ -118,7 +86,7 @@ public class MainMenuView {
 
     private void startHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayMenu();
+        helpMenu.display();
     }
 
     private void startQuitGame() {
@@ -134,7 +102,7 @@ public class MainMenuView {
      */
     private void startItemMenu() {
         ItemMenuView itemMenu = new ItemMenuView();
-        itemMenu.displayMenu();
+        itemMenu.display();
     }
     
     /**
