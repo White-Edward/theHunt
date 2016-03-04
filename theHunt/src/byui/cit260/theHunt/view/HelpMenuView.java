@@ -21,7 +21,7 @@ public class HelpMenuView extends View {
             +"\n M - How to move the character"
             +"\n A - Actions"
             +"\n B - Back to the main menu"
-            +"\n---------------------------------------------------------------");
+            +"\n---------------------------------------------------------------", "Choose an option: ");
     }
 
     @Override
