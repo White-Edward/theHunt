@@ -68,7 +68,8 @@ public class ItemMenuView extends View {
     }
 
     private void startMonkey() {
-        System.out.println("*** startMonkey function called ***");
+        MonkeyView monkey = new MonkeyView();
+        monkey.display();
     }
 
     private void startAidBag() {
