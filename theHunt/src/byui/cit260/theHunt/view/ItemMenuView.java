@@ -38,7 +38,7 @@ public class ItemMenuView extends View {
                 this.startTNT();
                 break;
             case 'P': // View Old Cell Phone Menu
-                this.startOldCellPhone();
+                this.startOldCellPhoneView();
                 break;
             case 'M': // View Monkey Menu
                 this.startMonkey();
@@ -63,8 +63,9 @@ public class ItemMenuView extends View {
         System.out.println("*** startTNT function called ***");
     }
 
-    private void startOldCellPhone() {
-        System.out.println("*** startOldCellPhone function called ***");
+    private void startOldCellPhoneView() {
+        OldCellPhoneView phone = new OldCellPhoneView();
+        phone.display();
     }
 
     private void startMonkey() {
