@@ -11,11 +11,11 @@ import java.util.Objects;
  *
  * @author Ann
  */
-public class OldCell implements Serializable {
+public class OldCellPhone implements Serializable {
     private String itemType;
     private boolean used;
 
-    public OldCell() {
+    public OldCellPhone() {
     }
 
     public String getItemType() {
@@ -53,7 +53,7 @@ public class OldCell implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final OldCell other = (OldCell) obj;
+        final OldCellPhone other = (OldCellPhone) obj;
         if (this.used != other.used) {
             return false;
         }
@@ -65,7 +65,7 @@ public class OldCell implements Serializable {
 
     @Override
     public String toString() {
-        return "OldCell{" + "itemType=" + itemType + ", used=" + used + '}';
+        return "OldCellPhone{" + "itemType=" + itemType + ", used=" + used + '}';
     }
     
     

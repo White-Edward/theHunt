@@ -48,7 +48,33 @@ public class GameControl {
     }
     
     public static Item[] createItems() {
-        System.out.println("*** called createItems() in GameControl ***\n");
-        return null;
+        // created array(list) of items
+        Item[] item = new Item[Constants.NUMBER_OF_ITEMS];
+        
+        Item ClueBag = new Item();
+        ClueBag.setDescription("Clue Bag");
+        ClueBag.setQuantityInStock(0);
+        ClueBag.setRequiredAmount(0);
+        item[Item.ClueBag.ordinal()] = ClueBag;
+        
+        Item Monkey = new Item();
+        Monkey.setDescription("Monkey");
+        Monkey.setQuantityInStock(0);
+        Monkey.setRequiredAmount(0);
+        item[Item.Monkey.ordinal()] = Monkey;
+        
+        Item OldCellPhone = new Item();
+        OldCellPhone.setDescription("Old Cell Phone");
+        OldCellPhone.setQuantityInStock(0);
+        OldCellPhone.setRequiredAmount(0);
+        item[Item.OldCellPhone.ordinal()] = OldCellPhone;
+        
+        Item AidBag = new Item();
+        AidBag.setDescription("Aid Bag");
+        AidBag.setQuantityInStock(0);
+        AidBag.setRequiredAmount(0);
+        item[Item.AidBag.ordinal()] = AidBag;
+
+        return inventory;
     }
 }
