@@ -11,71 +11,35 @@ import java.util.Objects;
  *
  * @author Ann
  */
-public class Item implements Serializable {
+public enum Item implements Serializable {
 
-    private String itemType;
+    ClueBag("This bag holds the hints you received from answering a riddle correctly."),
+    TNT("TNT will let you destroy one riddle and receive the clue."),
+    OldCellPhone("An old cell?  Don't discard it, it might become of use!"),
+    Monkey("A monkey that doesn't do anything"),
+    AidBag("Use the Aid Bag to help heal yourself.");
+    
+    private final String itemType;
     private boolean used;
     
-    public Item() {
+    Item(String itemType) {
+        this.itemType = itemType;
+        used = false;
     }
-
+    
     public String getItemType() {
         return itemType;
-    }
-
-    public void setItemType(String itemType) {
-        this.itemType = itemType;
     }
 
     public boolean isUsed() {
         return used;
     }
 
-    public void setUsed(boolean used) {
-        this.used = used;
-    }
-    
     public void useItem() {
-        
+        this.used = true;
     }
 
     public void dropItem() {
-        
-    }
-    
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 71 * hash + Objects.hashCode(this.itemType);
-        hash = 71 * hash + (this.used ? 1 : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Item other = (Item) obj;
-        if (this.used != other.used) {
-            return false;
-        }
-        if (!Objects.equals(this.itemType, other.itemType)) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Item{" + "itemType=" + itemType + ", used=" + used + '}';
-    }
-    
+        // Remove item from item bag
+    }   
 }
-

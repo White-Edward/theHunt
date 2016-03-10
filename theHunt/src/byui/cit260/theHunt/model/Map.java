@@ -18,7 +18,10 @@ public class Map {
     public Map() {
     }
     
-    
+    public Map(int rowCount, int columnCount) {
+        this.rowCount = rowCount;
+        this.columnCount = columnCount;
+    }
 
     public int getRowCount() {
         return rowCount;

@@ -9,7 +9,7 @@ package byui.cit260.theHunt.model;
  *
  * @author Ann
  */
-public class ClueBag extends Item {
+public class ClueBag {
     
     private int numClues;
 
