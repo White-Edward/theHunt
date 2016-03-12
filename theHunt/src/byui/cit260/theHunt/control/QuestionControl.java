@@ -5,6 +5,11 @@
  */
 package byui.cit260.theHunt.control;
 
+import byui.cit260.theHunt.model.Constants;
+import byui.cit260.theHunt.model.Question;
+import byui.cit260.theHunt.model.QuestionType;
+import java.util.ArrayList;
+
 /**
  *
  * @author Ann
@@ -68,6 +73,44 @@ public class QuestionControl {
         }
         double timeToFillTub = (numOfGallons / gallonsPerMinute) * numOfFills;
         return timeToFillTub;
+    }
+    
+    public static ArrayList<Question> createQuestions() {
+        ArrayList<Question> questions = new ArrayList();
+        
+        //Question[] questions = new Question[QuestionType.values().length + Constants.RIDDLES.length];
+        
+        Question empty = new Question();
+        empty.setQuestionType(QuestionType.empty);
+        empty.setRiddle("No riddle here, keep searching");
+        questions.add(empty);
+        
+        for (int i = 0; i < Constants.RIDDLES[0].length; i++) {
+            Question riddle = new Question();
+            riddle.setQuestionType(QuestionType.riddle);
+            riddle.setRiddle(Constants.RIDDLES[0][i]);
+            riddle.setAnswer(Constants.RIDDLES[1][i]);
+            questions.add(riddle);
         }
+        
+        Question water = new Question();
+        water.setQuestionType(QuestionType.water);
+        water.setHasWaterSquare(true);
+        questions.add(water);
+        
+        Question train = new Question();
+        train.setQuestionType(QuestionType.train);
+        train.setRiddle("train");
+        train.setHasTwoTrainSquare(true);
+        questions.add(train);
+
+        Question teaspoon = new Question();
+        teaspoon.setQuestionType(QuestionType.teaspoon);
+        teaspoon.setRiddle("teaspoon");
+        teaspoon.setHasTeaspoonSquare(true);
+        questions.add(teaspoon);
+        
+        return questions;
+    }
 }
   
