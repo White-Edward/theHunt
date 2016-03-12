@@ -6,8 +6,10 @@
 package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.model.Game;
+import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
+import byui.cit260.theHunt.model.QuestionType;
 import thehunt.TheHunt;
 
 
@@ -37,7 +39,7 @@ public class GameMenuView extends View {
         char choice = value.charAt(0);  // get the first character in the string
         switch (choice) {
             case 'M': // Open Game map
-                this.startGameMap();
+                this.displayGameMap();
                 break;
             case 'S': // Save game progress
                 this.startSaveGame();
@@ -63,18 +65,62 @@ public class GameMenuView extends View {
         return false;
     }
 
-    private void startGameMap() {
+    private void displayGameMap() {
         Game game = TheHunt.getCurrentGame();
         Map map = game.getMap();
-        System.out.println("---------------------------------");
-        for (Location[] x : map.getLocations()){
-            for (Location y : x) {
-                System.out.print("|    " + y.getQuestion().getRiddle() + "    ");
-                //System.out.println(y.getQuestion().getAnswer());
-            }
-            System.out.println("|\n---------------------------------");
+        Location[][] locations = map.getLocations();
+        System.out.println("\nMap");
+        System.out.println("    ---------------------"); // Row Divider
+        System.out.print("    "); //Print the empty corner
+        for (int i = 0; i < locations.length; i++) {
+            System.out.print("| " + i + " ");
         }
-        //System.out.println("*** startGameMap function called ***");
+//        locations[0][3].setVisited(true); // Set position to visited
+//        locations[1][3].setVisited(true); // Set position to visited
+//        locations[2][3].setVisited(true); // Set position to visited
+//        locations[3][3].setVisited(true); // Set position to visited
+//        locations[4][3].setVisited(true); // Set position to visited
+        System.out.print("|\n"); //End header row
+        System.out.println("-------------------------");  // Row Divider
+        for (int x = 0; x < locations.length; x++) {
+            System.out.print("| " + x + " "); // Print row number
+            for (int y = 0; y < locations[x].length; y++) {
+                Location location = locations[x][y];
+                //locations[x][y].setVisited(true); // Test setting all locations
+                if (location.isVisited()) {
+                    if (location.hasQuestion() && location.getQuestion().getQuestionType() != QuestionType.empty) {
+                        if (location.hasItem()) {
+                            System.out.print("| q "); // If an item is also on this location, small queue to make room (lowercase)
+                        } else {
+                            System.out.print("| Q "); // If only a question is on this location, take up all the room it can (capital)
+                        }
+                    } else if (location.hasItem()) {
+                        switch (location.getItem()) {
+                            case AidBag:
+                                System.out.print("| A ");
+                                break;
+                            case ClueBag:
+                                System.out.print("| C ");
+                                break;
+                            case Monkey:
+                                System.out.print("| M ");
+                                break;
+                            case TNT:
+                                System.out.print("| T ");
+                                break;
+                            case OldCellPhone:
+                                System.out.print("| O ");
+                                break;
+                        }
+                    } else {
+                        System.out.print("| * ");
+                    }
+                } else {
+                    System.out.print("| ? ");
+                }
+            }
+            System.out.println("|\n-------------------------");
+        }
     }
 
     private void startSaveGame() {
