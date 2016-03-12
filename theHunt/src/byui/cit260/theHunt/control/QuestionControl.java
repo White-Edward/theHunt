@@ -45,14 +45,14 @@ public class QuestionControl {
         return tripCost;
     }
 
-    public char calculateTeaspoon (double containerDivisor, double userAnswer) {
+    public boolean calculateTeaspoon(double containerDivisor, double userAnswer) {
         
-        double teaspoonAns = 3 * 16 * (1 / containerDivisor);
+        double teaspoonAns = 3 * 16 * (16 / containerDivisor);
         double teaspoonAnswer = (Math.round(teaspoonAns * 100) / 100);
 
         if (userAnswer != teaspoonAnswer) {
-           char test = 'f';}
-    char test = 't';
+           boolean test = false;}
+     boolean test = true;
     return test;
     }
   
