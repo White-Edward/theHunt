@@ -35,7 +35,7 @@ public class ItemMenuView extends View {
                 this.startClueBag();
                 break;
             case 'T': // View TNT Menu
-                this.startTNT();
+                this.startTNTview();
                 break;
             case 'P': // View Old Cell Phone Menu
                 this.startOldCellPhoneView();
@@ -59,8 +59,9 @@ public class ItemMenuView extends View {
         System.out.println("*** startClueBag function called ***");
     }
 
-    private void startTNT() {
-        System.out.println("*** startTNT function called ***");
+    private void startTNTview() {
+        TNTview TNT = new TNTview();
+        TNT.display();
     }
 
     private void startOldCellPhoneView() {
@@ -72,7 +73,6 @@ public class ItemMenuView extends View {
         MonkeyView monkey = new MonkeyView();
         monkey.display();
     }
-
     private void startAidBag() {
         System.out.println("*** startAidBag function called ***");
     }
