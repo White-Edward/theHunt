@@ -6,6 +6,7 @@
 package byui.cit260.theHunt.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -21,7 +22,7 @@ public class Game implements Serializable{
     private String[] actors;
     private Player player;
     private Item[] items;
-    private Question[] questions;
+    private ArrayList<Question> questions;
     private Map map;
 
     public Game() {
@@ -59,11 +60,11 @@ public class Game implements Serializable{
         this.map = map;
     }
 
-    public Question[] getQuestions() {
+    public ArrayList<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(Question[] questions) {
+    public void setQuestions(ArrayList<Question> questions) {
         this.questions = questions;
     }
     
