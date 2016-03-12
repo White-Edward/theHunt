@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Ryan
  */
-public class AboutUsView {
+public class AboutUsView extends View{
     
     private final String MENU = "\n"
             +"\n---------------------------------------------------------------"
@@ -39,7 +39,8 @@ public class AboutUsView {
     } while (selection != 'B'); //  selection is not "Back"
 }
 
-    private String getInput() {
+    @Override
+    public String getInput() {
         Scanner keyboard = new Scanner(System.in); //get infile for keyboard
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
@@ -60,7 +61,7 @@ public class AboutUsView {
         
         return value; // return the value entered
     }
-
+    
     private void doAction(char choice) {
         
         switch (choice) {
@@ -115,5 +116,10 @@ public class AboutUsView {
                             + "\n================================================"
                           );
     }    
+
+    @Override
+    public boolean doAction(String value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }
