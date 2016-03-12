@@ -17,6 +17,7 @@ public class Question implements Serializable{
     private boolean hasWaterSquare;
     private String riddle;
     private String answer;
+    private QuestionType questionType;
 
     public Question() {
     }
@@ -67,6 +68,14 @@ public class Question implements Serializable{
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public QuestionType getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(QuestionType questionType) {
+        this.questionType = questionType;
     }
 
     @Override
