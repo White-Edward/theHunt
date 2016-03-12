@@ -13,6 +13,7 @@ import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.model.QuestionType;
 import java.util.ArrayList;
 import java.util.Random;
+import thehunt.TheHunt;
 
 /**
  *
@@ -27,9 +28,11 @@ public class MapControl {
         // Create a list of the different questions in the game
         ArrayList<Question> questions = createQuestions();
         
-        // Assign the different scenes to locations in the map
+        // Assign the different questions to locations in the map
         assignQuestionsToLocations(map,questions);
         
+        // Assign the different items to locations in the map
+        assignItemsToLocations(map,TheHunt.getCurrentGame().getItems());
         return map;
     }
     private static ArrayList<Question> createQuestions() {
@@ -87,6 +90,9 @@ public class MapControl {
     }    
     
     public static void assignItemsToLocations(Map map, Item[] items) {
-        
+        Location[][] locations = map.getLocations();
+        for (Item item : items) {
+            locations[new Random().nextInt(map.getRowCount())][new Random().nextInt(map.getColumnCount())].setItem(item);
+        }
     }
 }
