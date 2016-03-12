@@ -10,7 +10,7 @@ package byui.cit260.theHunt.control;
  * @author Ann
  */
 public class QuestionControl {
-    
+        
     public double calculateTwoTrains(double milesTravelledTrainOne, double milesTravelledTrainTwo, double milesPerHourTrainOne, double milesPerHourTrainTwo) {
         if (milesTravelledTrainOne < 1 || milesTravelledTrainOne > 200) {
             return -1;
