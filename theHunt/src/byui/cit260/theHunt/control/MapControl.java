@@ -11,6 +11,7 @@ import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.model.QuestionType;
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -24,53 +25,63 @@ public class MapControl {
         Map map = new Map(5,5);
         
         // Create a list of the different questions in the game
-        Question[] questions = createQuestions();
+        ArrayList<Question> questions = createQuestions();
         
         // Assign the different scenes to locations in the map
         assignQuestionsToLocations(map,questions);
         
         return map;
     }
-    private static Question[] createQuestions() {
-        Question[] questions = new Question[QuestionType.values().length + Constants.RIDDLES.length];
+    private static ArrayList<Question> createQuestions() {
+        ArrayList<Question> questions = new ArrayList();
+        
+        //Question[] questions = new Question[QuestionType.values().length + Constants.RIDDLES.length];
         
         Question empty = new Question();
+        empty.setQuestionType(QuestionType.empty);
         empty.setRiddle("No riddle here, keep searching");
-        questions[QuestionType.empty.ordinal()] = empty;
+        questions.add(empty);
         
-        // I was trying to generate a bunch of riddle questions, but I'm not sure how this best works with enums defining the index...
-//        for (int i = 0; i < Constants.RIDDLES[0].length; i++) {
+        for (int i = 0; i < Constants.RIDDLES[0].length; i++) {
             Question riddle = new Question();
-            int i = 1;
+            riddle.setQuestionType(QuestionType.riddle);
             riddle.setRiddle(Constants.RIDDLES[0][i]);
             riddle.setAnswer(Constants.RIDDLES[1][i]);
-            questions[QuestionType.riddle.ordinal()] = riddle;
-//        }
+            questions.add(riddle);
+        }
         
         Question water = new Question();
-        water.setRiddle("water");
+        water.setQuestionType(QuestionType.water);
         water.setHasWaterSquare(true);
-        questions[QuestionType.water.ordinal()] = water;
+        questions.add(water);
         
         Question train = new Question();
+        train.setQuestionType(QuestionType.train);
         train.setRiddle("train");
         train.setHasTwoTrainSquare(true);
-        questions[QuestionType.train.ordinal()] = train;
+        questions.add(train);
 
         Question teaspoon = new Question();
+        teaspoon.setQuestionType(QuestionType.teaspoon);
         teaspoon.setRiddle("teaspoon");
         teaspoon.setHasTeaspoonSquare(true);
-        questions[QuestionType.teaspoon.ordinal()] = teaspoon;
+        questions.add(teaspoon);
         
         return questions;
     }
     
-    private static void assignQuestionsToLocations(Map map, Question[] questions) {
+    private static void assignQuestionsToLocations(Map map, ArrayList<Question> questions) {
         Location[][] locations = map.getLocations();
         for (Location[] x : locations) {
             for (Location location : x) {
+                // Select an index randomly
+                int randomIndex = new Random().nextInt(questions.size());
                 // Assign a random Question Type to the location
-                location.setQuestion(questions[QuestionType.values()[new Random().nextInt(QuestionType.values().length)].ordinal()]);
+                location.setQuestion(questions.get(randomIndex));
+                // Remove the index if unless it is QuestionType empty (no duplicate questions in the game)
+                if (questions.get(randomIndex).getQuestionType() != QuestionType.empty ) {
+                    questions.remove(randomIndex);
+                }
             }
         }
     }    
