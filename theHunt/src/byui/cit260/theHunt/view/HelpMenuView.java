@@ -11,57 +11,22 @@ import java.util.Scanner;
  *
  * @author Ann
  */
-public class HelpMenuView {
+public class HelpMenuView extends View {
     
-    private final String MENU = "\n"
+    public HelpMenuView() {
+        super("\n"
             +"\n---------------------------------------------------------------"
             +"\n| Help Menu                                                   |"
             +"\n---------------------------------------------------------------"
             +"\n M - How to move the character"
             +"\n A - Actions"
             +"\n B - Back to the main menu"
-            +"\n---------------------------------------------------------------";
-    private String promptMessage = "Select an option: ";
-    
-    public void displayMenu() {
-        
-    char selection = ' ';
-    do {
-            
-        System.out.println(MENU); // display the main menu
-            
-        String input = this.getInput().toUpperCase(); // get the user's selection
-        selection = input.charAt(0); //get first character of string
-            
-        this.doAction(selection); // do action based on selection
-            
-    } while (selection != 'B'); //  selection is not "Back"
-}
-
-    private String getInput() {
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while an invalid value in entered
-            System.out.print("\n" + this.promptMessage);
-            
-            value = keyboard.nextLine(); //get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break; // end the loop
-        }
-        
-        return value; // return the value entered
+            +"\n---------------------------------------------------------------", "Choose an option: ");
     }
 
-    private void doAction(char choice) {
-        
+    @Override
+    public boolean doAction(String value) {
+        char choice = value.charAt(0);
         switch (choice) {
             case 'M': // create and start a new game
                 this.startMoveHelp();
@@ -69,10 +34,13 @@ public class HelpMenuView {
             case 'A': // get and start existing game
                 this.startActionsHelp();
                 break;
+            case 'B':
+                return true;
             default:
                 System.out.println("\n*** Invalid selection*** Try again");
                 break;
         }
+        return false;
     }
 
     private void startMoveHelp() {

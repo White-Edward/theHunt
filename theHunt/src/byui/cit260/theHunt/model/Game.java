@@ -6,6 +6,7 @@
 package byui.cit260.theHunt.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -17,12 +18,56 @@ public class Game implements Serializable{
     //class instance variables
     private String name;
     private String welcomeMessage;
+    
+    private String[] actors;
+    private Player player;
+    private Item[] items;
+    private ArrayList<Question> questions;
+    private Map map;
 
     public Game() {
     }
-    
-    
 
+    public String[] getActors() {
+        return actors;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Item[] getItems() {
+        return items;
+    }
+
+    public Map getMap() {
+        return map;
+    }
+
+    public void setActors(String[] actors) {
+        this.actors = actors;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public void setItems(Item[] items) {
+        this.items = items;
+    }
+
+    public void setMap(Map map) {
+        this.map = map;
+    }
+
+    public ArrayList<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(ArrayList<Question> questions) {
+        this.questions = questions;
+    }
+    
     public String getName() {
         return name;
     }

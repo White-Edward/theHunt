@@ -15,10 +15,12 @@ public class Question implements Serializable{
     private boolean hasTwoTrainSquare;
     private boolean hasTeaspoonSquare;
     private boolean hasWaterSquare;
+    private String riddle;
+    private String answer;
+    private QuestionType questionType;
 
     public Question() {
     }
-    
  
     public boolean isHasClue() {
         return hasClue;
@@ -50,6 +52,30 @@ public class Question implements Serializable{
 
     public void setHasWaterSquare(boolean hasWaterSquare) {
         this.hasWaterSquare = hasWaterSquare;
+    }
+
+    public String getRiddle() {
+        return riddle;
+    }
+
+    public void setRiddle(String riddle) {
+        this.riddle = riddle;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    public QuestionType getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(QuestionType questionType) {
+        this.questionType = questionType;
     }
 
     @Override

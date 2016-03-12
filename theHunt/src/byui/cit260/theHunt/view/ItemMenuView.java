@@ -11,9 +11,10 @@ import java.util.Scanner;
  *
  * @author Ann
  */
-public class ItemMenuView {
+public class ItemMenuView extends View {
     
-    private final String MENU = "\n"
+    public ItemMenuView() {
+        super("\n"
             +"\n---------------------------------------------------------------"
             +"\n| Item Menu                                                   |"
             +"\n---------------------------------------------------------------"
@@ -23,48 +24,12 @@ public class ItemMenuView {
             +"\n M - Monkey"
             +"\n A - Aid Bag"
             +"\n B - Back to the main menu"
-            +"\n---------------------------------------------------------------";
-    private String promptMessage = "Select an option: ";
-    
-    public void displayMenu() {
-        
-    char selection = ' ';
-    boolean done = false; // set flag to not done
-    do {
-            
-        System.out.println(MENU); // display the main menu
-            
-        String input = this.getInput().toUpperCase(); // get the user's selection
-        selection = input.charAt(0); //get first character of string
-        done = this.doAction(selection); // do action based on selection
-            
-    } while (!done); //  selection is not "Back"
-}
-
-    private String getInput() {
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; // initialize to not valid
-        
-        while (!valid) { // loop while an invalid value in entered
-            System.out.print("\n" + this.promptMessage);
-            
-            value = keyboard.nextLine(); //get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break; // end the loop
-        }
-        
-        return value; // return the value entered
+            +"\n---------------------------------------------------------------");
     }
-
-    private boolean doAction(char choice) {
-                
+    
+    @Override
+    public boolean doAction(String value) {
+        char choice = value.charAt(0);
         switch (choice) {
             case 'C': // Open Clue Bag Menu
                 this.startClueBag();
@@ -73,7 +38,7 @@ public class ItemMenuView {
                 this.startTNT();
                 break;
             case 'P': // View Old Cell Phone Menu
-                this.startOldCellPhone();
+                this.startOldCellPhoneView();
                 break;
             case 'M': // View Monkey Menu
                 this.startMonkey();
@@ -98,12 +63,14 @@ public class ItemMenuView {
         System.out.println("*** startTNT function called ***");
     }
 
-    private void startOldCellPhone() {
-        System.out.println("*** startOldCellPhone function called ***");
+    private void startOldCellPhoneView() {
+        OldCellPhoneView phone = new OldCellPhoneView();
+        phone.display();
     }
 
     private void startMonkey() {
-        System.out.println("*** startMonkey function called ***");
+        MonkeyView monkey = new MonkeyView();
+        monkey.display();
     }
 
     private void startAidBag() {

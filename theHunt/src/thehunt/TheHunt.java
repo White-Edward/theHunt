@@ -13,7 +13,7 @@ import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.Monkey;
-import byui.cit260.theHunt.model.OldCell;
+import byui.cit260.theHunt.model.OldCellPhone;
 import byui.cit260.theHunt.model.Player;
 import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.model.TwoTrainSquare;

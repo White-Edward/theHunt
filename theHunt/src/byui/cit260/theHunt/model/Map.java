@@ -5,20 +5,47 @@
  */
 package byui.cit260.theHunt.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ryan
  */
-public class Map {
+public class Map implements Serializable {
     
     private int rowCount;
     private int columnCount;
     private int locationTileLayout;
+    private Location[][] locations;
 
     public Map() {
     }
     
-    
+    public Map(int rowCount, int columnCount) {
+        
+        if (rowCount < 1 || columnCount < 1) {
+            System.out.println("The number of rows and columns must be greater than zero");
+            return;
+        }
+        
+        this.rowCount = rowCount;
+        this.columnCount = columnCount;
+        
+        // create 2-D array for Location objects
+        this.locations = new Location[rowCount][columnCount];
+        
+        for (int row = 0; row < rowCount; row++) {
+            for (int column = 0; column < columnCount; column++) {
+                Location location = new Location();
+                location.setColumn(column);
+                location.setRow(row);
+                location.setVisited(false);
+                
+                // assign the Location object to the current position in array
+                this.locations[row][column] = location;
+            }
+        }
+    }
 
     public int getRowCount() {
         return rowCount;
@@ -42,6 +69,14 @@ public class Map {
 
     public void setLocationTileLayout(int locationTileLayout) {
         this.locationTileLayout = locationTileLayout;
+    }
+
+    public Location[][] getLocations() {
+        return locations;
+    }
+
+    public void setLocations(Location[][] locations) {
+        this.locations = locations;
     }
 
     @Override

@@ -5,22 +5,20 @@
  */
 package byui.cit260.theHunt.model;
 
+import java.util.Random;
+
 /**
  *
  * @author Ann
  */
-public class ClueBag {
+public enum QuestionType {
+    riddle,
+    water,
+    train,
+    teaspoon,
+    empty;
     
-    private int numClues;
-
-    public ClueBag() {
-    }
-
-    public int getNumClues() {
-        return numClues;
-    }
-
-    public void setNumClues(int numClues) {
-        this.numClues = numClues;
+    QuestionType() {
+        
     }
 }

@@ -16,13 +16,50 @@ public class Location implements Serializable{
     // class instance variables.
     private boolean hasQuestion;
     private boolean hasAttribute;
+    private boolean hasItem;
+    private Question question;
+    private Item item;
+    private int row;
+    private int column;
+    private boolean visited;
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+        this.setHasQuestion(true);
+    }
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
 
     public Location() {
     }
-    
-    
 
-    public boolean isHasQuestion() {
+    public boolean hasQuestion() {
         return hasQuestion;
     }
 
@@ -38,6 +75,23 @@ public class Location implements Serializable{
         this.hasAttribute = hasAttribute;
     }
 
+    public boolean hasItem() {
+        return hasItem;
+    }
+
+    public void setHasItem(boolean hasItem) {
+        this.hasItem = hasItem;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+        this.setHasItem(true);
+    }
+    
     @Override
     public int hashCode() {
         int hash = 3;
