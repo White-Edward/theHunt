@@ -5,7 +5,10 @@
  */
 package byui.cit260.theHunt.view;
 
-import java.util.Scanner;
+import byui.cit260.theHunt.model.Game;
+import byui.cit260.theHunt.model.Location;
+import byui.cit260.theHunt.model.Map;
+import thehunt.TheHunt;
 
 
 /**
@@ -61,7 +64,17 @@ public class GameMenuView extends View {
     }
 
     private void startGameMap() {
-        System.out.println("*** startGameMap function called ***");
+        Game game = TheHunt.getCurrentGame();
+        Map map = game.getMap();
+        System.out.println("---------------------------------");
+        for (Location[] x : map.getLocations()){
+            for (Location y : x) {
+                System.out.print("|    " + y.getQuestion().getRiddle() + "    ");
+                //System.out.println(y.getQuestion().getAnswer());
+            }
+            System.out.println("|\n---------------------------------");
+        }
+        //System.out.println("*** startGameMap function called ***");
     }
 
     private void startSaveGame() {
