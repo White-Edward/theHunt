@@ -126,7 +126,8 @@ public class MainMenuView {
     }
 
     private void startAboutUs() {
-        System.out.println("*** startAboutUs function called ***");
+        AboutUsView AboutUs = new AboutUsView();
+        AboutUs.displayMenu();
     }
     
     /**

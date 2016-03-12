@@ -244,9 +244,9 @@ public class QuestionControlTest {
         double containerDivisor = 2.0;
         double userAnswer = 768.0;
         QuestionControl instance = new QuestionControl();
-        char expResult = 't';
-        char result = instance.calculateTeaspoon(containerDivisor, userAnswer);
-        assertEquals(expResult, result, 0.0001);
+        boolean expdResult = true;
+        boolean result1 = instance.calculateTeaspoon(containerDivisor, userAnswer);
+        assertEquals(expdResult, result1, 0.0001);
         
              /****************
          * Test Case #2
@@ -254,9 +254,9 @@ public class QuestionControlTest {
         System.out.println("\tTest Case #2");
         containerDivisor = 2.0;
         userAnswer = 768;
-        expResult = 't';
-        result = instance.calculateTeaspoon(containerDivisor, userAnswer);
-        assertEquals(expResult, result, 0.0001);
+        expdResult = true;
+        result1 = instance.calculateTeaspoon(containerDivisor, userAnswer);
+        assertEquals(expdResult, result1, 0.0001);
         
                      /****************
          * Test Case #3
@@ -264,9 +264,9 @@ public class QuestionControlTest {
         System.out.println("\tTest Case #3");
         containerDivisor = 2.0;
         userAnswer = 768.1;
-        expResult = 't';
-        result = instance.calculateTeaspoon(containerDivisor, userAnswer);
-        assertEquals(expResult, result, 0.0001);
+        expdResult = false;
+        result1 = instance.calculateTeaspoon(containerDivisor, userAnswer);
+        assertEquals(expdResult, result1, 0.0001);
         
                      /****************
          * Test Case #4
@@ -274,9 +274,9 @@ public class QuestionControlTest {
         System.out.println("\tTest Case #4");
         containerDivisor = 2.0;
         userAnswer = 767.99;
-        expResult = 't';
-        result = instance.calculateTeaspoon(containerDivisor, userAnswer);
-        assertEquals(expResult, result, 0.0001);
+        expdResult = false;
+        result1 = instance.calculateTeaspoon(containerDivisor, userAnswer);
+        assertEquals(expdResult, result1, 0.0001);
         
                      /****************
          * Test Case #5
@@ -284,9 +284,9 @@ public class QuestionControlTest {
         System.out.println("\tTest Case #5");
         containerDivisor = 2.0;
         userAnswer = -768.0;
-        expResult = 't';
-        result = instance.calculateTeaspoon(containerDivisor, userAnswer);
-        assertEquals(expResult, result, 0.0001);
+        expdResult = false;
+        result1 = instance.calculateTeaspoon(containerDivisor, userAnswer);
+        assertEquals(expdResult, result1, 0.0001);
 
     }
 
@@ -387,5 +387,13 @@ public class QuestionControlTest {
         result = instance.calculateWater(numOfGallons, gallonsPerMinute, numOfFills);
         assertEquals(expResult, result, 0.0);        
        
+    }
+
+    private void assertEquals(boolean expdResult, boolean result1, double d) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void assertEquals(double expResult, double result, double d) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
