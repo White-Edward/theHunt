@@ -11,13 +11,5 @@ package byui.cit260.theHunt.control;
  */
 public class ItemControl {
     
-    public enum Item {
-        
-        ClueBag,
-        Monkey,        
-        OldCellPhone,
-        AidBag,
-        TNT;
-    }
     
 }
