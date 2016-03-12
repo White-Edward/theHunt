@@ -45,6 +45,7 @@ public class GameControl {
         
         // Create a list of the different questions in the game
         ArrayList<Question> questions = QuestionControl.createQuestions();
+        game.setQuestions(questions);
         
         Map map = MapControl.createMap(); // Create and initialize new map
         game.setMap(map);
