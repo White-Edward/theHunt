@@ -47,15 +47,15 @@ public class TNTview extends View {
     }
     
     private void startPickUpTNT() {
-         System.out.println("*** startPickupOldCellPhone function called ***");
+         System.out.println("*** startPickupTNT function called ***");
     }
     
     private void startDropTNT(){       
-        System.out.println("*** startDropOldCellPhone function called ***");
+        System.out.println("*** startDropTNT function called ***");
     }   
 
     private void startUseTNT() {
-        System.out.println("*** startUseOldCellPhone function called ***");
+        System.out.println("*** startUseTNT function called ***");
     }
 
 
