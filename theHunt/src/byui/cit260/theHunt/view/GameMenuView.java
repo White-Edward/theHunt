@@ -5,6 +5,8 @@
  */
 package byui.cit260.theHunt.view;
 
+import byui.cit260.theHunt.control.GameControl;
+import byui.cit260.theHunt.control.QuestionControl;
 import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Location;
@@ -26,6 +28,7 @@ public class GameMenuView extends View {
             +"\n---------------------------------------------------------------"
             +"\n M - Show game map"
             +"\n S - Save game progress"
+            +"\n P - Show game progress"
             +"\n H - Help menu"
             +"\n I - Item menu"
             +"\n Q - Quit game"
@@ -43,6 +46,9 @@ public class GameMenuView extends View {
                 break;
             case 'S': // Save game progress
                 this.startSaveGame();
+                break;
+            case 'P': // Show game progress
+                this.displayGameProgress();
                 break;
             case 'H': // View Help Menu
                 this.startHelpMenu();
@@ -121,12 +127,27 @@ public class GameMenuView extends View {
             }
             System.out.println("|\n-------------------------");
         }
+        System.out.println("Legend:");
+        System.out.println("  ? - Location has not been visited");
+        System.out.println("  Q - Location has a question");
+        System.out.println("  q - Location has a question and an item");
+        System.out.println("  C - Location has a clue bag");
+        System.out.println("  A - Location has an aid bag");
+        System.out.println("  M - Location has a monkey");
+        System.out.println("  T - Location has TNT");
+        System.out.println("  O - Location has an old cell phone");
     }
 
     private void startSaveGame() {
         System.out.println("*** startSaveGame function called ***");
     }
 
+    private void displayGameProgress() {
+        System.out.println("Number of questions answered:   " + QuestionControl.countAnweredQuestions());
+        
+        System.out.println("Number of questions unanswered: " + QuestionControl.countUnansweredQuestions());
+    }
+    
     private void startHelpMenu() {
                 // display the game menu
         HelpMenuView helpMenu = new HelpMenuView();
