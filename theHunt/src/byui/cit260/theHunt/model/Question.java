@@ -18,6 +18,7 @@ public class Question implements Serializable{
     private String riddle;
     private String answer;
     private QuestionType questionType;
+    private boolean answered;
 
     public Question() {
     }
@@ -76,6 +77,14 @@ public class Question implements Serializable{
 
     public void setQuestionType(QuestionType questionType) {
         this.questionType = questionType;
+    }
+
+    public boolean isAnswered() {
+        return answered;
+    }
+
+    public void setAnswered(boolean isAnswered) {
+        this.answered = isAnswered;
     }
 
     @Override
