@@ -6,9 +6,13 @@
 package byui.cit260.theHunt.control;
 
 import byui.cit260.theHunt.model.Constants;
+import byui.cit260.theHunt.model.Game;
+import byui.cit260.theHunt.model.Location;
+import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.model.QuestionType;
 import java.util.ArrayList;
+import thehunt.TheHunt;
 
 /**
  *
@@ -112,5 +116,34 @@ public class QuestionControl {
         
         return questions;
     }
+    
+    public static int countAnweredQuestions() {
+        Location[][] locations = TheHunt.getCurrentGame().getMap().getLocations();
+        int total = 0;
+        for (Location[] x : locations) {
+            for (Location location : x) {
+                Question question = location.getQuestion();
+                if (question.isAnswered() && question.getQuestionType() != QuestionType.empty ) {
+                    total++;
+                }
+            }
+        }
+        return total;
+    }
+    
+    public static int countUnansweredQuestions() {
+        Location[][] locations = TheHunt.getCurrentGame().getMap().getLocations();
+        int total = 0;
+        for (Location[] x : locations) {
+            for (Location location : x) {
+                Question question = location.getQuestion();
+                if (!question.isAnswered() && question.getQuestionType() != QuestionType.empty ) {
+                    total++;
+                }
+            }
+        }
+        return total;
+    }
+
 }
   
