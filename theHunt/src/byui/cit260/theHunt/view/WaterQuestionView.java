@@ -6,6 +6,7 @@
 package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.control.QuestionControl;
+import byui.cit260.theHunt.exceptions.QuestionControlException;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -85,7 +86,7 @@ public class WaterQuestionView {
         return value; // return the value entered
     }
 
-    private boolean doAction(Double playerAnswer) {
+    private boolean doAction(Double playerAnswer) throws QuestionControlException {
         QuestionControl Water = new QuestionControl();
         DecimalFormat df2 = new DecimalFormat("###.##");
         double answer = Double.valueOf(df2.format(Water.calculateWater(this.numOfGallons, this.gallonsPerMinute, this.numOfFills)));

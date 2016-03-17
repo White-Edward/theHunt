@@ -6,6 +6,7 @@
 package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.control.QuestionControl;
+import byui.cit260.theHunt.exceptions.QuestionControlException;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -51,7 +52,7 @@ public class TwoTrainsQuestionView {
             } else {
                 try {
                     correct = this.doAction(Double.valueOf(input)); // do action based on selection
-                } catch (Exception e) {
+                } catch (NumberFormatException | QuestionControlException e) {
                     System.out.println("\nInvalid value, must be a number");
                     continue;
                 }
@@ -87,10 +88,16 @@ public class TwoTrainsQuestionView {
         return value; // return the value entered
     }
 
-    private boolean doAction(double playerAnswer) {
+    private boolean doAction(double playerAnswer) throws QuestionControlException {
         QuestionControl twoTrains = new QuestionControl();
         DecimalFormat df2 = new DecimalFormat("###.##");
-        double answer = Double.valueOf(df2.format(twoTrains.calculateTwoTrains(this.trainOneDistance,this.trainTwoDistance,this.trainOneSpeed,this.trainTwoSpeed)));
+        double answer = 0;
+        try {     
+        answer = Double.valueOf(df2.format(twoTrains.calculateTwoTrains(this.trainOneDistance,this.trainTwoDistance,this.trainOneSpeed,this.trainTwoSpeed)));
+          
+        } catch (QuestionControlException e) {
+            System.out.println(e.getMessage());
+        }
         return playerAnswer == answer;
     }
 }
