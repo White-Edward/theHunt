@@ -51,8 +51,13 @@ public class TheHunt {
         
         //creat StartProgramViewOrig and display the start program view
         StartProgramView startProgramView = new StartProgramView();
-        startProgramView.displayStartProgramView();
-
+        try{
+            startProgramView.displayStartProgramView();
+        } catch (Throwable te) {
+                System.out.printf(te.getMessage());
+                te.printStackTrace();
+                startProgramView.displayStartProgramView();
+        }
     }
     
 }

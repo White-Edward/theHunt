@@ -48,7 +48,7 @@ public class WaterQuestionView {
                 try{
                     correct = this.doAction(Double.valueOf(input)); // do action based on selection
                 }
-                catch (Exception e) {
+                catch (NumberFormatException | QuestionControlException e) {
                     System.out.println("\nInvalid value, you must enter a number");
                     continue;
                 }

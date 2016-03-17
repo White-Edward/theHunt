@@ -44,7 +44,7 @@ public class TeaspoonQuestionView {
                 try{
                     correct = this.doAction(input); // do action based on selection
                 }
-                catch (Exception e) {
+                catch (NumberFormatException e) {
                     System.out.println("\nInvalid value, you must enter a number");
                     continue;
                 }

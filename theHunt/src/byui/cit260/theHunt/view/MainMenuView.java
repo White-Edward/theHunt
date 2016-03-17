@@ -61,6 +61,8 @@ public class MainMenuView extends View {
                 break;
             case 'W': // load Water questoin
                 this.startWaterQuestionView();
+            case 'P': // load Water questoin
+                this.startTeaspoonQuestionView();
             default:
                 System.out.println("\n*** Invalid selection*** Try again");
                 break;
@@ -120,5 +122,10 @@ public class MainMenuView extends View {
     private void startWaterQuestionView() {
         WaterQuestionView water = new WaterQuestionView();
         water.displayQuestion();
+    }
+
+    private void startTeaspoonQuestionView() {
+        TeaspoonQuestionView yeaspoon = new TeaspoonQuestionView();
+        yeaspoon.displayQuestion();
     }
 }
