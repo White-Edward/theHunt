@@ -51,8 +51,8 @@ public class TwoTrainsQuestionView {
                 done = true;
             } else {
                 try {
-                    correct = this.doAction(Double.valueOf(input)); // do action based on selection
-                } catch (NumberFormatException | QuestionControlException e) {
+                    correct = this.doAction(Double.parseDouble(input)); // do action based on selection
+                } catch (NumberFormatException e) {
                     System.out.println("\nInvalid value, must be a number");
                     continue;
                 }
@@ -88,16 +88,16 @@ public class TwoTrainsQuestionView {
         return value; // return the value entered
     }
 
-    private boolean doAction(double playerAnswer) throws QuestionControlException {
+    private boolean doAction(double playerAnswer) {
         QuestionControl twoTrains = new QuestionControl();
         DecimalFormat df2 = new DecimalFormat("###.##");
         double answer = 0;
         try {     
-        answer = Double.valueOf(df2.format(twoTrains.calculateTwoTrains(this.trainOneDistance,this.trainTwoDistance,this.trainOneSpeed,this.trainTwoSpeed)));
-          
+            answer = twoTrains.calculateTwoTrains(this.trainOneDistance,this.trainTwoDistance,this.trainOneSpeed,this.trainTwoSpeed);
         } catch (QuestionControlException e) {
             System.out.println(e.getMessage());
         }
+        answer = Double.parseDouble(df2.format(answer)); // Format the double to two decimal places
         return playerAnswer == answer;
     }
 }
