@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package byui.cit260.theHunt.model;
+import java.awt.Point;
 import java.io.Serializable;
 import java.util.Objects;
 /**
@@ -14,11 +15,11 @@ public class Player implements Serializable {
     
     //class instance variables
     private String characterName;
+    private Location location;
+    private Point coordinates;
 
     public Player() {
     }
-    
-    
 
     public String getCharacterName() {
         return characterName;
@@ -26,6 +27,22 @@ public class Player implements Serializable {
 
     public void setCharacterName(String characterName) {
         this.characterName = characterName;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public Point getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
     }
 
     @Override
