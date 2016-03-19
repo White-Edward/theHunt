@@ -5,11 +5,14 @@
  */
 package byui.cit260.theHunt.control;
 
+import static byui.cit260.theHunt.control.MapControl.assignPlayerToLocation;
+import byui.cit260.theHunt.exceptions.MapControlException;
 import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.Player;
 import byui.cit260.theHunt.model.Question;
+import java.awt.Point;
 import java.util.ArrayList;
 import thehunt.TheHunt;
 
@@ -28,16 +31,15 @@ public class GameControl {
         Player player = new Player();
         player.setCharacterName(name);
         
-        TheHunt.setPlayer(player); // save the player
-        
         return player;
     }
     
-    public static void createNewGame(Player player) {
+    public static void createNewGame() {
         // System.out.println("\n*** createNewGame stub function called ***");
         Game game = new Game();  // Create new game
         TheHunt.setCurrentGame(game); // Save in TheHunt
         
+        Player player = TheHunt.getPlayer();
         game.setPlayer(player); // save player in game
 
         Item[] items = ItemControl.createItems();
@@ -47,9 +49,17 @@ public class GameControl {
         ArrayList<Question> questions = QuestionControl.createQuestions();
         game.setQuestions(questions);
         
+        
         Map map = MapControl.createMap(); // Create and initialize new map
         game.setMap(map);
         
+        Point coordinates = new Point(1,1);  // Set default starting location
+        try {
+            assignPlayerToLocation(player, coordinates);
+        } catch (MapControlException e) {
+            System.out.println(e.getMessage());
+        }
+        System.out.println("You are currently at map location (1,1)");
         // MapControl.moveActorsToStartingLocation(map);
     }
     
