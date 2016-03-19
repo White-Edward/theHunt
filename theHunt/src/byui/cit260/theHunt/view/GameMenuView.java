@@ -5,10 +5,8 @@
  */
 package byui.cit260.theHunt.view;
 
-import byui.cit260.theHunt.control.GameControl;
 import byui.cit260.theHunt.control.QuestionControl;
 import byui.cit260.theHunt.model.Game;
-import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.QuestionType;
@@ -29,11 +27,12 @@ public class GameMenuView extends View {
             +"\n M - Show game map"
             +"\n S - Save game progress"
             +"\n P - Show game progress"
+            +"\n G - Go to new map location"
             +"\n H - Help menu"
             +"\n I - Item menu"
             +"\n Q - Quit game"
             +"\n R - Return to main menu"
-            +"\n G - Return to game"
+            +"\n B - Go back"
             +"\n---------------------------------------------------------------", "Select an option: ");
     }
     
@@ -50,6 +49,9 @@ public class GameMenuView extends View {
             case 'P': // Show game progress
                 this.displayGameProgress();
                 break;
+            case 'G': // Go to new map location
+                this.displayGoToNewMapLocation();
+                break;
             case 'H': // View Help Menu
                 this.startHelpMenu();
                 break;
@@ -62,7 +64,7 @@ public class GameMenuView extends View {
             case 'R': // View Main Menu
                 this.startMainMenu();
                 break;
-            case 'G': // Return to game 
+            case 'B': // Back to previous menu 
                 return true;
             default:
                 System.out.println("\n*** Invalid selection*** Try again");
@@ -79,7 +81,7 @@ public class GameMenuView extends View {
         System.out.println("    ---------------------"); // Row Divider
         System.out.print("    "); //Print the empty corner
         for (int i = 0; i < locations.length; i++) {
-            System.out.print("| " + i + " ");
+            System.out.print("| " + (i + 1) + " ");
         }
 //        locations[0][3].setVisited(true); // Set position to visited
 //        locations[1][3].setVisited(true); // Set position to visited
@@ -89,7 +91,7 @@ public class GameMenuView extends View {
         System.out.print("|\n"); //End header row
         System.out.println("-------------------------");  // Row Divider
         for (int x = 0; x < locations.length; x++) {
-            System.out.print("| " + x + " "); // Print row number
+            System.out.print("| " + (x + 1) + " "); // Print row number
             for (int y = 0; y < locations[x].length; y++) {
                 Location location = locations[x][y];
                 //locations[x][y].setVisited(true); // Test setting all locations
@@ -146,6 +148,11 @@ public class GameMenuView extends View {
         System.out.println("Number of questions answered:   " + QuestionControl.countAnweredQuestions());
         
         System.out.println("Number of questions unanswered: " + QuestionControl.countUnansweredQuestions());
+    }
+    
+    private void displayGoToNewMapLocation() {
+        LocationView locationMenu = new LocationView();
+        locationMenu.display();
     }
     
     private void startHelpMenu() {
