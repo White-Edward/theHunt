@@ -8,6 +8,7 @@ package byui.cit260.theHunt.view;
 import byui.cit260.theHunt.control.GameControl;
 import byui.cit260.theHunt.model.Player;
 import java.util.Scanner;
+import thehunt.TheHunt;
 
 /**
  *
@@ -103,6 +104,7 @@ public class StartProgramView {
         }
         //call createPlayer() control function
         Player player = GameControl.createPlayer(playersName);
+        TheHunt.setPlayer(player);
         
         if (player == null) {// if unsuccessful
             System.out.println("\nError creating the player.");
