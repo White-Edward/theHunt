@@ -5,20 +5,8 @@
  */
 package thehunt;
 
-import byui.cit260.theHunt.model.AidBag;
-import byui.cit260.theHunt.model.Clue;
-import byui.cit260.theHunt.model.ClueBag;
 import byui.cit260.theHunt.model.Game;
-import byui.cit260.theHunt.model.Item;
-import byui.cit260.theHunt.model.Location;
-import byui.cit260.theHunt.model.Map;
-import byui.cit260.theHunt.model.Monkey;
-import byui.cit260.theHunt.model.OldCellPhone;
 import byui.cit260.theHunt.model.Player;
-import byui.cit260.theHunt.model.Question;
-import byui.cit260.theHunt.model.TwoTrainSquare;
-import byui.cit260.theHunt.model.TeaspoonSquare;
-import byui.cit260.theHunt.model.WaterSquare;
 import byui.cit260.theHunt.view.StartProgramView;
         
 /**
