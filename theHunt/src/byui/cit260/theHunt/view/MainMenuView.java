@@ -6,8 +6,6 @@
 package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.control.GameControl;
-import java.util.Scanner;
-import thehunt.TheHunt;
 
 /**
  *
@@ -28,7 +26,7 @@ public class MainMenuView extends View {
             +"\n A - About Us"
             +"\n---------------------------------------------------------------");
     }
-    
+   
     @Override
     public boolean doAction(String value) {
         char choice = value.charAt(0);  // get the first character in the string
@@ -71,8 +69,7 @@ public class MainMenuView extends View {
     }
 
     private void startNewGame() {
-        GameControl.createNewGame(TheHunt.getPlayer());
-        
+        GameControl.createNewGame();
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
