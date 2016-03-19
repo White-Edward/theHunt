@@ -7,9 +7,9 @@ package byui.cit260.theHunt.exceptions;
 
 /**
  *
- * @author Edward
+ * @author Ann
  */
-public class MapControlException extends Exception{
+public class MapControlException extends Exception {
 
     public MapControlException() {
     }
@@ -29,6 +29,4 @@ public class MapControlException extends Exception{
     public MapControlException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
-    
-    
 }
