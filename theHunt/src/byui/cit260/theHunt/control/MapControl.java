@@ -5,12 +5,14 @@
  */
 package byui.cit260.theHunt.control;
 
-import byui.cit260.theHunt.model.Constants;
+import byui.cit260.theHunt.exceptions.MapControlException;
 import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
+import byui.cit260.theHunt.model.Player;
 import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.model.QuestionType;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
 import thehunt.TheHunt;
@@ -30,6 +32,7 @@ public class MapControl {
         
         // Assign the different items to locations in the map
         assignItemsToLocations(map,TheHunt.getCurrentGame().getItems());
+        
         return map;
     }
     
@@ -54,5 +57,24 @@ public class MapControl {
         for (Item item : items) {
             locations[new Random().nextInt(map.getRowCount())][new Random().nextInt(map.getColumnCount())].setItem(item);
         }
+    }
+    
+    public static boolean assignPlayerToLocation(Player player, Point coordinates) throws MapControlException {
+        Map map = TheHunt.getCurrentGame().getMap();
+        int newRow = coordinates.x - 1;
+        int newColumn = coordinates.y - 1;
+        
+        if (newRow < 0 || newRow >= map.getRowCount() ||
+                newColumn < 0 || newColumn >= map.getColumnCount()) {
+            throw new MapControlException("Cannot move actor to location"
+                                        + " " + coordinates.x + ", " + coordinates.y
+                                        + " because that location is outside"
+                                        + " the bounds of the map.");
+        }
+        
+        player.setCoordinates(coordinates);
+        Location newLocation = map.getLocations()[coordinates.x - 1][coordinates.y - 1];
+        player.setLocation(newLocation);
+        return false;
     }
 }
