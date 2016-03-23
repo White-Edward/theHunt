@@ -7,6 +7,7 @@ package byui.cit260.theHunt.control;
 
 import byui.cit260.theHunt.model.Constants;
 import byui.cit260.theHunt.model.Item;
+import java.util.Arrays;
 
 /**
  *
@@ -50,4 +51,25 @@ public class ItemControl {
         
         return item;
     }
+        
+    public static void main (String[] args) {
+
+     
+     String[] item = new String[5] ;
+     
+     item[0] = "Clue Bag";
+     item[1] = "TNT";
+     item[2] = "Old Cell Phone";
+     item[3] = "Monkey";
+     item[4] = "Aid Bag";
+    
+      for(int i = 0; i < item.length; i++) {
+          Arrays.sort(item);
+                 System.out.print( "\n"+item[i]);
+                       
+          
+      }
+      
+   
+      }
 }
