@@ -6,6 +6,7 @@
 package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.control.GameControl;
+import java.io.IOException;
 
 /**
  *
@@ -28,7 +29,7 @@ public class MainMenuView extends View {
     }
    
     @Override
-    public boolean doAction(String value) {
+    public boolean doAction(String value) throws IOException {
         char choice = value.charAt(0);  // get the first character in the string
         switch (choice) {
             case 'N': // create and start a new game
@@ -68,7 +69,7 @@ public class MainMenuView extends View {
         return false;
     }
 
-    private void startNewGame() {
+    private void startNewGame() throws IOException {
         GameControl.createNewGame();
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
@@ -83,7 +84,7 @@ public class MainMenuView extends View {
         System.out.println("*** startSaveGame function called ***");
     }
 
-    private void startHelpMenu() {
+    private void startHelpMenu() throws IOException {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
@@ -92,7 +93,7 @@ public class MainMenuView extends View {
         System.out.println("*** startQuitGame function called ***");
     }
 
-    private void startAboutUs() {
+    private void startAboutUs() throws IOException {
         AboutUsView AboutUs = new AboutUsView();
         AboutUs.displayMenu();
     }
@@ -100,7 +101,7 @@ public class MainMenuView extends View {
     /**
      * Temporary function to test item menu
      */
-    private void startItemMenu() {
+    private void startItemMenu() throws IOException {
         ItemMenuView itemMenu = new ItemMenuView();
         itemMenu.display();
     }
@@ -108,7 +109,7 @@ public class MainMenuView extends View {
     /**
      * Temporary function to test two trains question
      */
-    private void startTwoTrainsQuestionView() {
+    private void startTwoTrainsQuestionView() throws IOException {
         TwoTrainsQuestionView question = new TwoTrainsQuestionView();
         question.displayQuestion();
     }
@@ -116,12 +117,12 @@ public class MainMenuView extends View {
     /**
      * Temporary function to test two trains question
      */
-    private void startWaterQuestionView() {
+    private void startWaterQuestionView() throws IOException {
         WaterQuestionView water = new WaterQuestionView();
         water.displayQuestion();
     }
 
-    private void startTeaspoonQuestionView() {
+    private void startTeaspoonQuestionView() throws IOException {
         TeaspoonQuestionView yeaspoon = new TeaspoonQuestionView();
         yeaspoon.displayQuestion();
     }

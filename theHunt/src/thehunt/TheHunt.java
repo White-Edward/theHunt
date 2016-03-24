@@ -50,27 +50,28 @@ public class TheHunt {
         
 
         try{
-            
             //Open charcter stream files for end user input and output
             TheHunt.inFile=
                     new BufferedReader(new InputStreamReader(System.in));
             TheHunt.outFile= new PrintWriter(System.out, true);
             
             //open log file
-            String filePath = "log.txt";
-            TheHunt.logFile = new PrintWriter(C:\Users\Document\tem\logfile.txt);
+            String filePath = "C:\\Users\\Document\\tmp\\logfile.txt";
+            TheHunt.logFile = new PrintWriter(filePath);
             
             //creat StartProgramViewOrig and display the start program view
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.displayStartProgramView();
             return;
+        } catch (Exception e) {
+            System.out.println("Exception: " + e.toString() +
+                                "\nCause: " + e.getCause() +
+                                "\nMessage: " + e.getMessage());
         } catch (Throwable te) {
                 System.out.printf(te.getMessage());
                 te.printStackTrace();
-
-        }
-        
-        finally{
+        } 
+        finally {
             try {
                 if (TheHunt.inFile != null)
                     TheHunt.inFile.close();
@@ -94,6 +95,14 @@ public class TheHunt {
     public static void setOutFile(PrintWriter outFile) {
         TheHunt.outFile = outFile;
     }
+   
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        TheHunt.logFile = logFile;
+    }
 
     public static BufferedReader getInFile() {
         return inFile;
@@ -102,4 +111,5 @@ public class TheHunt {
     public static void setInFile(BufferedReader inFile) {
         TheHunt.inFile = inFile;
     } 
+    
 }

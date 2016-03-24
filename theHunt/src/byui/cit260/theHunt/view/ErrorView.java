@@ -15,14 +15,16 @@ import thehunt.TheHunt;
 public class ErrorView {
     
     private static final PrintWriter errorFile = TheHunt.getOutFile();
+    private static final PrintWriter logFile = TheHunt.getLogFile();
     
-    public static void desplay(String ClassName, String errorMessage) {
+    public static void display(String className, String errorMessage) {
         
         errorFile.println(
                     "------------------------------------------------------"
                   + "\n- ERROR -" + errorMessage
                   + "\n------------------------------------------------------");
-        
+        // log error
+        logFile.println(className + " - " + errorMessage);
     }
     
 }

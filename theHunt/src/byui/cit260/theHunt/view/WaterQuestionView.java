@@ -7,8 +7,11 @@ package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.control.QuestionControl;
 import byui.cit260.theHunt.exceptions.QuestionControlException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
-import java.util.Scanner;
+import thehunt.TheHunt;
 
 /**
  *
@@ -21,6 +24,8 @@ public class WaterQuestionView {
     private final double gallonsPerMinute;
     private final double numOfFills;
     private final String promptMessage = "Answer (B - Back): ";
+    protected final BufferedReader keyboard = TheHunt.getInFile();
+    protected final PrintWriter console = TheHunt.getOutFile();
 
     public WaterQuestionView() {
         DecimalFormat df = new DecimalFormat("###");
@@ -34,7 +39,7 @@ public class WaterQuestionView {
                 + "\n How many mintues will it take to fill the tub?";
     }
 
-    public void displayQuestion() {
+    public void displayQuestion() throws IOException {
         boolean done = false; //set flag to not done
         boolean correct = false; //
         while (!done && !correct) {
@@ -64,15 +69,14 @@ public class WaterQuestionView {
             }               
         }
 
-    private String getInput() {
-        Scanner keyboard = new Scanner(System.in); //get input from keyboard
+    private String getInput() throws IOException {
         String value = ""; // value to be returned
         boolean valid = false; //inialize to not valid
         
         while (!valid) { //loop while an invalid value is entered
             System.out.print("\n" + this.promptMessage);
             
-            value = keyboard.nextLine(); //get next line typed on keyboard
+            value = this.keyboard.readLine(); //get next line typed on keyboard
             value = value.trim(); //trim off leading and trailing blanks
             
             if (value.length() < 1) { //value is blank

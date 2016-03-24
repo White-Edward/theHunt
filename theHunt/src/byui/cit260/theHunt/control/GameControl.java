@@ -12,6 +12,7 @@ import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.Player;
 import byui.cit260.theHunt.model.Question;
+import byui.cit260.theHunt.view.ErrorView;
 import java.awt.Point;
 import java.util.ArrayList;
 import thehunt.TheHunt;
@@ -57,7 +58,9 @@ public class GameControl {
         try {
             assignPlayerToLocation(player, coordinates);
         } catch (MapControlException e) {
-            System.out.println(e.getMessage());
+            ErrorView.display(this.getClass().getName(),
+                    e.getMessage());
+            // System.out.println(e.getMessage());
         }
         System.out.println("You are currently at map location (1,1)");
         // MapControl.moveActorsToStartingLocation(map);

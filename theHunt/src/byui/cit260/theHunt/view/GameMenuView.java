@@ -10,6 +10,7 @@ import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.QuestionType;
+import java.io.IOException;
 import thehunt.TheHunt;
 
 
@@ -37,7 +38,7 @@ public class GameMenuView extends View {
     }
     
     @Override
-    public boolean doAction(String value) {
+    public boolean doAction(String value) throws IOException {
         char choice = value.charAt(0);  // get the first character in the string
         switch (choice) {
             case 'M': // Open Game map
@@ -150,18 +151,18 @@ public class GameMenuView extends View {
         System.out.println("Number of questions unanswered: " + QuestionControl.countUnansweredQuestions());
     }
     
-    private void displayGoToNewMapLocation() {
+    private void displayGoToNewMapLocation() throws IOException {
         LocationView locationMenu = new LocationView();
         locationMenu.display();
     }
     
-    private void startHelpMenu() {
+    private void startHelpMenu() throws IOException {
                 // display the game menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
     
-    private void startItemMenu() {
+    private void startItemMenu() throws IOException {
                 // display the game menu
         ItemMenuView itemMenu = new ItemMenuView();
         itemMenu.display();
@@ -170,7 +171,7 @@ public class GameMenuView extends View {
         System.out.println("*** startQuitGame function called ***");
     }
 
-    private void startMainMenu() {
+    private void startMainMenu() throws IOException {
         // display the main menu
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.display();

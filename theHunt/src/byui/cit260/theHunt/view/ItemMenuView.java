@@ -5,6 +5,7 @@
  */
 package byui.cit260.theHunt.view;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -28,7 +29,7 @@ public class ItemMenuView extends View {
     }
     
     @Override
-    public boolean doAction(String value) {
+    public boolean doAction(String value) throws IOException {
         char choice = value.charAt(0);
         switch (choice) {
             case 'C': // Open Clue Bag Menu
@@ -59,17 +60,17 @@ public class ItemMenuView extends View {
         System.out.println("*** startClueBag function called ***");
     }
 
-    private void startTNTview() {
+    private void startTNTview() throws IOException {
         TNTview TNT = new TNTview();
         TNT.display();
     }
 
-    private void startOldCellPhoneView() {
+    private void startOldCellPhoneView() throws IOException {
         OldCellPhoneView phone = new OldCellPhoneView();
         phone.display();
     }
 
-    private void startMonkey() {
+    private void startMonkey() throws IOException {
         MonkeyView monkey = new MonkeyView();
         monkey.display();
     }

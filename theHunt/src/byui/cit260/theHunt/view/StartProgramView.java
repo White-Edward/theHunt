@@ -7,7 +7,9 @@ package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.control.GameControl;
 import byui.cit260.theHunt.model.Player;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import thehunt.TheHunt;
 
 /**
@@ -17,6 +19,8 @@ import thehunt.TheHunt;
 public class StartProgramView {
     
     private String promptMessage;
+    protected final BufferedReader keyboard = TheHunt.getInFile();
+    protected final PrintWriter console = TheHunt.getOutFile();
     
     public StartProgramView(){ 
         // promptMessage = "Please enter your name"
@@ -59,7 +63,7 @@ public class StartProgramView {
                 );
     }
 
-    public void displayStartProgramView() {
+    public void displayStartProgramView() throws IOException {
         
         boolean done = false; // set flag to not done
         do {
@@ -74,15 +78,14 @@ public class StartProgramView {
         } while (!done);
     }
 
-    private String getPlayersName() {
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
+    private String getPlayersName() throws IOException {
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
         
         while (!valid) { // loop while an invalid value in entered
             System.out.print("\n" + this.promptMessage);
             
-            value = keyboard.nextLine(); //get next line typed on keyboard
+            value = this.keyboard.readLine(); //get next line typed on keyboard
             value = value.trim(); // trim off leading and trailing blanks
             
             if (value.length() < 1) { //value is blank
@@ -96,7 +99,7 @@ public class StartProgramView {
         return value; // return the value entered
     }
 
-    private boolean doAction(String playersName) {
+    private boolean doAction(String playersName) throws IOException {
         if (playersName.length() <2) {
             System.out.println("\nInvalid Players name: "
                     + "The name must be greater than one character in length");
@@ -116,7 +119,7 @@ public class StartProgramView {
         return true; // success !
     }
 
-    private void displayNextView(Player player) {
+    private void displayNextView(Player player) throws IOException {
         
         // display a custom welcome message
         System.out.println("\n================================================="

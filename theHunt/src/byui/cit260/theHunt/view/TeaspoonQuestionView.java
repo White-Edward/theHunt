@@ -6,8 +6,11 @@
 package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.control.QuestionControl;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
-import java.util.Scanner;
+import thehunt.TheHunt;
 
 /**
  *
@@ -19,6 +22,8 @@ public class TeaspoonQuestionView {
     private final double containerDivisor;
     private final String promptMessage = "Answer (B - Back): ";
     private double userAnswer;
+    protected final BufferedReader keyboard = TheHunt.getInFile();
+    protected final PrintWriter console = TheHunt.getOutFile();
 
     public TeaspoonQuestionView() {
         DecimalFormat df = new DecimalFormat("###");
@@ -29,7 +34,7 @@ public class TeaspoonQuestionView {
                 + "\n container if there are 16 cups in a gallon. Round to the nearest whole number.";
     }
 
-    public void displayQuestion() {
+    public void displayQuestion() throws IOException {
         boolean done = false; //set flag to not done
         boolean correct = false; //
         while (!done && !correct) {
@@ -60,15 +65,14 @@ public class TeaspoonQuestionView {
             }               
         }
 
-    private String getInput() {
-        Scanner keyboard = new Scanner(System.in); //get input from keyboard
+    private String getInput() throws IOException {
         String value = ""; // value to be returned
         boolean valid = false; //inialize to not valid
         
         while (!valid) { //loop while an invalid value is entered
             System.out.print("\n" + this.promptMessage);
             
-            value = keyboard.nextLine(); //get next line typed on keyboard
+            value = this.keyboard.readLine(); //get next line typed on keyboard
             value = value.trim(); //trim off leading and trailing blanks
             
             if (value.length() < 1) { //value is blank

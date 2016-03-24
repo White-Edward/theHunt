@@ -5,6 +5,7 @@
  */
 package byui.cit260.theHunt.view;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -24,7 +25,7 @@ public class AboutUsView extends View{
             +"\n---------------------------------------------------------------";
     private String promptMessage = "Select an option: ";
     
-    public void displayMenu() {
+    public void displayMenu() throws IOException {
         
     char selection = ' ';
     do {
@@ -40,15 +41,14 @@ public class AboutUsView extends View{
 }
 
     @Override
-    public String getInput() {
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
+    public String getInput() throws IOException {
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
         
         while (!valid) { // loop while an invalid value in entered
             System.out.print("\n" + this.promptMessage);
             
-            value = keyboard.nextLine(); //get next line typed on keyboard
+            value = this.keyboard.readLine(); //get next line typed on keyboard
             value = value.trim(); // trim off leading and trailing blanks
             
             if (value.length() < 1) { //value is blank
