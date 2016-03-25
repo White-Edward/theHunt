@@ -48,20 +48,21 @@ public class TheHunt {
     public static void main(String[] args) {
         
 
-        try{
+        try {
             //Open charcter stream files for end user input and output
             TheHunt.inFile = new BufferedReader(new InputStreamReader(System.in));
             TheHunt.outFile = new PrintWriter(System.out, true);
             
             //open log file
             String tempDir = System.getProperty("java.io.tmpdir");
-            String filePath = tempDir + "\\TheHunt-logfile.txt";
+            String filePath = tempDir + "TheHunt-logfile.txt";
             outFile.print("Logfile is: " + filePath);
             TheHunt.logFile = new PrintWriter(filePath);
             
             //creat StartProgramViewOrig and display the start program view
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.displayStartProgramView();
+            return;
         } catch (Exception e) {
             ErrorView.display("TheHunt", "Exception: " + e.toString() +
                                 "\nCause: " + e.getCause() +
@@ -80,8 +81,8 @@ public class TheHunt {
                 
                 if (TheHunt.logFile != null)
                     TheHunt.logFile.close();
-            } catch (IOException ex) {
-                ErrorView.display("TheHunt", "Error closing files");
+            } catch (IOException e) {
+                ErrorView.display("TheHunt", "Error closing files" + e.getMessage());
                 return;
             }
            

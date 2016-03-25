@@ -5,13 +5,14 @@
  */
 package byui.cit260.theHunt.model;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Ann
  */
-public enum QuestionType {
+public enum QuestionType implements Serializable {
     riddle,
     water,
     train,

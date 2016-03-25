@@ -5,6 +5,7 @@
  */
 package byui.cit260.theHunt.view;
 
+import byui.cit260.theHunt.control.GameControl;
 import byui.cit260.theHunt.control.QuestionControl;
 import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Location;
@@ -141,7 +142,26 @@ public class GameMenuView extends View {
     }
 
     private void startSaveGame() {
-        this.console.println("*** startSaveGame function called ***");
+        // Backup display and prompt message
+        String displayMessage = this.displayMessage;
+        String promptMessage = this.promptMessage;
+        
+        // Set the display and prompt message for saving the file
+        this.displayMessage = "";
+        this.promptMessage = "\n\nEnter the file path for the file where the game"
+                            + " is to be saved: ";
+        
+        // prompt for and get the name of the file to save the game in
+        String filePath = this.getInput(); // Get filename from the user
+        
+        // Set the display and prompt back to original
+        this.displayMessage = displayMessage;
+        this.promptMessage = promptMessage;
+        try {
+            GameControl.saveGame(TheHunt.getCurrentGame(), filePath);
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), e.getMessage());
+        }
     }
 
     private void displayGameProgress() {

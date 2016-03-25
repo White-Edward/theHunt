@@ -5,11 +5,13 @@
  */
 package byui.cit260.theHunt.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ann
  */
-public class Constants {
+public class Constants implements Serializable {
     public final static int NUMBER_OF_ITEMS = 5;
     public final static String[][] RIDDLES = 
     {

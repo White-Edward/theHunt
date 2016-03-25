@@ -7,13 +7,14 @@ package byui.cit260.theHunt.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
  *
  * @author Ryan
  */
-public class Game implements Serializable{
+public class Game implements Serializable {
     
     //class instance variables
     private String name;
@@ -89,15 +90,13 @@ public class Game implements Serializable{
         int hash = 7;
         hash = 71 * hash + Objects.hashCode(this.name);
         hash = 71 * hash + Objects.hashCode(this.welcomeMessage);
+        hash = 71 * hash + Arrays.deepHashCode(this.actors);
+        hash = 71 * hash + Objects.hashCode(this.player);
+        hash = 71 * hash + Arrays.deepHashCode(this.items);
+        hash = 71 * hash + Objects.hashCode(this.questions);
+        hash = 71 * hash + Objects.hashCode(this.map);
         return hash;
     }
-
-    @Override
-    public String toString() {
-        return "Game{" + "name=" + name + ", welcomeMessage=" + welcomeMessage + '}';
-    }
-    
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -117,8 +116,30 @@ public class Game implements Serializable{
         if (!Objects.equals(this.welcomeMessage, other.welcomeMessage)) {
             return false;
         }
+        if (!Arrays.deepEquals(this.actors, other.actors)) {
+            return false;
+        }
+        if (!Objects.equals(this.player, other.player)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.items, other.items)) {
+            return false;
+        }
+        if (!Objects.equals(this.questions, other.questions)) {
+            return false;
+        }
+        if (!Objects.equals(this.map, other.map)) {
+            return false;
+        }
         return true;
     }
+
+
+    @Override
+    public String toString() {
+        return "Game{" + "name=" + name + ", welcomeMessage=" + welcomeMessage + ", actors=" + actors + ", player=" + player + ", items=" + items + ", questions=" + questions + ", map=" + map + '}';
+    }
+
     
     
     

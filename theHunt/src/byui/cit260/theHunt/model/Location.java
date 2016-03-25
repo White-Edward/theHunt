@@ -6,6 +6,7 @@
 package byui.cit260.theHunt.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
@@ -91,22 +92,20 @@ public class Location implements Serializable{
         this.item = item;
         this.setHasItem(true);
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 23 * hash + (this.hasQuestion ? 1 : 0);
-        hash = 23 * hash + (this.hasAttribute ? 1 : 0);
+        hash = 53 * hash + (this.hasQuestion ? 1 : 0);
+        hash = 53 * hash + (this.hasAttribute ? 1 : 0);
+        hash = 53 * hash + (this.hasItem ? 1 : 0);
+        hash = 53 * hash + Objects.hashCode(this.question);
+        hash = 53 * hash + Objects.hashCode(this.item);
+        hash = 53 * hash + this.row;
+        hash = 53 * hash + this.column;
+        hash = 53 * hash + (this.visited ? 1 : 0);
         return hash;
-        
     }
-
-    @Override
-    public String toString() {
-        return "Location{" + "hasQuestion=" + hasQuestion + ", hasAttribute=" + hasAttribute + '}';
-    }
-    
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -126,13 +125,31 @@ public class Location implements Serializable{
         if (this.hasAttribute != other.hasAttribute) {
             return false;
         }
+        if (this.hasItem != other.hasItem) {
+            return false;
+        }
+        if (this.row != other.row) {
+            return false;
+        }
+        if (this.column != other.column) {
+            return false;
+        }
+        if (this.visited != other.visited) {
+            return false;
+        }
+        if (!Objects.equals(this.question, other.question)) {
+            return false;
+        }
+        if (this.item != other.item) {
+            return false;
+        }
         return true;
     }
-    
-    
 
-
-    
+    @Override
+    public String toString() {
+        return "Location{" + "hasQuestion=" + hasQuestion + ", hasAttribute=" + hasAttribute + ", hasItem=" + hasItem + ", question=" + question + ", item=" + item + ", row=" + row + ", column=" + column + ", visited=" + visited + '}';
+    }
 }
 
 

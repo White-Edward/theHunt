@@ -23,7 +23,7 @@ public enum Item implements Serializable {
     private final String itemType;
     private boolean used;
     private String description;
-    protected final PrintWriter console = TheHunt.getOutFile();
+    protected transient final PrintWriter console = TheHunt.getOutFile();
     
     Item(String itemType) {
         this.itemType = itemType;
@@ -56,6 +56,11 @@ public enum Item implements Serializable {
 
     public void setRequiredAmount(int i) {
         this.console.println("*** Called function setRequiredAmount ***\n");
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" + "itemType=" + itemType + ", used=" + used + ", description=" + description + ", console=" + console + '}';
     }
 
 

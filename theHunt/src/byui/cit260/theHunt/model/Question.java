@@ -5,6 +5,7 @@
  */
 package byui.cit260.theHunt.model;
 import java.io.Serializable;
+import java.util.Objects;
 /**
  *
  * @author Ed White
@@ -89,11 +90,15 @@ public class Question implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 41 * hash + (this.hasClue ? 1 : 0);
-        hash = 41 * hash + (this.hasTwoTrainSquare ? 1 : 0);
-        hash = 41 * hash + (this.hasTeaspoonSquare ? 1 : 0);
-        hash = 41 * hash + (this.hasWaterSquare ? 1 : 0);
+        int hash = 3;
+        hash = 53 * hash + (this.hasClue ? 1 : 0);
+        hash = 53 * hash + (this.hasTwoTrainSquare ? 1 : 0);
+        hash = 53 * hash + (this.hasTeaspoonSquare ? 1 : 0);
+        hash = 53 * hash + (this.hasWaterSquare ? 1 : 0);
+        hash = 53 * hash + Objects.hashCode(this.riddle);
+        hash = 53 * hash + Objects.hashCode(this.answer);
+        hash = 53 * hash + Objects.hashCode(this.questionType);
+        hash = 53 * hash + (this.answered ? 1 : 0);
         return hash;
     }
 
@@ -121,14 +126,26 @@ public class Question implements Serializable{
         if (this.hasWaterSquare != other.hasWaterSquare) {
             return false;
         }
+        if (this.answered != other.answered) {
+            return false;
+        }
+        if (!Objects.equals(this.riddle, other.riddle)) {
+            return false;
+        }
+        if (!Objects.equals(this.answer, other.answer)) {
+            return false;
+        }
+        if (this.questionType != other.questionType) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Question{" + "hasClue=" + hasClue + ", hasTwoTrainSquare=" + hasTwoTrainSquare + ", hasTeaspoonSquare=" + hasTeaspoonSquare + ", hasWaterSquare=" + hasWaterSquare + '}';
+        return "Question{" + "hasClue=" + hasClue + ", hasTwoTrainSquare=" + hasTwoTrainSquare + ", hasTeaspoonSquare=" + hasTeaspoonSquare + ", hasWaterSquare=" + hasWaterSquare + ", riddle=" + riddle + ", answer=" + answer + ", questionType=" + questionType + ", answered=" + answered + '}';
     }
-    
+
     
     
 }

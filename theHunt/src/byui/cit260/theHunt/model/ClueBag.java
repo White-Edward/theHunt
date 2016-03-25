@@ -5,11 +5,13 @@
  */
 package byui.cit260.theHunt.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Ann
  */
-public class ClueBag {
+public class ClueBag implements Serializable {
     
     private int numClues;
 
@@ -22,5 +24,35 @@ public class ClueBag {
 
     public void setNumClues(int numClues) {
         this.numClues = numClues;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + this.numClues;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ClueBag other = (ClueBag) obj;
+        if (this.numClues != other.numClues) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "ClueBag{" + "numClues=" + numClues + '}';
     }
 }

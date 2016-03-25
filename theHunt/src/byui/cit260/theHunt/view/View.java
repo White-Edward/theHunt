@@ -19,7 +19,7 @@ public abstract class View implements ViewInterface {
     protected String promptMessage = "Select an option: ";
     
     protected final BufferedReader keyboard = TheHunt.getInFile();
-    protected final PrintWriter console = TheHunt.getOutFile();
+    protected PrintWriter console = TheHunt.getOutFile();
     
     public View() {
         
@@ -59,12 +59,14 @@ public abstract class View implements ViewInterface {
             //prompt for the players name
             this.console.print("\n" + this.displayMessage);
             this.console.print("\n\n" + this.promptMessage);
+            this.console.flush();
             // get the value entered from the keyboard
             try {
                 value = this.keyboard.readLine();
                 value = value.trim();
             } catch (IOException e) {
                 ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
+                System.out.println(e.getMessage());
             }
             
             if (value.length() < 1) { // blank value entered

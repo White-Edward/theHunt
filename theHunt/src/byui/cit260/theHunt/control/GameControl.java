@@ -6,6 +6,7 @@
 package byui.cit260.theHunt.control;
 
 import static byui.cit260.theHunt.control.MapControl.assignPlayerToLocation;
+import byui.cit260.theHunt.exceptions.GameControlException;
 import byui.cit260.theHunt.exceptions.MapControlException;
 import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Item;
@@ -14,6 +15,11 @@ import byui.cit260.theHunt.model.Player;
 import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.view.ErrorView;
 import java.awt.Point;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.NotSerializableException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import thehunt.TheHunt;
@@ -64,6 +70,28 @@ public class GameControl {
         }
         console.println("You are currently at map location (1,1)");
         // MapControl.moveActorsToStartingLocation(map);
+    }
+
+    public static void saveGame(Game game, String filePath) throws GameControlException {
+        try (FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            output.writeObject(game);
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+
+    public static void getSavedGame(String filePath) throws GameControlException {
+        Game game = null;
+        
+        try (FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            game = (Game) input.readObject(); // read the game object from the file
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+        TheHunt.setCurrentGame(game);
     }
     
     

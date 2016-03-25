@@ -7,6 +7,8 @@ package byui.cit260.theHunt.model;
 
 import java.io.PrintWriter;
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Objects;
 import thehunt.TheHunt;
 
 /**
@@ -19,7 +21,7 @@ public class Map implements Serializable {
     private int columnCount;
     private int locationTileLayout;
     private Location[][] locations;
-    protected final PrintWriter console = TheHunt.getOutFile();
+    protected transient final PrintWriter console = TheHunt.getOutFile();
 
     public Map() {
     }
@@ -85,18 +87,12 @@ public class Map implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + this.rowCount;
-        hash = 97 * hash + this.columnCount;
-        hash = 97 * hash + this.locationTileLayout;
+        hash = 13 * hash + this.rowCount;
+        hash = 13 * hash + this.columnCount;
+        hash = 13 * hash + this.locationTileLayout;
+        hash = 13 * hash + Arrays.deepHashCode(this.locations);
         return hash;
     }
-
-    @Override
-    public String toString() {
-        return "Map{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + ", locationTileLayout=" + locationTileLayout + '}';
-    }
-    
-    
 
     @Override
     public boolean equals(Object obj) {
@@ -119,9 +115,15 @@ public class Map implements Serializable {
         if (this.locationTileLayout != other.locationTileLayout) {
             return false;
         }
+        if (!Arrays.deepEquals(this.locations, other.locations)) {
+            return false;
+        }
         return true;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Map{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + ", locationTileLayout=" + locationTileLayout + ", locations=" + locations + ", console=" + console + '}';
+    }
+
 }

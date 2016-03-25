@@ -48,7 +48,9 @@ public class Player implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.characterName);
+        hash = 71 * hash + Objects.hashCode(this.characterName);
+        hash = 71 * hash + Objects.hashCode(this.location);
+        hash = 71 * hash + Objects.hashCode(this.coordinates);
         return hash;
     }
 
@@ -67,14 +69,18 @@ public class Player implements Serializable {
         if (!Objects.equals(this.characterName, other.characterName)) {
             return false;
         }
+        if (!Objects.equals(this.location, other.location)) {
+            return false;
+        }
+        if (!Objects.equals(this.coordinates, other.coordinates)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Player{" + "characterName=" + characterName + '}';
+        return "Player{" + "characterName=" + characterName + ", location=" + location + ", coordinates=" + coordinates + '}';
     }
-    
-    
-    
+
 }
