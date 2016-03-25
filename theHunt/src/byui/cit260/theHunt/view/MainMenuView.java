@@ -29,7 +29,7 @@ public class MainMenuView extends View {
     }
    
     @Override
-    public boolean doAction(String value) throws IOException {
+    public boolean doAction(String value) {
         char choice = value.charAt(0);  // get the first character in the string
         switch (choice) {
             case 'N': // create and start a new game
@@ -69,7 +69,7 @@ public class MainMenuView extends View {
         return false;
     }
 
-    private void startNewGame() throws IOException {
+    private void startNewGame() {
         GameControl.createNewGame();
         // display the game menu
         GameMenuView gameMenu = new GameMenuView();
@@ -84,7 +84,7 @@ public class MainMenuView extends View {
         System.out.println("*** startSaveGame function called ***");
     }
 
-    private void startHelpMenu() throws IOException {
+    private void startHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
@@ -93,7 +93,7 @@ public class MainMenuView extends View {
         System.out.println("*** startQuitGame function called ***");
     }
 
-    private void startAboutUs() throws IOException {
+    private void startAboutUs() {
         AboutUsView AboutUs = new AboutUsView();
         AboutUs.displayMenu();
     }
@@ -101,7 +101,7 @@ public class MainMenuView extends View {
     /**
      * Temporary function to test item menu
      */
-    private void startItemMenu() throws IOException {
+    private void startItemMenu() {
         ItemMenuView itemMenu = new ItemMenuView();
         itemMenu.display();
     }
@@ -109,7 +109,7 @@ public class MainMenuView extends View {
     /**
      * Temporary function to test two trains question
      */
-    private void startTwoTrainsQuestionView() throws IOException {
+    private void startTwoTrainsQuestionView() {
         TwoTrainsQuestionView question = new TwoTrainsQuestionView();
         question.displayQuestion();
     }
@@ -117,12 +117,12 @@ public class MainMenuView extends View {
     /**
      * Temporary function to test two trains question
      */
-    private void startWaterQuestionView() throws IOException {
+    private void startWaterQuestionView() {
         WaterQuestionView water = new WaterQuestionView();
         water.displayQuestion();
     }
 
-    private void startTeaspoonQuestionView() throws IOException {
+    private void startTeaspoonQuestionView() {
         TeaspoonQuestionView yeaspoon = new TeaspoonQuestionView();
         yeaspoon.displayQuestion();
     }

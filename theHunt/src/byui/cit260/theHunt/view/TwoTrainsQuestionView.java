@@ -43,7 +43,7 @@ public class TwoTrainsQuestionView {
                 + "the station?\n";
     }
     
-    public void displayQuestion() throws IOException {
+    public void displayQuestion() {
         
         boolean done = false; // set flag to not done
         boolean correct = false;
@@ -71,15 +71,19 @@ public class TwoTrainsQuestionView {
         }
     }
 
-    private String getInput() throws IOException {
+    private String getInput() {
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
         
         while (!valid) { // loop while an invalid value in entered
             System.out.print("\n" + this.promptMessage);
             
-            value = this.keyboard.readLine(); //get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
+            try {
+                value = this.keyboard.readLine(); //get next line typed on keyboard
+                value = value.trim(); // trim off leading and trailing blanks
+            } catch (IOException e) {
+                ErrorView.display(this.getClass().getName(), e.getMessage());
+            }
             
             if (value.length() < 1) { //value is blank
                 System.out.println("\nInvalid value: value cannot be blank");

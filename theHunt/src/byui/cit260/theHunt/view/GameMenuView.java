@@ -38,7 +38,7 @@ public class GameMenuView extends View {
     }
     
     @Override
-    public boolean doAction(String value) throws IOException {
+    public boolean doAction(String value) {
         char choice = value.charAt(0);  // get the first character in the string
         switch (choice) {
             case 'M': // Open Game map
@@ -151,18 +151,18 @@ public class GameMenuView extends View {
         System.out.println("Number of questions unanswered: " + QuestionControl.countUnansweredQuestions());
     }
     
-    private void displayGoToNewMapLocation() throws IOException {
+    private void displayGoToNewMapLocation()  {
         LocationView locationMenu = new LocationView();
         locationMenu.display();
     }
     
-    private void startHelpMenu() throws IOException {
+    private void startHelpMenu() {
                 // display the game menu
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
     }
     
-    private void startItemMenu() throws IOException {
+    private void startItemMenu() {
                 // display the game menu
         ItemMenuView itemMenu = new ItemMenuView();
         itemMenu.display();
@@ -171,7 +171,7 @@ public class GameMenuView extends View {
         System.out.println("*** startQuitGame function called ***");
     }
 
-    private void startMainMenu() throws IOException {
+    private void startMainMenu() {
         // display the main menu
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.display();

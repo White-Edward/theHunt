@@ -36,7 +36,7 @@ public abstract class View implements ViewInterface {
     }
     
     @Override
-    public void display() throws IOException {
+    public void display() {
         boolean done = false;
         do {
             // prompt for and get players name
@@ -51,7 +51,7 @@ public abstract class View implements ViewInterface {
     }
     
     @Override
-    public String getInput() throws IOException {
+    public String getInput() {
         boolean valid = false;
         String value = null;
         
@@ -61,8 +61,12 @@ public abstract class View implements ViewInterface {
             System.out.print("\n" + this.displayMessage);
             System.out.print("\n\n" + this.promptMessage);
             // get the value entered from the keyboard
-            value = this.keyboard.readLine();
-            value = value.trim();
+            try {
+                value = this.keyboard.readLine();
+                value = value.trim();
+            } catch (IOException e) {
+                ErrorView.display(this.getClass().getName(), e.getMessage());
+            }
             
             if (value.length() < 1) { // blank value entered
                 System.out.println("\n*** You must enter a value ***");

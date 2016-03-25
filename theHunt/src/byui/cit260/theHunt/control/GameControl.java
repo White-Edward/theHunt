@@ -58,9 +58,7 @@ public class GameControl {
         try {
             assignPlayerToLocation(player, coordinates);
         } catch (MapControlException e) {
-            ErrorView.display(this.getClass().getName(),
-                    e.getMessage());
-            // System.out.println(e.getMessage());
+            ErrorView.display("GameControl", e.getMessage());
         }
         System.out.println("You are currently at map location (1,1)");
         // MapControl.moveActorsToStartingLocation(map);

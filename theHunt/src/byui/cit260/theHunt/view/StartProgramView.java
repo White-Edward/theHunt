@@ -63,7 +63,7 @@ public class StartProgramView {
                 );
     }
 
-    public void displayStartProgramView() throws IOException {
+    public void displayStartProgramView() {
         
         boolean done = false; // set flag to not done
         do {
@@ -78,15 +78,19 @@ public class StartProgramView {
         } while (!done);
     }
 
-    private String getPlayersName() throws IOException {
+    private String getPlayersName() {
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
         
         while (!valid) { // loop while an invalid value in entered
             System.out.print("\n" + this.promptMessage);
             
-            value = this.keyboard.readLine(); //get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
+            try {
+                value = this.keyboard.readLine(); //get next line typed on keyboard
+                value = value.trim(); // trim off leading and trailing blanks
+            } catch (IOException e) {
+                ErrorView.display(this.getClass().getName(), e.getMessage());
+            }
             
             if (value.length() < 1) { //value is blank
                 System.out.println("\nInvalid value: value can not be blank");
@@ -99,7 +103,7 @@ public class StartProgramView {
         return value; // return the value entered
     }
 
-    private boolean doAction(String playersName) throws IOException {
+    private boolean doAction(String playersName) {
         if (playersName.length() <2) {
             System.out.println("\nInvalid Players name: "
                     + "The name must be greater than one character in length");
@@ -119,7 +123,7 @@ public class StartProgramView {
         return true; // success !
     }
 
-    private void displayNextView(Player player) throws IOException {
+    private void displayNextView(Player player) {
         
         // display a custom welcome message
         System.out.println("\n================================================="

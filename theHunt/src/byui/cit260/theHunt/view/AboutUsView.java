@@ -25,7 +25,7 @@ public class AboutUsView extends View{
             +"\n---------------------------------------------------------------";
     private String promptMessage = "Select an option: ";
     
-    public void displayMenu() throws IOException {
+    public void displayMenu() {
         
     char selection = ' ';
     do {
@@ -41,15 +41,19 @@ public class AboutUsView extends View{
 }
 
     @Override
-    public String getInput() throws IOException {
+    public String getInput() {
         String value = ""; // value to be returned
         boolean valid = false; // initialize to not valid
         
         while (!valid) { // loop while an invalid value in entered
             System.out.print("\n" + this.promptMessage);
             
-            value = this.keyboard.readLine(); //get next line typed on keyboard
-            value = value.trim(); // trim off leading and trailing blanks
+            try {
+                value = this.keyboard.readLine(); //get next line typed on keyboard
+                value = value.trim(); // trim off leading and trailing blanks
+            } catch (IOException e) {
+                ErrorView.display(this.getClass().getName(), e.getMessage());
+            }
             
             if (value.length() < 1) { //value is blank
                 System.out.println("\nInvalid value: value can not be blank");

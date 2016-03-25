@@ -29,7 +29,7 @@ public class ItemMenuView extends View {
     }
     
     @Override
-    public boolean doAction(String value) throws IOException {
+    public boolean doAction(String value) {
         char choice = value.charAt(0);
         switch (choice) {
             case 'C': // Open Clue Bag Menu
@@ -60,17 +60,17 @@ public class ItemMenuView extends View {
         System.out.println("*** startClueBag function called ***");
     }
 
-    private void startTNTview() throws IOException {
+    private void startTNTview() {
         TNTview TNT = new TNTview();
         TNT.display();
     }
 
-    private void startOldCellPhoneView() throws IOException {
+    private void startOldCellPhoneView() {
         OldCellPhoneView phone = new OldCellPhoneView();
         phone.display();
     }
 
-    private void startMonkey() throws IOException {
+    private void startMonkey() {
         MonkeyView monkey = new MonkeyView();
         monkey.display();
     }

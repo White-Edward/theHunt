@@ -12,7 +12,7 @@ import java.io.IOException;
  * @author Ann
  */
 public interface ViewInterface {
-    public void display() throws IOException;
-    public String getInput() throws IOException;
-    public boolean doAction(String value) throws IOException;
+    public void display();
+    public String getInput();
+    public boolean doAction(String value);
 }

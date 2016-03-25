@@ -34,7 +34,7 @@ public class TeaspoonQuestionView {
                 + "\n container if there are 16 cups in a gallon. Round to the nearest whole number.";
     }
 
-    public void displayQuestion() throws IOException {
+    public void displayQuestion() {
         boolean done = false; //set flag to not done
         boolean correct = false; //
         while (!done && !correct) {
@@ -65,15 +65,19 @@ public class TeaspoonQuestionView {
             }               
         }
 
-    private String getInput() throws IOException {
+    private String getInput() {
         String value = ""; // value to be returned
         boolean valid = false; //inialize to not valid
         
         while (!valid) { //loop while an invalid value is entered
             System.out.print("\n" + this.promptMessage);
             
-            value = this.keyboard.readLine(); //get next line typed on keyboard
-            value = value.trim(); //trim off leading and trailing blanks
+            try {
+                value = this.keyboard.readLine(); //get next line typed on keyboard
+                value = value.trim(); //trim off leading and trailing blanks
+            } catch (IOException e) {
+                ErrorView.display(this.getClass().getName(), e.getMessage());
+            }
             
             if (value.length() < 1) { //value is blank
                 System.out.println("\nInvalid value: value cannot be blank" );
