@@ -38,7 +38,7 @@ public class TeaspoonQuestionView {
         boolean done = false; //set flag to not done
         boolean correct = false; //
         while (!done && !correct) {
-            System.out.println(this.question); //display the main menu
+            this.console.println(this.question); //display the main menu
             
             String input = this.getInput();// get the user's selection
             this.userAnswer = Double.parseDouble(input);
@@ -50,15 +50,15 @@ public class TeaspoonQuestionView {
                     correct = this.doAction(input); // do action based on selection
                 }
                 catch (NumberFormatException e) {
-                    System.out.println("\nInvalid value, you must enter a number");
+                    ErrorView.display(this.getClass().getName(), "\nInvalid value, you must enter a number");
                     continue;
                 }
                 if (correct) {
-                    System.out.println("Correct!"); // TO DO: if correct, display clue and store in the clue bag
+                    this.console.println("Correct!"); // TO DO: if correct, display clue and store in the clue bag
                 }
                 
                 else{
-                    System.out.println("Sorry, that is incorrect, try again!");
+                    this.console.println("Sorry, that is incorrect, try again!");
                 }
                 
                 }
@@ -70,17 +70,17 @@ public class TeaspoonQuestionView {
         boolean valid = false; //inialize to not valid
         
         while (!valid) { //loop while an invalid value is entered
-            System.out.print("\n" + this.promptMessage);
+            this.console.print("\n" + this.promptMessage);
             
             try {
                 value = this.keyboard.readLine(); //get next line typed on keyboard
                 value = value.trim(); //trim off leading and trailing blanks
             } catch (IOException e) {
-                ErrorView.display(this.getClass().getName(), e.getMessage());
+                ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
             }
             
             if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value cannot be blank" );
+                ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank" );
                 continue;
             }
             

@@ -7,13 +7,17 @@ package byui.cit260.theHunt.control;
 
 import byui.cit260.theHunt.model.Constants;
 import byui.cit260.theHunt.model.Item;
+import java.io.PrintWriter;
 import java.util.Arrays;
+import thehunt.TheHunt;
 
 /**
  *
  * @author Ann
  */
 public class ItemControl {
+
+    protected static final PrintWriter console = TheHunt.getOutFile();
     
     public static Item[] createItems() {
         // created array(list) of items
@@ -65,7 +69,7 @@ public class ItemControl {
     
       for(int i = 0; i < item.length; i++) {
           Arrays.sort(item);
-                 System.out.print( "\n"+item[i]);
+                 console.print( "\n"+item[i]);
                        
           
       }

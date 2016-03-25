@@ -49,7 +49,7 @@ public class TwoTrainsQuestionView {
         boolean correct = false;
         while (!done && !correct) {
 
-            System.out.println(this.question); // display the main menu
+            this.console.println(this.question); // display the main menu
 
             String input = this.getInput(); // get the user's selection
             if (input.toUpperCase().charAt(0) == 'B') {
@@ -58,14 +58,14 @@ public class TwoTrainsQuestionView {
                 try {
                     correct = this.doAction(Double.parseDouble(input)); // do action based on selection
                 } catch (NumberFormatException e) {
-                    System.out.println("\nInvalid value, must be a number");
+                    ErrorView.display(this.getClass().getName(), "\nInvalid value, must be a number");
                     continue;
                 }
                 if (correct) {
-                    System.out.println("Correct!");
+                    this.console.println("Correct!");
                     // To Do - if correct, display clue and store in clue bag
                 } else {
-                    System.out.println("Sorry, that is incorrect, try again!");
+                    this.console.println("Sorry, that is incorrect, try again!");
                 }
             }
         }
@@ -76,17 +76,17 @@ public class TwoTrainsQuestionView {
         boolean valid = false; // initialize to not valid
         
         while (!valid) { // loop while an invalid value in entered
-            System.out.print("\n" + this.promptMessage);
+            this.console.print("\n" + this.promptMessage);
             
             try {
                 value = this.keyboard.readLine(); //get next line typed on keyboard
                 value = value.trim(); // trim off leading and trailing blanks
             } catch (IOException e) {
-                ErrorView.display(this.getClass().getName(), e.getMessage());
+                ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
             }
             
             if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value cannot be blank");
+                ErrorView.display(this.getClass().getName(), "\nInvalid value: value cannot be blank");
                 continue;
             }
             
@@ -103,7 +103,7 @@ public class TwoTrainsQuestionView {
         try {     
             answer = twoTrains.calculateTwoTrains(this.trainOneDistance,this.trainTwoDistance,this.trainOneSpeed,this.trainTwoSpeed);
         } catch (QuestionControlException e) {
-            System.out.println(e.getMessage());
+            ErrorView.display(this.getClass().getName(), e.getMessage());
         }
         answer = Double.parseDouble(df2.format(answer)); // Format the double to two decimal places
         return playerAnswer == answer;

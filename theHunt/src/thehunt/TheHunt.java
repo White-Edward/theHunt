@@ -7,13 +7,12 @@ package thehunt;
 
 import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Player;
+import byui.cit260.theHunt.view.ErrorView;
 import byui.cit260.theHunt.view.StartProgramView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
         
 /**
  *
@@ -51,25 +50,25 @@ public class TheHunt {
 
         try{
             //Open charcter stream files for end user input and output
-            TheHunt.inFile=
-                    new BufferedReader(new InputStreamReader(System.in));
-            TheHunt.outFile= new PrintWriter(System.out, true);
+            TheHunt.inFile = new BufferedReader(new InputStreamReader(System.in));
+            TheHunt.outFile = new PrintWriter(System.out, true);
             
             //open log file
-            String filePath = "C:\\Users\\Document\\tmp\\logfile.txt";
+            String tempDir = System.getProperty("java.io.tmpdir");
+            String filePath = tempDir + "\\TheHunt-logfile.txt";
+            outFile.print("Logfile is: " + filePath);
             TheHunt.logFile = new PrintWriter(filePath);
             
             //creat StartProgramViewOrig and display the start program view
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.displayStartProgramView();
-            return;
         } catch (Exception e) {
-            System.out.println("Exception: " + e.toString() +
+            ErrorView.display("TheHunt", "Exception: " + e.toString() +
                                 "\nCause: " + e.getCause() +
                                 "\nMessage: " + e.getMessage());
-        } catch (Throwable te) {
-                System.out.printf(te.getMessage());
-                te.printStackTrace();
+        } catch (Throwable e) {
+                ErrorView.display("TheHunt", e.getMessage());
+                e.printStackTrace();
         } 
         finally {
             try {
@@ -82,7 +81,7 @@ public class TheHunt {
                 if (TheHunt.logFile != null)
                     TheHunt.logFile.close();
             } catch (IOException ex) {
-                System.out.println("Error closing files");
+                ErrorView.display("TheHunt", "Error closing files");
                 return;
             }
            

@@ -31,16 +31,16 @@ public class LocationView extends View {
             Point point = new Point(row,column);
             MapControl.assignPlayerToLocation(player, point);
         } catch (NumberFormatException e) { // catch parseInt error
-            System.out.println("x and y locations must be numeric");
+            ErrorView.display(this.getClass().getName(), "x and y locations must be numeric");
             return false;
         } catch (MapControlException e) { // catch assignPlayerToLocation error
-            System.out.println(e.getMessage());
+            ErrorView.display(this.getClass().getName(), e.getMessage());
             return false;
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Invalid point - new location must be int and 'x,y' format");
+            ErrorView.display(this.getClass().getName(), "Invalid point - new location must be int and 'x,y' format");
             return false;
         }
-        System.out.println("You are now at location (" 
+        this.console.println("You are now at location (" 
                 + player.getCoordinates().x + "," + player.getCoordinates().y + ")");
         return true;
     }

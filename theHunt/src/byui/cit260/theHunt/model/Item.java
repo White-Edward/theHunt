@@ -5,7 +5,9 @@
  */
 package byui.cit260.theHunt.model;
 
+import java.io.PrintWriter;
 import java.io.Serializable;
+import thehunt.TheHunt;
 /**
  *
  * @author Ann
@@ -21,6 +23,7 @@ public enum Item implements Serializable {
     private final String itemType;
     private boolean used;
     private String description;
+    protected final PrintWriter console = TheHunt.getOutFile();
     
     Item(String itemType) {
         this.itemType = itemType;
@@ -48,11 +51,11 @@ public enum Item implements Serializable {
     }
 
     public void setQuantityInStock(int i) {
-        System.out.println("*** Called function setQuantityInStock ***\n");
+        this.console.println("*** Called function setQuantityInStock ***\n");
     }
 
     public void setRequiredAmount(int i) {
-        System.out.println("*** Called function setRequiredAmount ***\n");
+        this.console.println("*** Called function setRequiredAmount ***\n");
     }
 
 

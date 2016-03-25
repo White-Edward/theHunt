@@ -40,22 +40,22 @@ public class TNTview extends View {
             case 'B': // go back
                 return true;
             default:
-                System.out.println("\n*** Invalid selection*** Try again");
+                this.console.println("\n*** Invalid selection*** Try again");
                 break;
         }
         return false;
     }
     
     private void startPickUpTNT() {
-         System.out.println("*** startPickupTNT function called ***");
+         this.console.println("*** startPickupTNT function called ***");
     }
     
     private void startDropTNT(){       
-        System.out.println("*** startDropTNT function called ***");
+        this.console.println("*** startDropTNT function called ***");
     }   
 
     private void startUseTNT() {
-        System.out.println("*** startUseTNT function called ***");
+        this.console.println("*** startUseTNT function called ***");
     }
 
 

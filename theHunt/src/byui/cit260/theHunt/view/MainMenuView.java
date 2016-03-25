@@ -6,7 +6,6 @@
 package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.control.GameControl;
-import java.io.IOException;
 
 /**
  *
@@ -63,7 +62,7 @@ public class MainMenuView extends View {
             case 'P': // load Water questoin
                 this.startTeaspoonQuestionView();
             default:
-                System.out.println("\n*** Invalid selection*** Try again");
+                this.console.println("\n*** Invalid selection*** Try again");
                 break;
         }
         return false;
@@ -77,11 +76,11 @@ public class MainMenuView extends View {
     }
 
     private void startExistingGame() {
-        System.out.println("*** startExistingGame function called ***");
+        this.console.println("*** startExistingGame function called ***");
     }
 
     private void startSaveGame() {
-        System.out.println("*** startSaveGame function called ***");
+        this.console.println("*** startSaveGame function called ***");
     }
 
     private void startHelpMenu() {
@@ -90,7 +89,7 @@ public class MainMenuView extends View {
     }
 
     private void startQuitGame() {
-        System.out.println("*** startQuitGame function called ***");
+        this.console.println("*** startQuitGame function called ***");
     }
 
     private void startAboutUs() {

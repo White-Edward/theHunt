@@ -5,8 +5,6 @@
  */
 package byui.cit260.theHunt.view;
 
-import java.io.IOException;
-
 /**
  *
  * @author Ann

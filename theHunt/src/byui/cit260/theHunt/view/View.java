@@ -8,7 +8,6 @@ package byui.cit260.theHunt.view;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 import thehunt.TheHunt;
 
 /**
@@ -58,18 +57,18 @@ public abstract class View implements ViewInterface {
         // while a valid name has not been retrieved
         while (!valid) {
             //prompt for the players name
-            System.out.print("\n" + this.displayMessage);
-            System.out.print("\n\n" + this.promptMessage);
+            this.console.print("\n" + this.displayMessage);
+            this.console.print("\n\n" + this.promptMessage);
             // get the value entered from the keyboard
             try {
                 value = this.keyboard.readLine();
                 value = value.trim();
             } catch (IOException e) {
-                ErrorView.display(this.getClass().getName(), e.getMessage());
+                ErrorView.display(this.getClass().getName(), "Error reading input: " + e.getMessage());
             }
             
             if (value.length() < 1) { // blank value entered
-                System.out.println("\n*** You must enter a value ***");
+                ErrorView.display(this.getClass().getName(), "\n*** You must enter a value ***");
                 continue;
             }
             break;

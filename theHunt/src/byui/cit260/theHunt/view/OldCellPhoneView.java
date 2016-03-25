@@ -40,22 +40,22 @@ public class OldCellPhoneView extends View {
             case 'B': // go back
                 return true;
             default:
-                System.out.println("\n*** Invalid selection*** Try again");
+                this.console.println("\n*** Invalid selection*** Try again");
                 break;
         }
         return false;
     }
     
     private void startPickUpOldCellPhone() {
-         System.out.println("*** startPickupOldCellPhone function called ***");
+         this.console.println("*** startPickupOldCellPhone function called ***");
     }
     
     private void startDropOldCellPhone(){       
-        System.out.println("*** startDropOldCellPhone function called ***");
+        this.console.println("*** startDropOldCellPhone function called ***");
     }   
 
     private void startUseOldCellPhone() {
-        System.out.println("*** startUseOldCellPhone function called ***");
+        this.console.println("*** startUseOldCellPhone function called ***");
     }
 
 

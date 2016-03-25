@@ -5,8 +5,6 @@
  */
 package byui.cit260.theHunt.view;
 
-import java.io.IOException;
-import java.util.Scanner;
 
 /**
  *
@@ -50,14 +48,14 @@ public class ItemMenuView extends View {
             case 'B': // go back to previous menu
                 return true;
             default:
-                System.out.println("\n*** Invalid selection*** Try again");
+                this.console.println("\n*** Invalid selection*** Try again");
                 break;
         }
         return false;
     }
 
     private void startClueBag() {
-        System.out.println("*** startClueBag function called ***");
+        this.console.println("*** startClueBag function called ***");
     }
 
     private void startTNTview() {
@@ -75,7 +73,7 @@ public class ItemMenuView extends View {
         monkey.display();
     }
     private void startAidBag() {
-        System.out.println("*** startAidBag function called ***");
+        this.console.println("*** startAidBag function called ***");
     }
 
 

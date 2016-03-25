@@ -5,7 +5,9 @@
  */
 package byui.cit260.theHunt.model;
 
+import java.io.PrintWriter;
 import java.io.Serializable;
+import thehunt.TheHunt;
 
 /**
  *
@@ -17,6 +19,7 @@ public class Map implements Serializable {
     private int columnCount;
     private int locationTileLayout;
     private Location[][] locations;
+    protected final PrintWriter console = TheHunt.getOutFile();
 
     public Map() {
     }
@@ -24,7 +27,7 @@ public class Map implements Serializable {
     public Map(int rowCount, int columnCount) {
         
         if (rowCount < 1 || columnCount < 1) {
-            System.out.println("The number of rows and columns must be greater than zero");
+            this.console.println("The number of rows and columns must be greater than zero");
             return;
         }
         

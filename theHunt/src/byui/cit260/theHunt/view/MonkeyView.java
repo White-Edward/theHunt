@@ -36,17 +36,17 @@ public class MonkeyView extends View {
             case 'B':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection*** Try again");
+                this.console.println("\n*** Invalid selection*** Try again");
                 break;
         }
         return false;
     }
     
     private void startPickUpMonkey(){
-        System.out.println("*** startPickUpMonkey function called ***");
+        this.console.println("*** startPickUpMonkey function called ***");
     }
     
     private void startDropMonkey(){       
-        System.out.println("*** startDropMonkey function called ***");
+        this.console.println("*** startDropMonkey function called ***");
     }
 }

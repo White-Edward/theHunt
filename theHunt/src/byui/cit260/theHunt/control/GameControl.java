@@ -14,6 +14,7 @@ import byui.cit260.theHunt.model.Player;
 import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.view.ErrorView;
 import java.awt.Point;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import thehunt.TheHunt;
 
@@ -22,6 +23,8 @@ import thehunt.TheHunt;
  * @author Ann
  */
 public class GameControl {
+    
+    protected static final PrintWriter console = TheHunt.getOutFile();
 
     public static Player createPlayer(String name) {
         
@@ -36,7 +39,6 @@ public class GameControl {
     }
     
     public static void createNewGame() {
-        // System.out.println("\n*** createNewGame stub function called ***");
         Game game = new Game();  // Create new game
         TheHunt.setCurrentGame(game); // Save in TheHunt
         
@@ -60,7 +62,7 @@ public class GameControl {
         } catch (MapControlException e) {
             ErrorView.display("GameControl", e.getMessage());
         }
-        System.out.println("You are currently at map location (1,1)");
+        console.println("You are currently at map location (1,1)");
         // MapControl.moveActorsToStartingLocation(map);
     }
     

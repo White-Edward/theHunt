@@ -10,7 +10,6 @@ import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.QuestionType;
-import java.io.IOException;
 import thehunt.TheHunt;
 
 
@@ -68,7 +67,7 @@ public class GameMenuView extends View {
             case 'B': // Back to previous menu 
                 return true;
             default:
-                System.out.println("\n*** Invalid selection*** Try again");
+                this.console.println("\n*** Invalid selection*** Try again");
                 break;
         }
         return false;
@@ -78,77 +77,77 @@ public class GameMenuView extends View {
         Game game = TheHunt.getCurrentGame();
         Map map = game.getMap();
         Location[][] locations = map.getLocations();
-        System.out.println("\nMap");
-        System.out.println("    ---------------------"); // Row Divider
-        System.out.print("    "); //Print the empty corner
+        this.console.println("\nMap");
+        this.console.println("    ---------------------"); // Row Divider
+        this.console.print("    "); //Print the empty corner
         for (int i = 0; i < locations.length; i++) {
-            System.out.print("| " + (i + 1) + " ");
+            this.console.print("| " + (i + 1) + " ");
         }
 //        locations[0][3].setVisited(true); // Set position to visited
 //        locations[1][3].setVisited(true); // Set position to visited
 //        locations[2][3].setVisited(true); // Set position to visited
 //        locations[3][3].setVisited(true); // Set position to visited
 //        locations[4][3].setVisited(true); // Set position to visited
-        System.out.print("|\n"); //End header row
-        System.out.println("-------------------------");  // Row Divider
+        this.console.print("|\n"); //End header row
+        this.console.println("-------------------------");  // Row Divider
         for (int x = 0; x < locations.length; x++) {
-            System.out.print("| " + (x + 1) + " "); // Print row number
+            this.console.print("| " + (x + 1) + " "); // Print row number
             for (int y = 0; y < locations[x].length; y++) {
                 Location location = locations[x][y];
                 //locations[x][y].setVisited(true); // Test setting all locations
                 if (location.isVisited()) {
                     if (location.hasQuestion() && location.getQuestion().getQuestionType() != QuestionType.empty) {
                         if (location.hasItem()) {
-                            System.out.print("| q "); // If an item is also on this location, small queue to make room (lowercase)
+                            this.console.print("| q "); // If an item is also on this location, small queue to make room (lowercase)
                         } else {
-                            System.out.print("| Q "); // If only a question is on this location, take up all the room it can (capital)
+                            this.console.print("| Q "); // If only a question is on this location, take up all the room it can (capital)
                         }
                     } else if (location.hasItem()) {
                         switch (location.getItem()) {
                             case AidBag:
-                                System.out.print("| A ");
+                                this.console.print("| A ");
                                 break;
                             case ClueBag:
-                                System.out.print("| C ");
+                                this.console.print("| C ");
                                 break;
                             case Monkey:
-                                System.out.print("| M ");
+                                this.console.print("| M ");
                                 break;
                             case TNT:
-                                System.out.print("| T ");
+                                this.console.print("| T ");
                                 break;
                             case OldCellPhone:
-                                System.out.print("| O ");
+                                this.console.print("| O ");
                                 break;
                         }
                     } else {
-                        System.out.print("| * ");
+                        this.console.print("| * ");
                     }
                 } else {
-                    System.out.print("| ? ");
+                    this.console.print("| ? ");
                 }
             }
-            System.out.println("|\n-------------------------");
+            this.console.println("|\n-------------------------");
         }
-        System.out.println("Legend:");
-        System.out.println("  ? - Location has not been visited");
-        System.out.println("  Q - Location has a question");
-        System.out.println("  q - Location has a question and an item");
-        System.out.println("  C - Location has a clue bag");
-        System.out.println("  A - Location has an aid bag");
-        System.out.println("  M - Location has a monkey");
-        System.out.println("  T - Location has TNT");
-        System.out.println("  O - Location has an old cell phone");
+        this.console.println("Legend:");
+        this.console.println("  ? - Location has not been visited");
+        this.console.println("  Q - Location has a question");
+        this.console.println("  q - Location has a question and an item");
+        this.console.println("  C - Location has a clue bag");
+        this.console.println("  A - Location has an aid bag");
+        this.console.println("  M - Location has a monkey");
+        this.console.println("  T - Location has TNT");
+        this.console.println("  O - Location has an old cell phone");
     }
 
     private void startSaveGame() {
-        System.out.println("*** startSaveGame function called ***");
+        this.console.println("*** startSaveGame function called ***");
     }
 
     private void displayGameProgress() {
-        System.out.println("Number of questions answered:   " + QuestionControl.countAnweredQuestions());
+        this.console.println("Number of questions answered:   " + QuestionControl.countAnweredQuestions());
         
-        System.out.println("Number of questions unanswered: " + QuestionControl.countUnansweredQuestions());
+        this.console.println("Number of questions unanswered: " + QuestionControl.countUnansweredQuestions());
     }
     
     private void displayGoToNewMapLocation()  {
@@ -168,7 +167,7 @@ public class GameMenuView extends View {
         itemMenu.display();
     }
     private void startQuitGame() {
-        System.out.println("*** startQuitGame function called ***");
+        this.console.println("*** startQuitGame function called ***");
     }
 
     private void startMainMenu() {

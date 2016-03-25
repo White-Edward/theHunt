@@ -5,7 +5,6 @@
  */
 package byui.cit260.theHunt.view;
 
-import java.util.Scanner;
 
 /**
  *
@@ -37,14 +36,14 @@ public class HelpMenuView extends View {
             case 'B':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection*** Try again");
+                this.console.println("\n*** Invalid selection*** Try again");
                 break;
         }
         return false;
     }
 
     private void startMoveHelp() {
-        System.out.println("\n================================================="
+        this.console.println("\n================================================="
                             + "\n W - Moves the user forward one space"
                             + "\n D - Turns the user clockwise 90 degrees"
                             + "\n A - Turns the user counter-clockwise 90 degrees"
@@ -54,7 +53,7 @@ public class HelpMenuView extends View {
     }
 
     private void startActionsHelp() {
-        System.out.println("\n================================================================================"
+        this.console.println("\n================================================================================"
                           + "\n Search Location - Searches the location you are in for clues and items"
                           + "\n Answer Riddle - Allows you to attempt to answer a question to receive a clue"
                           + "\n Pickup Item - Moves an item from the location you are in to your item bag"
