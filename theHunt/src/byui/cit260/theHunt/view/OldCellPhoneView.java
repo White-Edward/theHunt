@@ -26,7 +26,7 @@ public class OldCellPhoneView extends View {
      
     @Override
     public boolean doAction(String value) {
-        char choice = value.charAt(0);
+        char choice = value.toUpperCase().charAt(0);  // get the first character in the string, change to uppercase
         switch (choice) {
             case 'P': // pick up cell phone
                 this.startPickUpOldCellPhone();
