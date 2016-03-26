@@ -20,6 +20,9 @@ public class Question implements Serializable{
     private String answer;
     private QuestionType questionType;
     private boolean answered;
+    private TeaspoonSquare teaspoonSquare;
+    private TwoTrainSquare twoTrainSquare;
+    private WaterSquare waterSquare;
 
     public Question() {
     }
@@ -86,6 +89,30 @@ public class Question implements Serializable{
 
     public void setAnswered(boolean isAnswered) {
         this.answered = isAnswered;
+    }
+
+    public TeaspoonSquare getTeaspoonSquare() {
+        return teaspoonSquare;
+    }
+
+    public void setTeaspoonSquare(TeaspoonSquare teaspoonSquare) {
+        this.teaspoonSquare = teaspoonSquare;
+    }
+
+    public TwoTrainSquare getTwoTrainSquare() {
+        return twoTrainSquare;
+    }
+
+    public void setTwoTrainSquare(TwoTrainSquare twoTrainSquare) {
+        this.twoTrainSquare = twoTrainSquare;
+    }
+
+    public WaterSquare getWaterSquare() {
+        return waterSquare;
+    }
+
+    public void setWaterSquare(WaterSquare waterSquare) {
+        this.waterSquare = waterSquare;
     }
 
     @Override
