@@ -10,6 +10,9 @@ import byui.cit260.theHunt.model.Constants;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.model.QuestionType;
+import byui.cit260.theHunt.model.TeaspoonSquare;
+import byui.cit260.theHunt.model.TwoTrainSquare;
+import byui.cit260.theHunt.model.WaterSquare;
 import java.util.ArrayList;
 import thehunt.TheHunt;
 
@@ -98,17 +101,24 @@ public class QuestionControl {
         
         Question water = new Question();
         water.setQuestionType(QuestionType.water);
+        WaterSquare waterSquare = new WaterSquare();
+        water.setWaterSquare(waterSquare);
+        water.setRiddle("water");
         water.setHasWaterSquare(true);
         questions.add(water);
         
         Question train = new Question();
         train.setQuestionType(QuestionType.train);
+        TwoTrainSquare trainSquare = new TwoTrainSquare();
+        train.setTwoTrainSquare(trainSquare);
         train.setRiddle("train");
         train.setHasTwoTrainSquare(true);
         questions.add(train);
 
         Question teaspoon = new Question();
         teaspoon.setQuestionType(QuestionType.teaspoon);
+        TeaspoonSquare teaspoonSquare = new TeaspoonSquare();
+        teaspoon.setTeaspoonSquare(teaspoonSquare);
         teaspoon.setRiddle("teaspoon");
         teaspoon.setHasTeaspoonSquare(true);
         questions.add(teaspoon);
