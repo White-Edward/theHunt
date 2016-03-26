@@ -31,6 +31,7 @@ public class GameMenuView extends View {
             +"\n G - Go to new map location"
             +"\n H - Help menu"
             +"\n I - Item menu"
+            +"\n L - Map Locations Report"
             +"\n Q - Quit game"
             +"\n R - Return to main menu"
             +"\n B - Go back"
@@ -39,7 +40,7 @@ public class GameMenuView extends View {
     
     @Override
     public boolean doAction(String value) {
-        char choice = value.charAt(0);  // get the first character in the string
+        char choice = value.toUpperCase().charAt(0);  // get the first character in the string, change to uppercase
         switch (choice) {
             case 'M': // Open Game map
                 this.displayGameMap();
@@ -64,6 +65,9 @@ public class GameMenuView extends View {
                 break;
             case 'R': // View Main Menu
                 this.startMainMenu();
+                break;
+            case 'L':
+                this.mapLocationsReport();
                 break;
             case 'B': // Back to previous menu 
                 return true;
@@ -194,5 +198,10 @@ public class GameMenuView extends View {
         // display the main menu
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.display();
+    }
+
+    private void mapLocationsReport() {
+        MapLocationsReportView report = new MapLocationsReportView();
+        report.display();
     }
 }
