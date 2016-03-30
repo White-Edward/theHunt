@@ -52,16 +52,6 @@ public class MainMenuView extends View {
                 break;
             case 'B': // go back to previous menu
                 return true;                
-            case 'I': // load Item Menu (temporary, hidden)
-                this.startItemMenu();
-                break;
-            case 'T': // load TwoTrains Question (temporary, hidden)
-                this.startTwoTrainsQuestionView();
-                break;
-            case 'W': // load Water questoin
-                this.startWaterQuestionView();
-            case 'P': // load Water questoin
-                this.startTeaspoonQuestionView();
             default:
                 this.console.println("\n*** Invalid selection*** Try again");
                 break;
@@ -136,33 +126,4 @@ public class MainMenuView extends View {
         AboutUsView AboutUs = new AboutUsView();
         AboutUs.displayMenu();
     }
-    
-    /**
-     * Temporary function to test item menu
-     */
-    private void startItemMenu() {
-        ItemMenuView itemMenu = new ItemMenuView();
-        itemMenu.display();
     }
-    
-    /**
-     * Temporary function to test two trains question
-     */
-    private void startTwoTrainsQuestionView() {
-        TwoTrainsQuestionView question = new TwoTrainsQuestionView();
-        question.displayQuestion();
-    }
-    
-    /**
-     * Temporary function to test two trains question
-     */
-    private void startWaterQuestionView() {
-        WaterQuestionView water = new WaterQuestionView();
-        water.displayQuestion();
-    }
-
-    private void startTeaspoonQuestionView() {
-        TeaspoonQuestionView yeaspoon = new TeaspoonQuestionView();
-        yeaspoon.displayQuestion();
-    }
-}

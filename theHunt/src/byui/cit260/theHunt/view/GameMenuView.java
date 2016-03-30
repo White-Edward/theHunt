@@ -34,7 +34,7 @@ public class GameMenuView extends View {
             +"\n G - Go to new map location"
             +"\n H - Help menu"
             +"\n I - Item menu"
-            +"\n Z - Item Acuired Report"                
+            +"\n Z - Item Acquired Report"                
             +"\n L - Map Locations Report"
             +"\n Q - Quit game"
             +"\n R - Return to main menu"
@@ -64,7 +64,7 @@ public class GameMenuView extends View {
             case 'I': // View Help Menu
                 this.startItemMenu();
                 break;
-            case 'Z': // print report of acuired items
+            case 'Z': // print report of acquired items
                 this.ItemControl();
                 break;
             case 'Q': // Quit game
