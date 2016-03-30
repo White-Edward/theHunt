@@ -11,6 +11,9 @@ import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.QuestionType;
+import byui.cit260.theHunt.control.ItemControl;
+import byui.cit260.theHunt.model.Item;
+
 import thehunt.TheHunt;
 
 
@@ -31,6 +34,7 @@ public class GameMenuView extends View {
             +"\n G - Go to new map location"
             +"\n H - Help menu"
             +"\n I - Item menu"
+            +"\n Z - Item Acuired Report"                
             +"\n L - Map Locations Report"
             +"\n Q - Quit game"
             +"\n R - Return to main menu"
@@ -59,14 +63,17 @@ public class GameMenuView extends View {
                 break;
             case 'I': // View Help Menu
                 this.startItemMenu();
-                break;                
+                break;
+            case 'Z': // print report of acuired items
+                this.ItemControl();
+                break;
             case 'Q': // Quit game
                 this.startQuitGame();
                 break;
             case 'R': // View Main Menu
                 this.startMainMenu();
                 break;
-            case 'L':
+            case 'L': //Current location on map
                 this.mapLocationsReport();
                 break;
             case 'B': // Back to previous menu 
@@ -204,4 +211,43 @@ public class GameMenuView extends View {
         MapLocationsReportView report = new MapLocationsReportView();
         report.display();
     }
+
+
+
+    /*private void diplayItemControl() {
+        ItemControl itemControl = new ItemControl();
+        this.console.println(itemControl);
+
+    }*/
+
+    private void ItemControl() {
+        ItemControl item = ItemControl.getItemControl();
+
+        this.console.println("\nItems");
+        this.console.println("    ---------------------"); // Row Divider
+                    // Backup display and prompt message
+        String displayMessage = this.displayMessage;
+        String promptMessage = this.promptMessage;
+        
+        // Set the display and prompt message for saving the file
+        this.displayMessage = "";
+        this.promptMessage = "\n\nEnter the file path for the file where the game"
+                            + " is to be saved: ";
+        
+        // prompt for and get the name of the file to save the game in
+        String filePath = this.getInput(); // Get filename from the user
+        
+        // Set the display and prompt back to original
+        this.displayMessage = displayMessage;
+        this.promptMessage = promptMessage;
+        try {
+            GameControl.saveGame(TheHunt.getCurrentGame(), filePath);
+        } catch (Exception e) {
+            ErrorView.display(this.getClass().getName(), e.getMessage());
+        }
+        }
+        
+    
+
+
 }
