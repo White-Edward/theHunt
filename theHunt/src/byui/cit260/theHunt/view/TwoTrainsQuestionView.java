@@ -102,10 +102,11 @@ public class TwoTrainsQuestionView {
         double answer = 0;
         try {     
             answer = twoTrains.calculateTwoTrains(this.trainOneDistance,this.trainTwoDistance,this.trainOneSpeed,this.trainTwoSpeed);
+            answer = Double.parseDouble(df2.format(answer)); // Format the double to two decimal places
         } catch (QuestionControlException e) {
             ErrorView.display(this.getClass().getName(), e.getMessage());
         }
-        answer = Double.parseDouble(df2.format(answer)); // Format the double to two decimal places
+
         return playerAnswer == answer;
     }
 }

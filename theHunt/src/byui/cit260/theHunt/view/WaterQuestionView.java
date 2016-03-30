@@ -99,11 +99,11 @@ public class WaterQuestionView {
         DecimalFormat df2 = new DecimalFormat("###.##");
         double answer = 0;
         try {
-            answer = Water.calculateWater(this.numOfGallons, this.gallonsPerMinute, this.numOfFills);            
+            answer = Water.calculateWater(this.numOfGallons, this.gallonsPerMinute, this.numOfFills);
+            answer = Double.parseDouble(df2.format(answer)); // Format the double to two decimal places            
         } catch (QuestionControlException e) {
             ErrorView.display(this.getClass().getName(), e.getMessage());
         }
-        answer = Double.parseDouble(df2.format(answer)); // Format the double to two decimal places
         return playerAnswer == answer;
     }
 }
