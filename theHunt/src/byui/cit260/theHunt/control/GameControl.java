@@ -5,9 +5,11 @@
  */
 package byui.cit260.theHunt.control;
 
+/*import static byui.cit260.theHunt.control.MapControl.assignClueBagToLocation;*/
 import static byui.cit260.theHunt.control.MapControl.assignPlayerToLocation;
 import byui.cit260.theHunt.exceptions.GameControlException;
 import byui.cit260.theHunt.exceptions.MapControlException;
+/*import byui.cit260.theHunt.model.ClueBag;*/
 import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Map;
@@ -50,10 +52,13 @@ public class GameControl {
         
         Player player = TheHunt.getPlayer();
         game.setPlayer(player); // save player in game
+        
+/*        ClueBag cluebag =ClueBag.ClueBag;
 
         Item[] items = ItemControl.createItems();
-        game.setItems(items);
+        game.setItems(items);*/
         
+       
         // Create a list of the different questions in the game
         ArrayList<Question> questions = QuestionControl.createQuestions();
         game.setQuestions(questions);
@@ -64,12 +69,18 @@ public class GameControl {
         
         Point coordinates = new Point(1,1);  // Set default starting location
         try {
-            assignPlayerToLocation(player, coordinates);
-        } catch (MapControlException e) {
+            assignPlayerToLocation(player, coordinates); // Assign Player to location 1,1
+            /*assignClueBagToLocation(cluebag, coordinates); // Assign ClubBag to location 1,1*/
+        } 
+        catch (MapControlException e)
+        {
             ErrorView.display("GameControl", e.getMessage());
         }
-        console.println("You are currently at map location (1,1)");
-        // MapControl.moveActorsToStartingLocation(map);
+        console.println("You are currently at map location (1,1)"
+                        +"\nClue Bag is currently located at (1,1), "
+                        +"\npick up the bag so you can hold future items and clues");
+        
+        
     }
 
     public static void saveGame(Game game, String filePath) throws GameControlException {
