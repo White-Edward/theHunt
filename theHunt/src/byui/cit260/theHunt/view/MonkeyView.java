@@ -19,6 +19,8 @@ public class MonkeyView extends View {
             +"\n---------------------------------------------------------------"
             +"\n P - Pick Up"
             +"\n D - Put Down"
+            +"\n F - Feed Monkey"
+            +"\n M - Poke Monkey"
             +"\n B - Back"
             +"\n---------------------------------------------------------------", "Choose an option: ");
     }
@@ -32,6 +34,12 @@ public class MonkeyView extends View {
                 break;
             case 'D': // get and start existing game
                 this.startDropMonkey();
+                break;
+            case 'F': // get and start existing game
+                this.startFeedMonkey();
+                break;
+            case 'M': // get and start existing game
+                this.startPokeMonkey();
                 break;
             case 'B':
                 return true;
@@ -48,5 +56,13 @@ public class MonkeyView extends View {
     
     private void startDropMonkey(){       
         this.console.println("*** startDropMonkey function called ***");
+    }
+
+    private void startFeedMonkey() {
+        this.console.println("*** The monkey loves the bananas and does a dance in appreciation ***");
+    }
+
+    private void startPokeMonkey() {
+        this.console.println("*** You made the monkey mad.  He throws poo at you! ***");
     }
 }
