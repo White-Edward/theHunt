@@ -5,13 +5,12 @@
  */
 package byui.cit260.theHunt.control;
 
-/*import static byui.cit260.theHunt.control.MapControl.assignClueBagToLocation;*/
 import static byui.cit260.theHunt.control.MapControl.assignPlayerToLocation;
 import byui.cit260.theHunt.exceptions.GameControlException;
 import byui.cit260.theHunt.exceptions.MapControlException;
-/*import byui.cit260.theHunt.model.ClueBag;*/
 import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Item;
+import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.Player;
 import byui.cit260.theHunt.model.Question;
@@ -19,7 +18,6 @@ import byui.cit260.theHunt.view.ErrorView;
 import java.awt.Point;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.NotSerializableException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
@@ -52,12 +50,9 @@ public class GameControl {
         
         Player player = TheHunt.getPlayer();
         game.setPlayer(player); // save player in game
-        
-/*        ClueBag cluebag =ClueBag.ClueBag;
 
         Item[] items = ItemControl.createItems();
-        game.setItems(items);*/
-        
+        game.setItems(items);
        
         // Create a list of the different questions in the game
         ArrayList<Question> questions = QuestionControl.createQuestions();
@@ -68,19 +63,23 @@ public class GameControl {
         game.setMap(map);
         
         Point coordinates = new Point(1,1);  // Set default starting location
+        // Find the map location of the ClueBag item, put the user there to start
+        Location[][] locations = map.getLocations();
+        for (Location[] x : locations) {
+            for (Location location: x) {
+                if (location.hasItem()) {
+                    if (location.getItem() == Item.ClueBag) {
+                        coordinates = new Point(location.getRow() + 1,location.getColumn() + 1);
+                    }
+                }
+            }
+        }
         try {
-            assignPlayerToLocation(player, coordinates); // Assign Player to location 1,1
-            /*assignClueBagToLocation(cluebag, coordinates); // Assign ClubBag to location 1,1*/
-        } 
-        catch (MapControlException e)
-        {
+            assignPlayerToLocation(player, coordinates);
+        } catch (MapControlException e) {
             ErrorView.display("GameControl", e.getMessage());
         }
-        console.println("You are currently at map location (1,1)"
-                        +"\nClue Bag is currently located at (1,1), "
-                        +"\npick up the bag so you can hold future items and clues");
-        
-        
+        console.println("You are currently at map location (" + coordinates.x + "," + coordinates.y + ").");
     }
 
     public static void saveGame(Game game, String filePath) throws GameControlException {
