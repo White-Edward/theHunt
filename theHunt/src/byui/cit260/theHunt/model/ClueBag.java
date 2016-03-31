@@ -5,9 +5,7 @@
  */
 package byui.cit260.theHunt.model;
 
-/*import java.awt.Point;*/
 import java.io.Serializable;
-/*import java.util.Objects;*/
 
 /**
  *
@@ -15,10 +13,6 @@ import java.io.Serializable;
  */
 public class ClueBag implements Serializable {
 
-    /*public static ClueBag ClueBag;
-    private Location location;
-    private Point coordinates;*/
-   
     private int numClues;
 
     public ClueBag() {
@@ -30,22 +24,7 @@ public class ClueBag implements Serializable {
 
     public void setNumClues(int numClues) {
         this.numClues = numClues;
-    }
-    
-    /*public Location getLocation() {
-        return location;
-    }
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-    public Point getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(Point coordinates) {
-        this.coordinates = coordinates;
-    }*/
-    
+    }    
 
     @Override
     public int hashCode() {
@@ -69,13 +48,6 @@ public class ClueBag implements Serializable {
         if (this.numClues != other.numClues) {
             return false;
         }
-        /*if (!Objects.equals(this.location, other.location)) {
-            return false;
-        }
-        if (!Objects.equals(this.coordinates, other.coordinates)) {
-            return false;
-        }   */         
-        
         return true;
     }
 
@@ -83,6 +55,4 @@ public class ClueBag implements Serializable {
     public String toString() {
         return "ClueBag{" + "numClues=" + numClues + '}';
     }
-
-
 }
