@@ -6,7 +6,6 @@
 package byui.cit260.theHunt.control;
 
 import byui.cit260.theHunt.exceptions.MapControlException;
-/*import byui.cit260.theHunt.model.ClueBag;*/
 import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
@@ -15,7 +14,6 @@ import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.model.QuestionType;
 import java.awt.Point;
 import java.util.ArrayList;
-/*import java.util.Iterator;*/
 import java.util.Random;
 import thehunt.TheHunt;
 
@@ -57,32 +55,18 @@ public class MapControl {
     public static void assignItemsToLocations(Map map, Item[] items) {
         Location[][] locations = map.getLocations();
         for (Item item : items) {
+            // Pick a random location
+            int x = new Random().nextInt(map.getRowCount());
+            int y = new Random().nextInt(map.getRowCount());
+            // Check to see whether an item already exists in this location.  If it does, pick new random numbers and try again
+            while (locations[x][y].hasItem()) {
+                x = new Random().nextInt(map.getRowCount());
+                y = new Random().nextInt(map.getRowCount());
+            }
             locations[new Random().nextInt(map.getRowCount())][new Random().nextInt(map.getColumnCount())].setItem(item);
         }
     }
     
-    /*public static boolean assignClueBagToLocation (ClueBag cluebag, Point coordinates)throws MapControlException{ 
-        Map map = TheHunt.getCurrentGame().getMap();
-        int newRow = coordinates.x - 1;
-        int newColumn = coordinates.y - 1;
-        
-        if (newRow < 0 || newRow >= map.getRowCount() ||
-                newColumn < 0 || newColumn >= map.getColumnCount()) {
-            throw new MapControlException("Cannot clue bag to location"
-                                        + " " + coordinates.x + ", " + coordinates.y
-                                        + " because that location is outside"
-                                        + " the bounds of the map.");
-            
-        }
-        
-        cluebag.setCoordinates(coordinates);
-        Location newLocation = map.getLocations()[coordinates.x - 1][coordinates.y - 1];
-        cluebag.setLocation(newLocation);
-        return false;       
-       
-       
-        
-    }*/
     public static boolean assignPlayerToLocation(Player player, Point coordinates) throws MapControlException {
         Map map = TheHunt.getCurrentGame().getMap();
         int newRow = coordinates.x - 1;
