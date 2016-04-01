@@ -87,19 +87,39 @@ public class ItemMenuView extends View {
         char choice = value.toUpperCase().charAt(0);  // get the first character in the string, change to uppercase
         switch (choice) {
             case 'C': // Open Clue Bag Menu
-                this.startClueBag();
+                if (TheHunt.getCurrentGame().getPlayer().isHasClueBag()) {
+                    this.startClueBag();
+                } else {
+                    this.console.println("\n*** Invalid selection*** Try again");
+                }
                 break;
             case 'T': // View TNT Menu
-                this.startTNTview();
+                if (TheHunt.getCurrentGame().getPlayer().isHasTNT()) {
+                    this.startTNTview();
+                } else {
+                    this.console.println("\n*** Invalid selection*** Try again");
+                }
                 break;
             case 'P': // View Old Cell Phone Menu
-                this.startOldCellPhoneView();
+                if (TheHunt.getCurrentGame().getPlayer().isHasOldCellPhone()) {
+                    this.startOldCellPhoneView();
+                } else {
+                    this.console.println("\n*** Invalid selection*** Try again");
+                }
                 break;
             case 'M': // View Monkey Menu
-                this.startMonkey();
+                if (TheHunt.getCurrentGame().getPlayer().isHasMonkey()) {
+                    this.startMonkey();
+                } else {
+                    this.console.println("\n*** Invalid selection*** Try again");
+                }
                 break;
             case 'A': // View Aid Bag Menu
-                this.startAidBag();
+                if (TheHunt.getCurrentGame().getPlayer().isHasAidBag()) {
+                    this.startAidBag();
+                } else {
+                    this.console.println("\n*** Invalid selection*** Try again");
+                }
                 break;
             case 'B': // go back to previous menu
                 return true;
