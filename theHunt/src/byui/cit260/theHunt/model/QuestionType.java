@@ -17,9 +17,13 @@ public enum QuestionType implements Serializable {
     water,
     train,
     teaspoon,
+    vault,
     empty;
     
     QuestionType() {
         
     }
+
+   
+    
 }
