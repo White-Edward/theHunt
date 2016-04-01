@@ -16,6 +16,7 @@ public class Question implements Serializable{
     private boolean hasTwoTrainSquare;
     private boolean hasTeaspoonSquare;
     private boolean hasWaterSquare;
+    private boolean hasVaultSquare;
     private String riddle;
     private String answer;
     private QuestionType questionType;
@@ -23,6 +24,7 @@ public class Question implements Serializable{
     private TeaspoonSquare teaspoonSquare;
     private TwoTrainSquare twoTrainSquare;
     private WaterSquare waterSquare;
+    private vaultSquare vaultSquare;
 
     public Question() {
     }
@@ -58,7 +60,14 @@ public class Question implements Serializable{
     public void setHasWaterSquare(boolean hasWaterSquare) {
         this.hasWaterSquare = hasWaterSquare;
     }
+    
+    public boolean isHasVaultSquare() {
+        return hasVaultSquare;
+    }
 
+    public void setHasVaultSquare(boolean hasVaultSquare) {
+        this.hasVaultSquare = hasVaultSquare;
+    }
     public String getRiddle() {
         return riddle;
     }
@@ -114,7 +123,15 @@ public class Question implements Serializable{
     public void setWaterSquare(WaterSquare waterSquare) {
         this.waterSquare = waterSquare;
     }
+    
+    public vaultSquare getVaultSquare() {
+        return vaultSquare;
+    }
 
+    public void setVaultSquare(vaultSquare vaultSquare) {
+        this.vaultSquare = vaultSquare;
+
+    }
     @Override
     public int hashCode() {
         int hash = 3;
@@ -122,6 +139,7 @@ public class Question implements Serializable{
         hash = 53 * hash + (this.hasTwoTrainSquare ? 1 : 0);
         hash = 53 * hash + (this.hasTeaspoonSquare ? 1 : 0);
         hash = 53 * hash + (this.hasWaterSquare ? 1 : 0);
+        hash = 53 * hash + (this.hasVaultSquare ? 1 : 0);
         hash = 53 * hash + Objects.hashCode(this.riddle);
         hash = 53 * hash + Objects.hashCode(this.answer);
         hash = 53 * hash + Objects.hashCode(this.questionType);
@@ -153,6 +171,9 @@ public class Question implements Serializable{
         if (this.hasWaterSquare != other.hasWaterSquare) {
             return false;
         }
+        if (this.hasVaultSquare != other.hasVaultSquare) {
+            return false;
+        }
         if (this.answered != other.answered) {
             return false;
         }
@@ -170,8 +191,15 @@ public class Question implements Serializable{
 
     @Override
     public String toString() {
-        return "Question{" + "hasClue=" + hasClue + ", hasTwoTrainSquare=" + hasTwoTrainSquare + ", hasTeaspoonSquare=" + hasTeaspoonSquare + ", hasWaterSquare=" + hasWaterSquare + ", riddle=" + riddle + ", answer=" + answer + ", questionType=" + questionType + ", answered=" + answered + '}';
+        return "Question{" + "hasClue=" + hasClue + ", hasTwoTrainSquare=" + hasTwoTrainSquare + ", hasTeaspoonSquare=" + hasTeaspoonSquare + ", hasWaterSquare=" + hasWaterSquare + ", hasVaultSquare" + hasVaultSquare + ", riddle=" + riddle + ", answer=" + answer + ", questionType=" + questionType + ", answered=" + answered + '}';
     }
+
+    
+
+
+   
+
+    
 
     
     

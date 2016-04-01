@@ -5,6 +5,7 @@
  */
 package byui.cit260.theHunt.control;
 
+import byui.cit260.theHunt.model.vaultSquare;
 import byui.cit260.theHunt.exceptions.QuestionControlException;
 import byui.cit260.theHunt.model.Constants;
 import byui.cit260.theHunt.model.Location;
@@ -81,6 +82,13 @@ public class QuestionControl {
         return timeToFillTub;
     }
     
+    public double calculateVault(double combo) {
+        
+        combo = 4685;
+    
+    return combo;
+    }
+    
     public static ArrayList<Question> createQuestions() {
         ArrayList<Question> questions = new ArrayList();
         
@@ -123,6 +131,14 @@ public class QuestionControl {
         teaspoon.setHasTeaspoonSquare(true);
         questions.add(teaspoon);
         
+        Question vault = new Question();
+        vault.setQuestionType(QuestionType.vault);
+        vaultSquare vaultSquare = new vaultSquare();
+        vault.setVaultSquare(vaultSquare);
+        vault.setRiddle("vault");
+        vault.setHasVaultSquare(true);
+        questions.add(vault);
+        
         return questions;
     }
     
@@ -153,6 +169,8 @@ public class QuestionControl {
         }
         return total;
     }
+
+  
 
 }
   

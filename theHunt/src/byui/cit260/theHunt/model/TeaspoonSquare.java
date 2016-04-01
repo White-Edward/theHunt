@@ -15,7 +15,7 @@ public class TeaspoonSquare implements Serializable {
     
     //class instance variables
     private String teaspoonSquare;
-    private boolean used;
+    boolean used;
 
     public TeaspoonSquare() {
     }
