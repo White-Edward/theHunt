@@ -6,42 +6,100 @@
 package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.control.MapControl;
-import byui.cit260.theHunt.exceptions.MapControlException;
-import byui.cit260.theHunt.model.Player;
-import java.awt.Point;
+import byui.cit260.theHunt.control.PlayerControl;
+import byui.cit260.theHunt.model.Location;
 import thehunt.TheHunt;
 
 /**
  *
- * @author Edward
+ * @author Ann
  */
 public class LocationView extends View {
-    
     public LocationView() {
-        super("\n","Choose a location to move to (x,y), or Q to cancel: ");
+        super("\n"
+            +"\n---------------------------------------------------------------"
+            +"\n| Location  Menu                                              |"
+            +"\n---------------------------------------------------------------"
+            +"\n R - Search location for riddles"
+            +"\n I - Search location for items"
+            +"\n C - Show unlocked clues"
+            +"\n B - Go back"
+            +"\n---------------------------------------------------------------");
     }
-    
+
     @Override
     public boolean doAction(String value) {
-        Player player = TheHunt.getPlayer();
-        try {
-            String[] coordinates = value.split(",");
-            int row = Integer.parseInt(coordinates[0]);
-            int column = Integer.parseInt(coordinates[1]);
-            Point point = new Point(row,column);
-            MapControl.assignPlayerToLocation(player, point);
-        } catch (NumberFormatException e) { // catch parseInt error
-            ErrorView.display(this.getClass().getName(), "x and y locations must be numeric");
-            return false;
-        } catch (MapControlException e) { // catch assignPlayerToLocation error
-            ErrorView.display(this.getClass().getName(), e.getMessage());
-            return false;
-        } catch (ArrayIndexOutOfBoundsException e) {
-            ErrorView.display(this.getClass().getName(), "Invalid point - new location must be int and 'x,y' format");
-            return false;
+        char choice = value.toUpperCase().charAt(0);  // get the first character in the string, change to uppercase
+        switch (choice) {
+            case 'R': // Display riddle
+                this.displayRiddle();
+                break;
+            case 'I': // Open Game map
+                this.displayItem();
+                break;
+            case 'C': // Open Game map
+                this.displayClue();
+                break;
+            case 'B': // Back to previous menu 
+                return true;
+            default:
+                this.console.println("\n*** Invalid selection*** Try again");
+                break;
         }
-        this.console.println("You are now at location (" 
-                + player.getCoordinates().x + "," + player.getCoordinates().y + ")");
-        return true;
+        return false;
+    }
+    
+    private void displayRiddle() {
+        Location location = TheHunt.getCurrentGame().getPlayer().getLocation();
+        if (location.hasQuestion()) {
+            this.console.println(location.getQuestion().getRiddle());
+        } else {
+            this.console.println("No questions were found.  Try looking in another map location");
+        }
+    }
+    
+    private void displayItem() {
+        Location location = TheHunt.getCurrentGame().getPlayer().getLocation();
+        if (location.hasItem()) {
+            // Backup display and prompt message
+            String displayMessage = this.displayMessage;
+            String promptMessage = this.promptMessage;
+
+            // Set the display and prompt message
+            this.displayMessage = location.getItem().name();
+            this.promptMessage = "Do you want to pickup this item? [y/n]: ";
+
+            
+            String playerResponse = this.getInput(); // Get player response
+
+            this.displayMessage = displayMessage;
+            this.promptMessage = promptMessage;
+            
+            if (playerResponse.toUpperCase().charAt(0) == 'Y') {
+                // Save the item to the player's item inventory
+                PlayerControl.addItemToPlayerInventory(location.getItem());
+                MapControl.removeItemFromLocation(location);
+            }
+        } else {
+            this.console.println("No items were found.  Try looking in another map location.");
+        }
+    }
+    
+    private void displayClue() {
+        Location location = TheHunt.getCurrentGame().getPlayer().getLocation();
+        if (location.hasQuestion()) {
+            if (location.getQuestion().isAnswered()) {
+                if (location.getQuestion().isHasClue()) {
+                    // Show the player the clue
+                    this.console.println(location.getQuestion().getClue());
+                } else {
+                    this.console.println("No clues were found.  Try looking in another map location.");
+                }
+            } else {
+                this.console.println("You have to answer the question correctly before you can see the clue!");                
+            }
+        } else {
+            this.console.println("No clues were found.  Try looking in another map location.");
+        }
     }
 }

@@ -12,7 +12,6 @@ import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.QuestionType;
 import byui.cit260.theHunt.control.ItemControl;
-import byui.cit260.theHunt.model.Item;
 
 import thehunt.TheHunt;
 
@@ -32,6 +31,7 @@ public class GameMenuView extends View {
             +"\n S - Save game progress"
             +"\n P - Show game progress"
             +"\n G - Go to new map location"
+            +"\n V - View/Search location for clues and items"
             +"\n H - Help menu"
             +"\n I - Item menu"
             +"\n Z - Item Acquired Report"                
@@ -75,6 +75,9 @@ public class GameMenuView extends View {
                 break;
             case 'L': //Current location on map
                 this.mapLocationsReport();
+                break;
+            case 'V':
+                this.viewLocation();
                 break;
             case 'B': // Back to previous menu 
                 return true;
@@ -182,8 +185,13 @@ public class GameMenuView extends View {
     }
     
     private void displayGoToNewMapLocation()  {
-        LocationView locationMenu = new LocationView();
+        ChangeLocationView locationMenu = new ChangeLocationView();
         locationMenu.display();
+    }
+    
+    private void viewLocation() {
+        LocationView locationView = new LocationView();
+        locationView.display();
     }
     
     private void startHelpMenu() {
