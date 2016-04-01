@@ -18,6 +18,7 @@ public class Question implements Serializable{
     private boolean hasWaterSquare;
     private String riddle;
     private String answer;
+    private String clue;
     private QuestionType questionType;
     private boolean answered;
     private TeaspoonSquare teaspoonSquare;
@@ -115,6 +116,14 @@ public class Question implements Serializable{
         this.waterSquare = waterSquare;
     }
 
+    public String getClue() {
+        return clue;
+    }
+
+    public void setClue(String clue) {
+        this.clue = clue;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -171,8 +180,6 @@ public class Question implements Serializable{
     @Override
     public String toString() {
         return "Question{" + "hasClue=" + hasClue + ", hasTwoTrainSquare=" + hasTwoTrainSquare + ", hasTeaspoonSquare=" + hasTeaspoonSquare + ", hasWaterSquare=" + hasWaterSquare + ", riddle=" + riddle + ", answer=" + answer + ", questionType=" + questionType + ", answered=" + answered + '}';
-    }
-
-    
+    }    
     
 }
