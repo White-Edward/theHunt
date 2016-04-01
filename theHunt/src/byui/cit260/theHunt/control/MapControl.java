@@ -85,4 +85,9 @@ public class MapControl {
         player.setLocation(newLocation);
         return false;
     }
+
+    public static void removeItemFromLocation(Location location) {
+        location.setItem(null);
+        location.setHasItem(false);
+    }
 }
