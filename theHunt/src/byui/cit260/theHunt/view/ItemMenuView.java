@@ -5,6 +5,10 @@
  */
 package byui.cit260.theHunt.view;
 
+import byui.cit260.theHunt.model.Item;
+import java.util.ArrayList;
+import thehunt.TheHunt;
+
 
 /**
  *
@@ -24,6 +28,58 @@ public class ItemMenuView extends View {
             +"\n A - Aid Bag"
             +"\n B - Back to the main menu"
             +"\n---------------------------------------------------------------");
+    }
+    
+    @Override
+    public void display() {
+        boolean done = false;
+        do {
+            String itemMenu;
+            // Generate an item menu based on the items that the player has in inventory
+            ArrayList<Item> items = TheHunt.getCurrentGame().getPlayer().getItemInventory();
+            if (items.isEmpty()) {
+                itemMenu = "\n"
+                            +"\n---------------------------------------------------------------"
+                            +"\n| Item Menu - You don't have any items yet!                   |"
+                            +"\n---------------------------------------------------------------";
+            } else {
+                itemMenu = "\n"
+                            +"\n---------------------------------------------------------------"
+                            +"\n| Item Menu                                                   |"
+                            +"\n---------------------------------------------------------------";
+                for (Item item : items) {
+                    switch (item) {
+                        case AidBag:
+                            itemMenu += "\n A - Aid Bag";
+                            break;
+                        case ClueBag:
+                            itemMenu += "\n C - Clue Bag";
+                            break;
+                        case Monkey:
+                            itemMenu += "\n M - Monkey";
+                            break;
+                        case OldCellPhone:
+                            itemMenu += "\n P - Old Cell Phone";
+                            break;
+                        case TNT:
+                            itemMenu += "\n T - TNT";
+                            break;
+                    }
+                }
+            }
+            itemMenu += "\n B - Back to the main menu"
+                +"\n---------------------------------------------------------------";
+
+            this.displayMessage = itemMenu;
+            // prompt for and get players name
+            String value = this.getInput();
+            if (value.toUpperCase().equals("Q")) { //user wants to quit
+                return; // exit the view
+            }
+            
+            //do the requsted action and display the next view
+            done = this.doAction(value);
+        } while (!done); // exit the view when done == true
     }
     
     @Override
