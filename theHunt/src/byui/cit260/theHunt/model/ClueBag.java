@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author Ann
  */
 public class ClueBag implements Serializable {
-    
+
     private int numClues;
 
     public ClueBag() {
@@ -24,7 +24,7 @@ public class ClueBag implements Serializable {
 
     public void setNumClues(int numClues) {
         this.numClues = numClues;
-    }
+    }    
 
     @Override
     public int hashCode() {

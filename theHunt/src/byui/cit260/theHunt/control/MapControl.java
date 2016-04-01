@@ -55,6 +55,14 @@ public class MapControl {
     public static void assignItemsToLocations(Map map, Item[] items) {
         Location[][] locations = map.getLocations();
         for (Item item : items) {
+            // Pick a random location
+            int x = new Random().nextInt(map.getRowCount());
+            int y = new Random().nextInt(map.getRowCount());
+            // Check to see whether an item already exists in this location.  If it does, pick new random numbers and try again
+            while (locations[x][y].hasItem()) {
+                x = new Random().nextInt(map.getRowCount());
+                y = new Random().nextInt(map.getRowCount());
+            }
             locations[new Random().nextInt(map.getRowCount())][new Random().nextInt(map.getColumnCount())].setItem(item);
         }
     }

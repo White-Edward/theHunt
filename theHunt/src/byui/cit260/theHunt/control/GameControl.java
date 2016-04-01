@@ -10,6 +10,7 @@ import byui.cit260.theHunt.exceptions.GameControlException;
 import byui.cit260.theHunt.exceptions.MapControlException;
 import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Item;
+import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.Player;
 import byui.cit260.theHunt.model.Question;
@@ -17,7 +18,6 @@ import byui.cit260.theHunt.view.ErrorView;
 import java.awt.Point;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.NotSerializableException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
@@ -53,7 +53,7 @@ public class GameControl {
 
         Item[] items = ItemControl.createItems();
         game.setItems(items);
-        
+       
         // Create a list of the different questions in the game
         ArrayList<Question> questions = QuestionControl.createQuestions();
         game.setQuestions(questions);
@@ -63,13 +63,23 @@ public class GameControl {
         game.setMap(map);
         
         Point coordinates = new Point(1,1);  // Set default starting location
+        // Find the map location of the ClueBag item, put the user there to start
+        Location[][] locations = map.getLocations();
+        for (Location[] x : locations) {
+            for (Location location: x) {
+                if (location.hasItem()) {
+                    if (location.getItem() == Item.ClueBag) {
+                        coordinates = new Point(location.getRow() + 1,location.getColumn() + 1);
+                    }
+                }
+            }
+        }
         try {
             assignPlayerToLocation(player, coordinates);
         } catch (MapControlException e) {
             ErrorView.display("GameControl", e.getMessage());
         }
-        console.println("You are currently at map location (1,1)");
-        // MapControl.moveActorsToStartingLocation(map);
+        console.println("You are currently at map location (" + coordinates.x + "," + coordinates.y + ").");
     }
 
     public static void saveGame(Game game, String filePath) throws GameControlException {
