@@ -6,13 +6,18 @@
 package byui.cit260.theHunt.control;
 
 import byui.cit260.theHunt.model.Constants;
+import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Item;
 import static byui.cit260.theHunt.model.Item.AidBag;
 import static byui.cit260.theHunt.model.Item.ClueBag;
 import static byui.cit260.theHunt.model.Item.Monkey;
 import static byui.cit260.theHunt.model.Item.OldCellPhone;
 import static byui.cit260.theHunt.model.Item.TNT;
+import byui.cit260.theHunt.model.Location;
+import byui.cit260.theHunt.model.Player;
+import byui.cit260.theHunt.model.Question;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import thehunt.TheHunt;
 
@@ -79,6 +84,24 @@ public class ItemControl {
     public static ItemControl getItemControl() {
       ItemControl item =  new ItemControl(); 
      return item;
+    }
+
+    public static boolean useTNT() {
+        Game game = TheHunt.getCurrentGame();
+        Question question = game.getPlayer().getLocation().getQuestion();
+        question.setAnswered(true);
+        Player player = game.getPlayer();
+        player.setHasTNT(false);
+        player.getItemInventory().remove(TNT);
+        return question.isAnswered();
+    }
+
+    public static boolean dropTNT() {
+        Game game = TheHunt.getCurrentGame();
+        Player player = game.getPlayer();
+        player.setHasTNT(false);
+        player.getItemInventory().remove(TNT);
+        return !player.isHasTNT();
     }
 
 }

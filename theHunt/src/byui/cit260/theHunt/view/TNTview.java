@@ -5,6 +5,8 @@
  */
 package byui.cit260.theHunt.view;
 
+import byui.cit260.theHunt.control.ItemControl;
+
 /**
  *
  * @author Ryan
@@ -16,9 +18,8 @@ public class TNTview extends View {
             +"\n---------------------------------------------------------------"
             +"\n|TNT will let you destroy one riddle and receive the clue. Use wisely only one TNT per game|"
             +"\n---------------------------------------------------------------"
-            +"\n P - Pick Up"
             +"\n D - Put Down"
-            +"\n U - Use Phone"    
+            +"\n U - Use TNT"    
             +"\n B - Back"
             +"\n---------------------------------------------------------------", "Choose an option: ");
         }
@@ -28,9 +29,6 @@ public class TNTview extends View {
     public boolean doAction(String value) {
         char choice = value.toUpperCase().charAt(0);  // get the first character in the string, change to uppercase
         switch (choice) {
-            case 'P': // pick up cell phone
-                this.startPickUpTNT();
-                break;
             case 'D': // put down cell phone
                 this.startDropTNT();
                 break;
@@ -46,16 +44,22 @@ public class TNTview extends View {
         return false;
     }
     
-    private void startPickUpTNT() {
-         this.console.println("*** startPickupTNT function called ***");
-    }
-    
     private void startDropTNT(){       
-        this.console.println("*** startDropTNT function called ***");
+        boolean result = ItemControl.dropTNT();
+        if (result) {
+            this.console.println("TNT dropped");
+        } else {
+            this.console.println("Can't drop TNT here");
+        }
     }   
 
     private void startUseTNT() {
-        this.console.println("*** startUseTNT function called ***");
+        boolean result = ItemControl.useTNT();
+        if (result) {
+            this.console.println("TNT used successfully");
+        } else {
+            this.console.println("Can't use TNT here");
+        }
     }
 
 
