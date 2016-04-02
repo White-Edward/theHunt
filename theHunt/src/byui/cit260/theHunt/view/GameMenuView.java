@@ -11,7 +11,7 @@ import byui.cit260.theHunt.model.Game;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
 import byui.cit260.theHunt.model.QuestionType;
-import byui.cit260.theHunt.control.ItemControl;
+/*import byui.cit260.theHunt.control.ItemControl;*/
 
 import thehunt.TheHunt;
 
@@ -34,7 +34,7 @@ public class GameMenuView extends View {
             +"\n V - View/Search location for clues and items"
             +"\n H - Help menu"
             +"\n I - Item menu"
-            +"\n Z - Item Acquired Report"                
+           /* +"\n Z - Item Acquired Report"  */              
             +"\n L - Map Locations Report"
             +"\n Q - Quit game"
             +"\n R - Return to main menu"
@@ -64,9 +64,9 @@ public class GameMenuView extends View {
             case 'I': // View Help Menu
                 this.startItemMenu();
                 break;
-            case 'Z': // print report of acquired items
+            /*case 'Z': // print report of acquired items
                 this.ItemControl();
-                break;
+                break;*/
             case 'Q': // Quit game
                 this.startQuitGame();
                 break;
@@ -228,7 +228,7 @@ public class GameMenuView extends View {
 
     }*/
 
-    private void ItemControl() {
+    /*private void ItemControl() {
         ItemControl item = ItemControl.getItemControl();
 
         this.console.println("\nItems");
@@ -253,7 +253,7 @@ public class GameMenuView extends View {
         } catch (Exception e) {
             ErrorView.display(this.getClass().getName(), e.getMessage());
         }
-        }
+        }*/
         
     
 
