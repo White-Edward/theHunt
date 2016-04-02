@@ -114,4 +114,22 @@ public class ItemControl {
         
     }
 
+    public static boolean useAidBag() {
+        Game game = TheHunt.getCurrentGame();
+        Question question =game.getPlayer().getLocation().getQuestion();
+        question.setAnswered(true);
+        Player player = game.getPlayer();
+        player.setHasAidBag(false);
+        player.getItemInventory().remove(AidBag);
+        return question.isAnswered();
+    }
+
+    public static boolean dropAidBag() {
+        Game game = TheHunt.getCurrentGame();
+        Player player = game.getPlayer();
+        player.setHasAidBag(false);
+        player.getItemInventory().remove(AidBag);
+        return !player.isHasAidBag();
+    }
+
 }
