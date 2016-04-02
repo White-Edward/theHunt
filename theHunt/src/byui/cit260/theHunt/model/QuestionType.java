@@ -18,12 +18,10 @@ public enum QuestionType implements Serializable {
     train,
     teaspoon,
     vault,
+    trip,
     empty;
     
     QuestionType() {
         
     }
-
-   
-    
 }
