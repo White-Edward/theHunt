@@ -99,11 +99,11 @@ public class QuestionControl {
         empty.setRiddle("No riddle here, keep searching");
         questions.add(empty);
         
-        for (int i = 0; i < Constants.RIDDLES[0].length; i++) {
+        for (int i = 0; i < Constants.RIDDLES.length; i++) {
             Question riddle = new Question();
             riddle.setQuestionType(QuestionType.riddle);
-            riddle.setRiddle(Constants.RIDDLES[0][i]);
-            riddle.setAnswer(Constants.RIDDLES[1][i]);
+            riddle.setRiddle(Constants.RIDDLES[i].getRiddle());
+            riddle.setAnswer(Constants.RIDDLES[i].getAnswer());
             questions.add(riddle);
         }
         

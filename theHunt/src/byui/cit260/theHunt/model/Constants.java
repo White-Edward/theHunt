@@ -6,6 +6,7 @@
 package byui.cit260.theHunt.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,50 +14,88 @@ import java.io.Serializable;
  */
 public class Constants implements Serializable {
     public final static int NUMBER_OF_ITEMS = 5;
-    public final static String[][] RIDDLES = 
+    public final static SimpleRiddle[] RIDDLES = 
     {
-        {
-            "Riddle 1",
-            "Riddle 2",
-            "Riddle 3",
-            "Riddle 4",
-            "Riddle 5",
-            "Riddle 6",
-            "Riddle 7",
-            "Riddle 8",
-            "Riddle 9",
-            "Riddle 10",
-            "Riddle 11",
-            "Riddle 12",
-            "Riddle 13",
-            "Riddle 14",
-            "Riddle 15",
-            "Riddle 16",
-            "Riddle 17",
-            "Riddle 18",
-            "Riddle 19",
-        },
-        {
-            "Answer 1",
-            "Answer 2",
-            "Answer 3",
-            "Answer 4",
-            "Answer 5",
-            "Answer 6",
-            "Answer 7",
-            "Answer 8",
-            "Answer 9",
-            "Answer 10",
-            "Answer 11",
-            "Answer 12",
-            "Answer 13",
-            "Answer 14",
-            "Answer 15",
-            "Answer 16",
-            "Answer 17",
-            "Answer 18",
-            "Answer 19",
-        }
+        // Source: http://www.funology.com/riddles-page-2/
+        new SimpleRiddle(
+                "Poor people have it. Rich people need it. If you eat it you die. What is it?", // Riddle
+                "Nothing"), // Answer
+        new SimpleRiddle(
+                "What comes down but never goes up?", // Riddle
+                "Rain"), // Answer
+        new SimpleRiddle(
+                "I’m tall when I’m young and I’m short when I’m old. What am I?", // Riddle
+                "candle"), // Answer
+        new SimpleRiddle(
+                "What goes up when rain comes down?", // Riddle
+                "Umbrella"), // Answer
+        new SimpleRiddle(
+                "What word becomes shorter when you add two letters to it?", // Riddle
+                "Short"), // Answer
+        new SimpleRiddle(
+                "What travels around the world but stays in one spot?", // Riddle
+                "Stamp"), // Answer
+        new SimpleRiddle(
+                "What has 4 eyes but can’t see?", // Riddle
+                "Mississippi"), // Answer
+        new SimpleRiddle(
+                "If I have it, I don’t share it. If I share it, I don’t have it. What is it?", // Riddle
+                "Secret"), // Answer
+        new SimpleRiddle(
+                "What has hands but cannot clap?", // Riddle
+                "Clock"), // Answer
+        new SimpleRiddle(
+                "What can you catch but not throw?", // Riddle
+                "Cold"), // Answer
+        new SimpleRiddle(
+                "What starts with the letter “t”, is filled with “t” and ends in “t”?", // Riddle
+                "Teapot"), // Answer
+        new SimpleRiddle(
+                "What is so delicate that saying its name breaks it?", // Riddle
+                "Silence"), // Answer
+        new SimpleRiddle(
+                "You walk into a room with a match, a karosene lamp, a candle, and a fireplace. Which do you light first?", // Riddle
+                "Match"), // Answer
+        new SimpleRiddle(
+                "What has one eye but cannot see?", // Riddle
+                "Needle"), // Answer
+        new SimpleRiddle(
+                "How many months have 28 days?", // Riddle
+                "12"), // Answer
+        new SimpleRiddle(
+                "We see it once in a year, twice in a week, and never in a day. What is it?", // Riddle
+                "E"), // Answer
+        new SimpleRiddle(
+                "What goes up but never comes down?", // Riddle
+                "Age"), // Answer
+        new SimpleRiddle(
+                "What is always coming but never arrives?", // Riddle
+                "Tomorrow"), // Answer
+        new SimpleRiddle(
+                "What goes through towns and over hills but never moves?", // Riddle
+                "Road"), // Answer
+        new SimpleRiddle(
+                "What has Eighty-eight keys but can’t open a single door?", // Riddle
+                "Piano"), // Answer
+        new SimpleRiddle(
+                "What has a neck but no head?", // Riddle
+                "Bottle"), // Answer
+        new SimpleRiddle(
+                "What has a head but never weeps, has a bed but never sleeps, can run but never walks, and has a bank but no money?", // Riddle
+                "River"), // Answer
+        new SimpleRiddle(
+                "The more it dries, the wetter it becomes. What is it?", // Riddle
+                "Towel"), // Answer
+        // Source: http://www.rd.com/jokes/riddles/
+        new SimpleRiddle(
+                "What do you call a bear without an ear?", // Riddle
+                "B"), // Answer
+        new SimpleRiddle(
+                "What do you break before you use it?", // Riddle
+                "Egg"), // Answer
+        new SimpleRiddle(
+                "What is the most curious letter?", // Riddle
+                "Y"), // Answer
     };
     
 }
