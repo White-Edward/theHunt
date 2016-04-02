@@ -22,6 +22,14 @@ import thehunt.TheHunt;
  * @author Ann
  */
 public class QuestionControl {
+
+    public static boolean answerQuestion(Question question, String answer) {
+        if (question.getAnswer().toUpperCase().equals(answer)) {
+            question.setAnswered(true);
+            return true;
+        }
+        return false;
+    }
         
     public double calculateTwoTrains(double milesTravelledTrainOne, double milesTravelledTrainTwo, double milesPerHourTrainOne, double milesPerHourTrainTwo) throws QuestionControlException {
         if (milesTravelledTrainOne < 1 || milesTravelledTrainOne > 200) {

@@ -7,6 +7,7 @@ package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.control.MapControl;
 import byui.cit260.theHunt.control.PlayerControl;
+import byui.cit260.theHunt.control.QuestionControl;
 import byui.cit260.theHunt.model.Location;
 import thehunt.TheHunt;
 
@@ -50,11 +51,33 @@ public class LocationView extends View {
     }
     
     private void displayRiddle() {
+        // Backup display and prompt message
+        String displayMessage = this.displayMessage;
+        String promptMessage = this.promptMessage;
+
         Location location = TheHunt.getCurrentGame().getPlayer().getLocation();
         if (location.hasQuestion()) {
-            this.console.println(location.getQuestion().getRiddle());
+            this.displayMessage = location.getQuestion().getRiddle();
         } else {
-            this.console.println("No questions were found.  Try looking in another map location");
+            this.displayMessage = "No questions were found.  Try looking in another map location";
+        }
+        // Set the display and prompt message
+        this.promptMessage = "Answer: ";
+
+        String playerResponse = this.getInput(); // Get player response
+
+        this.displayMessage = displayMessage;
+        this.promptMessage = promptMessage;
+
+        if (QuestionControl.answerQuestion(location.getQuestion(),playerResponse.toUpperCase())) {
+            this.console.println("Correct!  Clue Unlocked.");
+        } else {
+            this.console.println("Sorry, try again");
+        }
+        if (playerResponse.toUpperCase().charAt(0) == 'Y') {
+            // Save the item to the player's item inventory
+            PlayerControl.addItemToPlayerInventory(location.getItem());
+            MapControl.removeItemFromLocation(location);
         }
     }
     
