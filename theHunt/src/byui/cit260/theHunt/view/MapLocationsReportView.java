@@ -41,22 +41,10 @@ class MapLocationsReportView extends View {
                     }
                     String riddle = "N/A";
                     if (location.hasQuestion()) {
-                        switch (location.getQuestion().getQuestionType()) {
-                            case riddle:
-                                riddle = location.getQuestion().getRiddle();
-                                break;
-                            case water:
-                                riddle = location.getQuestion().getRiddle();
-                                break;
-                            case teaspoon:
-                                riddle = location.getQuestion().getRiddle();
-                                break;
-                            case train:
-                                riddle = location.getQuestion().getRiddle();
-                                break;
-                        }
+                        riddle = location.getQuestion().getRiddle();
                     }
                     report.printf("%n%-10s%-15s%s",mapLocation, item, riddle);
+                    this.console.printf("%n%-10s%-15s%s",mapLocation, item, riddle); // Temporary
                 }
             }
         } catch (IOException e) {
