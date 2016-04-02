@@ -6,6 +6,7 @@
 package byui.cit260.theHunt.model;
 
 import java.io.Serializable;
+import java.text.DecimalFormat;
 import java.util.Objects;
 /**
  *
@@ -14,33 +15,36 @@ import java.util.Objects;
 public class TeaspoonSquare implements Serializable {
     
     //class instance variables
-    private String teaspoonSquare;
-    boolean used;
+    private final String question;
+    private double answer;
+    private final double containerDivisor;
 
     public TeaspoonSquare() {
+        DecimalFormat df = new DecimalFormat("###");
+        this.containerDivisor = Double.valueOf(df.format(Math.random() * 9 +1));
+        this.question = "\n"
+                + "\n There are 3 teaspoons in a tablespoon and 16 tablespoons in a cup."
+                + "\n How many tablespoons would it take to fill a 1/" + this.containerDivisor + "gallon"
+                + "\n container if there are 16 cups in a gallon. Round to the nearest whole number.";
     }
 
-    public String getTeaspoonSquare() {
-        return teaspoonSquare;
+    public String getQuestion() {
+        return question;
     }
 
-    public void setTeaspoonSquare(String teaspoonSquare) {
-        this.teaspoonSquare = teaspoonSquare;
+    public double getContainerDivisor() {
+        return containerDivisor;
     }
 
-    public boolean isUsed() {
-        return used;
-    }
-
-    public void setUsed(boolean used) {
-        this.used = used;
+    public double getAnswer() {
+        return answer;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.teaspoonSquare);
-        hash = 97 * hash + (this.used ? 1 : 0);
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.question);
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.containerDivisor) ^ (Double.doubleToLongBits(this.containerDivisor) >>> 32));
         return hash;
     }
 
@@ -56,10 +60,10 @@ public class TeaspoonSquare implements Serializable {
             return false;
         }
         final TeaspoonSquare other = (TeaspoonSquare) obj;
-        if (this.used != other.used) {
+        if (Double.doubleToLongBits(this.containerDivisor) != Double.doubleToLongBits(other.containerDivisor)) {
             return false;
         }
-        if (!Objects.equals(this.teaspoonSquare, other.teaspoonSquare)) {
+        if (!Objects.equals(this.question, other.question)) {
             return false;
         }
         return true;
@@ -67,8 +71,7 @@ public class TeaspoonSquare implements Serializable {
 
     @Override
     public String toString() {
-        return "TeaspoonSquare{" + "teaspoonSquare=" + teaspoonSquare + ", used=" + used + '}';
+        return "TeaspoonSquare{" + "question=" + question + ", containerDivisor=" + containerDivisor + '}';
     }
-    
-    
+
 }

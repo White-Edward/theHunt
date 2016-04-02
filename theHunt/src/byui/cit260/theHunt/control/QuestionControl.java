@@ -12,8 +12,11 @@ import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.model.QuestionType;
 import byui.cit260.theHunt.model.TeaspoonSquare;
+import byui.cit260.theHunt.model.TripSquare;
 import byui.cit260.theHunt.model.TwoTrainSquare;
 import byui.cit260.theHunt.model.WaterSquare;
+import byui.cit260.theHunt.view.ErrorView;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import thehunt.TheHunt;
 
@@ -31,7 +34,7 @@ public class QuestionControl {
         return false;
     }
         
-    public double calculateTwoTrains(double milesTravelledTrainOne, double milesTravelledTrainTwo, double milesPerHourTrainOne, double milesPerHourTrainTwo) throws QuestionControlException {
+    public static double calculateTwoTrains(double milesTravelledTrainOne, double milesTravelledTrainTwo, double milesPerHourTrainOne, double milesPerHourTrainTwo) throws QuestionControlException {
         if (milesTravelledTrainOne < 1 || milesTravelledTrainOne > 200) {
             throw new QuestionControlException ("Miles traveled has to be between 1 and 200"); 
         }
@@ -50,7 +53,7 @@ public class QuestionControl {
         return hours;
     }
     
-    public double calculateCostOfTrip(double milesTravelled, double gasPrice, double fuelEfficiency) throws QuestionControlException {
+    public static double calculateCostOfTrip(double milesTravelled, double gasPrice, double fuelEfficiency) throws QuestionControlException {
         if (milesTravelled < 1) {
             throw new QuestionControlException ("Miles traveled must be greater than 1");
         }
@@ -65,18 +68,15 @@ public class QuestionControl {
         return tripCost;
     }
 
-    public boolean calculateTeaspoon(double containerDivisor, double userAnswer) {
+    public static double calculateTeaspoon(double containerDivisor) {
         
         double teaspoonAns = 3 * 16 * (16 / containerDivisor);
         double teaspoonAnswer = (Math.round(teaspoonAns * 100) / 100);
 
-        if (userAnswer != teaspoonAnswer) {
-           boolean test = false;}
-     boolean test = true;
-    return test;
+        return teaspoonAnswer;
     }
   
-    public double calculateWater(double numOfGallons, double gallonsPerMinute, double numOfFills) throws QuestionControlException {
+    public static double calculateWater(double numOfGallons, double gallonsPerMinute, double numOfFills) throws QuestionControlException {
         if (numOfGallons < 1) {
             throw new QuestionControlException ("Number of gallons must be greater than 1");
         }
@@ -99,6 +99,7 @@ public class QuestionControl {
     
     public static ArrayList<Question> createQuestions() {
         ArrayList<Question> questions = new ArrayList();
+        DecimalFormat df2 = new DecimalFormat("###.##");
         
         //Question[] questions = new Question[QuestionType.values().length + Constants.RIDDLES.length];
         
@@ -118,26 +119,55 @@ public class QuestionControl {
         Question water = new Question();
         water.setQuestionType(QuestionType.water);
         WaterSquare waterSquare = new WaterSquare();
-        water.setWaterSquare(waterSquare);
-        water.setRiddle("water");
+        water.setRiddle(waterSquare.getQuestion());
+        try {
+            double answer = calculateWater(waterSquare.getNumOfGallons(),
+                                           waterSquare.getGallonsPerMinute(),
+                                           waterSquare.getNumOfFills());
+            water.setAnswer(df2.format(answer));
+        } catch (QuestionControlException e) {
+            ErrorView.display("QuestionControl", e.getMessage());
+        }
         water.setHasWaterSquare(true);
         questions.add(water);
         
         Question train = new Question();
         train.setQuestionType(QuestionType.train);
         TwoTrainSquare trainSquare = new TwoTrainSquare();
-        train.setTwoTrainSquare(trainSquare);
-        train.setRiddle("train");
-        train.setHasTwoTrainSquare(true);
+        train.setRiddle(trainSquare.getQuestion());
+        try {
+            double answer = calculateTwoTrains(trainSquare.getTrainOneDistance(),
+                                        trainSquare.getTrainTwoDistance(),
+                                        trainSquare.getTrainOneSpeed(),
+                                        trainSquare.getTrainTwoSpeed());
+            train.setAnswer(df2.format(answer));
+        } catch (QuestionControlException e) {
+            ErrorView.display("QuestionControl", e.getMessage());
+        }
         questions.add(train);
 
         Question teaspoon = new Question();
         teaspoon.setQuestionType(QuestionType.teaspoon);
         TeaspoonSquare teaspoonSquare = new TeaspoonSquare();
-        teaspoon.setTeaspoonSquare(teaspoonSquare);
-        teaspoon.setRiddle("teaspoon");
+        teaspoon.setRiddle(teaspoonSquare.getQuestion());
+        teaspoon.setAnswer(df2.format(teaspoonSquare.getAnswer()));
+                
         teaspoon.setHasTeaspoonSquare(true);
         questions.add(teaspoon);
+        
+        Question trip = new Question();
+        trip.setQuestionType(QuestionType.trip);
+        TripSquare tripSquare = new TripSquare();
+        trip.setRiddle(tripSquare.getQuestion());
+        try {
+            double answer = calculateCostOfTrip(tripSquare.getMilesTravelled(), 
+                                                tripSquare.getGasPrice(),
+                                                tripSquare.getFuelEfficiency());
+            trip.setAnswer(df2.format(answer));
+        } catch (QuestionControlException e) {
+            ErrorView.display("QuestionControl", e.getMessage());
+        }
+        questions.add(trip);
         
         Question vault = new Question();
         vault.setQuestionType(QuestionType.vault);
