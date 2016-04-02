@@ -5,6 +5,8 @@
  */
 package byui.cit260.theHunt.view;
 
+import byui.cit260.theHunt.control.ItemControl;
+
 /**
  *
  * @author Edward
@@ -16,7 +18,6 @@ public class OldCellPhoneView extends View {
             +"\n---------------------------------------------------------------"
             +"\n| An old cell? It might become of use                         |"
             +"\n---------------------------------------------------------------"
-            +"\n P - Pick Up"
             +"\n D - Put Down"
             +"\n U - Use Phone"    
             +"\n B - Back"
@@ -28,9 +29,6 @@ public class OldCellPhoneView extends View {
     public boolean doAction(String value) {
         char choice = value.toUpperCase().charAt(0);  // get the first character in the string, change to uppercase
         switch (choice) {
-            case 'P': // pick up cell phone
-                this.startPickUpOldCellPhone();
-                break;
             case 'D': // put down cell phone
                 this.startDropOldCellPhone();
                 break;
@@ -46,16 +44,22 @@ public class OldCellPhoneView extends View {
         return false;
     }
     
-    private void startPickUpOldCellPhone() {
-         this.console.println("*** startPickupOldCellPhone function called ***");
-    }
-    
-    private void startDropOldCellPhone(){       
-        this.console.println("*** startDropOldCellPhone function called ***");
+    private void startDropOldCellPhone(){
+        boolean result = ItemControl.dropOldCellPhone();
+         if (result) {
+            this.console.println("Phone dropped");
+        } else {
+            this.console.println("You can't drop that dirty old thing here!");
+        }
     }   
 
     private void startUseOldCellPhone() {
-        this.console.println("*** startUseOldCellPhone function called ***");
+        boolean result = ItemControl.useOldCellPhone();
+        if (result) {
+            this.console.println("Dirty Old Cell Phone successfully used. ");
+        } else {
+            this.console.println("Sorry, you didn't pay your bill. You can't use the phone here.");
+        }
     }
 
 

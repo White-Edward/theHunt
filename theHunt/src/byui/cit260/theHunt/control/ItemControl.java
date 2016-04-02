@@ -94,4 +94,24 @@ public class ItemControl {
         return !player.isHasTNT();
     }
 
+    public static boolean dropOldCellPhone() {
+        Game game = TheHunt.getCurrentGame();
+        Player player = game.getPlayer();
+        player.setHasOldCellPhone(false);
+        player.getItemInventory().remove(OldCellPhone);
+        return !player.isHasOldCellPhone();
+    }
+
+    public static boolean useOldCellPhone() {
+        Game game = TheHunt.getCurrentGame();
+        Question question =game.getPlayer().getLocation().getQuestion();
+        question.setAnswered(true);
+        Player player = game.getPlayer();
+        player.setHasOldCellPhone(false);
+        player.getItemInventory().remove(OldCellPhone);
+        return question.isAnswered();
+
+        
+    }
+
 }
