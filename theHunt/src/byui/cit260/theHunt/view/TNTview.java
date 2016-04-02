@@ -29,10 +29,10 @@ public class TNTview extends View {
     public boolean doAction(String value) {
         char choice = value.toUpperCase().charAt(0);  // get the first character in the string, change to uppercase
         switch (choice) {
-            case 'D': // put down cell phone
+            case 'D': // put down TNT
                 this.startDropTNT();
                 break;
-            case 'U': // use the old cell phone
+            case 'U': // use the TNT
                 this.startUseTNT();
                 break;    
             case 'B': // go back

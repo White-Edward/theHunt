@@ -18,7 +18,6 @@ public class OldCellPhoneView extends View {
             +"\n---------------------------------------------------------------"
             +"\n| An old cell? It might become of use                         |"
             +"\n---------------------------------------------------------------"
-            +"\n P - Pick Up"
             +"\n D - Put Down"
             +"\n U - Use Phone"    
             +"\n B - Back"
