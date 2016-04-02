@@ -5,10 +5,10 @@
  */
 package byui.cit260.theHunt.control;
 
+
 /**
  *
  * @author Ann
  */
 public class ClueControl {
-    
 }

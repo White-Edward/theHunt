@@ -24,6 +24,7 @@ public class Game implements Serializable {
     private Player player;
     private Item[] items;
     private ArrayList<Question> questions;
+    private ArrayList<Clue> clues;
     private Map map;
 
     public Game() {
@@ -83,6 +84,14 @@ public class Game implements Serializable {
 
     public void setWelcomeMessage(String welcomeMessage) {
         this.welcomeMessage = welcomeMessage;
+    }
+
+    public ArrayList<Clue> getClues() {
+        return clues;
+    }
+
+    public void setClues(ArrayList<Clue> clues) {
+        this.clues = clues;
     }
 
     @Override

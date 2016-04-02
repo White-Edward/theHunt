@@ -18,8 +18,13 @@ public class vaultSquare implements Serializable{
     //class instance variables
     private String vaultSquare;
     private boolean used;
+    private final String question;
+    private String combo;
 
     public vaultSquare() {
+        this.question = "\n"
+                + "\n You have reached the treasure vault! All you need is the correct combination."
+                + "\n Use your clues to enter in the correct combination and reaceive the treasure!";
     }
         
     public String getVaultSquare() {
@@ -36,6 +41,18 @@ public class vaultSquare implements Serializable{
 
     public void setUsed(boolean used) {
         this.used = used;
+    }
+
+    public String getCombo() {
+        return combo;
+    }
+
+    public void setCombo(String combo) {
+        this.combo = combo;
+    }
+
+    public String getQuestion() {
+        return question;
     }
 
     @Override

@@ -23,6 +23,8 @@ public class Location implements Serializable{
     private int row;
     private int column;
     private boolean visited;
+    private String clue;
+    private boolean hasClue;
 
     public Question getQuestion() {
         return question;
@@ -91,6 +93,22 @@ public class Location implements Serializable{
     public void setItem(Item item) {
         this.item = item;
         this.setHasItem(true);
+    }
+
+    public String getClue() {
+        return clue;
+    }
+
+    public void setClue(String clue) {
+        this.clue = clue;
+    }
+
+    public boolean hasClue() {
+        return hasClue;
+    }
+
+    public void setHasClue(boolean hasClue) {
+        this.hasClue = hasClue;
     }
 
     @Override

@@ -19,7 +19,6 @@ public class Question implements Serializable{
     private boolean hasVaultSquare;
     private String riddle;
     private String answer;
-    private String clue;
     private QuestionType questionType;
     private boolean answered;
     private TeaspoonSquare teaspoonSquare;
@@ -132,13 +131,6 @@ public class Question implements Serializable{
     public void setVaultSquare(vaultSquare vaultSquare) {
         this.vaultSquare = vaultSquare;
 
-    }
-    public String getClue() {
-        return clue;
-    }
-
-    public void setClue(String clue) {
-        this.clue = clue;
     }
 
     @Override

@@ -18,6 +18,7 @@ import byui.cit260.theHunt.model.WaterSquare;
 import byui.cit260.theHunt.view.ErrorView;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Random;
 import thehunt.TheHunt;
 
 /**
@@ -90,11 +91,32 @@ public class QuestionControl {
         return timeToFillTub;
     }
     
-    public double calculateVault(double combo) {
-        
-        combo = 4685;
-    
-    return combo;
+    public static String calculateVault() {
+        // Need to get the number of questions on the map and 
+        // generate a combination of the length of the number of questions
+        String combo = "";
+        int comboCounter = 1;
+        Location[][] locations = TheHunt.getCurrentGame().getMap().getLocations();
+        for (Location[] x : locations) {
+            for (Location location : x) {
+                Question question = location.getQuestion();
+                switch (question.getQuestionType()) {
+                    case water:
+                    case train:
+                    case trip:
+                    case teaspoon:
+                    case riddle:
+                        int comboDigit = new Random().nextInt(9);
+                        combo += String.valueOf(comboDigit);
+                        location.setClue("Vault Combo Digit " + comboCounter + ": " + comboDigit);
+                        location.setHasClue(true);
+                        break;
+                }
+                comboCounter++;
+            }
+        }
+        // Split up combo and assign to questions on the map
+        return combo;
     }
     
     public static ArrayList<Question> createQuestions() {
@@ -168,15 +190,16 @@ public class QuestionControl {
             ErrorView.display("QuestionControl", e.getMessage());
         }
         questions.add(trip);
-        
+                
         Question vault = new Question();
         vault.setQuestionType(QuestionType.vault);
         vaultSquare vaultSquare = new vaultSquare();
-        vault.setVaultSquare(vaultSquare);
-        vault.setRiddle("vault");
+        vault.setRiddle(vaultSquare.getQuestion());
+        // vault.setAnswer(calculateVault());
+        // vaultSquare.setCombo(calculateVault());
         vault.setHasVaultSquare(true);
         questions.add(vault);
-        
+
         return questions;
     }
     
@@ -208,7 +231,28 @@ public class QuestionControl {
         return total;
     }
 
-  
-
+    public static void assignVaultQuestion(ArrayList<Question> questions, Location[][] locations) {
+        
+        for (Question question : questions) {
+            if (question.getQuestionType().equals(QuestionType.vault)) {
+                // Found the vault question not assigned to a location, assign it to one randomly.
+                locations[new Random().nextInt(4)][new Random().nextInt(4)].setQuestion(question);
+                questions.remove(question);
+                // Set the answer
+                question.setAnswer(calculateVault());
+                return;
+            }
+        }
+        // Vault is on a location, find it and set the answer on it
+        for (Location[] x : locations) {
+            for (Location location : x) {
+                Question question = location.getQuestion();
+                if (question.getQuestionType().equals(QuestionType.vault)) {
+                    // Found the vault question, set its answer
+                    question.setAnswer(calculateVault());
+                }
+            }
+        }
+    }
 }
   

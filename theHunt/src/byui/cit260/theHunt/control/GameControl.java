@@ -58,9 +58,10 @@ public class GameControl {
         ArrayList<Question> questions = QuestionControl.createQuestions();
         game.setQuestions(questions);
         
-        
         Map map = MapControl.createMap(); // Create and initialize new map
         game.setMap(map);
+        
+        QuestionControl.assignVaultQuestion(questions, map.getLocations());
         
         Point coordinates = new Point(1,1);  // Set default starting location
         // Find the map location of the ClueBag item, put the user there to start

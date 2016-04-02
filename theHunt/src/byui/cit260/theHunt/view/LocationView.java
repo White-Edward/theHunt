@@ -73,7 +73,16 @@ public class LocationView extends View {
                 this.promptMessage = promptMessage;
 
                 if (QuestionControl.answerQuestion(question,playerResponse.toUpperCase())) {
-                    this.console.println("Correct!  Clue Unlocked.");
+                    if (question.getQuestionType().equals(QuestionType.vault)) {
+                        // Win the game
+                    this.console.println("\n Correct! You have found the treasure and completed"
+                             + "\n The Hunt. You may continue to roam the map or you may quit and start"
+                             + "\n a new game.");
+                    } else {
+                        // clue unlocked
+                        this.console.println("Correct!  Clue Unlocked.");
+                        // TODO: need to add clue to the clue bag
+                    }
                 } else {
                     this.console.println("Sorry, try again");
                 }
@@ -114,9 +123,9 @@ public class LocationView extends View {
         Location location = TheHunt.getCurrentGame().getPlayer().getLocation();
         if (location.hasQuestion()) {
             if (location.getQuestion().isAnswered()) {
-                if (location.getQuestion().isHasClue()) {
+                if (location.hasClue()) {
                     // Show the player the clue
-                    this.console.println(location.getQuestion().getClue());
+                    this.console.println(location.getClue());
                 } else {
                     this.console.println("No clues were found.  Try looking in another map location.");
                 }
