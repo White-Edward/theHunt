@@ -9,6 +9,8 @@ import byui.cit260.theHunt.control.MapControl;
 import byui.cit260.theHunt.control.PlayerControl;
 import byui.cit260.theHunt.control.QuestionControl;
 import byui.cit260.theHunt.model.Location;
+import byui.cit260.theHunt.model.Question;
+import byui.cit260.theHunt.model.QuestionType;
 import thehunt.TheHunt;
 
 /**
@@ -57,27 +59,27 @@ public class LocationView extends View {
 
         Location location = TheHunt.getCurrentGame().getPlayer().getLocation();
         if (location.hasQuestion()) {
-            this.displayMessage = location.getQuestion().getRiddle();
+            Question question = location.getQuestion();
+            if (question.getQuestionType().equals(QuestionType.empty)) {
+                this.console.println("No questions were found.  Try looking in another map location");
+            } else {
+                this.displayMessage = question.getRiddle();
+                // Set the display and prompt message
+                this.promptMessage = "Answer: ";
+
+                String playerResponse = this.getInput(); // Get player response
+
+                this.displayMessage = displayMessage;
+                this.promptMessage = promptMessage;
+
+                if (QuestionControl.answerQuestion(question,playerResponse.toUpperCase())) {
+                    this.console.println("Correct!  Clue Unlocked.");
+                } else {
+                    this.console.println("Sorry, try again");
+                }
+            }
         } else {
-            this.displayMessage = "No questions were found.  Try looking in another map location";
-        }
-        // Set the display and prompt message
-        this.promptMessage = "Answer: ";
-
-        String playerResponse = this.getInput(); // Get player response
-
-        this.displayMessage = displayMessage;
-        this.promptMessage = promptMessage;
-
-        if (QuestionControl.answerQuestion(location.getQuestion(),playerResponse.toUpperCase())) {
-            this.console.println("Correct!  Clue Unlocked.");
-        } else {
-            this.console.println("Sorry, try again");
-        }
-        if (playerResponse.toUpperCase().charAt(0) == 'Y') {
-            // Save the item to the player's item inventory
-            PlayerControl.addItemToPlayerInventory(location.getItem());
-            MapControl.removeItemFromLocation(location);
+            this.console.println("No questions were found.  Try looking in another map location");
         }
     }
     
