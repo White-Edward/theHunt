@@ -81,10 +81,10 @@ public class ItemControl {
     }*/
 
 
-    public static ItemControl getItemControl() {
+    /*public static ItemControl getItemControl() {
       ItemControl item =  new ItemControl(); 
      return item;
-    }
+    }*/
 
     public static boolean useTNT() {
         Game game = TheHunt.getCurrentGame();
