@@ -43,7 +43,7 @@ class MapLocationsReportView extends View {
                         riddle = location.getQuestion().getRiddle();
                     }
                     report.printf("%n%-10s%-15s%s",mapLocation, item, riddle);
-                    this.console.printf("%n%-10s%-15s%s",mapLocation, item, riddle); // Temporary
+                    // this.console.printf("%n%-10s%-15s%s",mapLocation, item, riddle); // Temporary
                 }
             }
         } catch (IOException e) {
