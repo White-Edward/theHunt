@@ -49,15 +49,7 @@ public enum Item implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public void setQuantityInStock(int i) {
-        this.console.println("*** Called function setQuantityInStock ***\n");
-    }
-
-    public void setRequiredAmount(int i) {
-        this.console.println("*** Called function setRequiredAmount ***\n");
-    }
-
+    
     @Override
     public String toString() {
         return "Item{" + "itemType=" + itemType + ", used=" + used + ", description=" + description + ", console=" + console + '}';
