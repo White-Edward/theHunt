@@ -7,7 +7,6 @@ package byui.cit260.theHunt.view;
 
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Map;
-import byui.cit260.theHunt.model.QuestionType;
 import java.io.IOException;
 import java.io.PrintWriter;
 import thehunt.TheHunt;
