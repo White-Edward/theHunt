@@ -7,6 +7,7 @@ package byui.cit260.theHunt.control;
 
 import byui.cit260.theHunt.model.Item;
 import byui.cit260.theHunt.model.Player;
+/*import byui.cit260.theHunt.model.Health;*/
 import thehunt.TheHunt;
 
 /**
@@ -39,4 +40,8 @@ public class PlayerControl {
                 break;
         }
     }
+    /*public static void removePlayerHealth(Health health){
+        Player player = TheHunt.getCurrentGame().getPlayer();
+
+    }*/
 }

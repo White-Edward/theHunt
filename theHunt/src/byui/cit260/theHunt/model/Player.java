@@ -24,6 +24,7 @@ public class Player implements Serializable {
     private boolean hasMonkey;
     private boolean hasOldCellPhone;
     private ArrayList<Item> itemInventory;
+    /*private double Health;*/
 
     public Player() {
         this.hasAidBag = false;
@@ -32,6 +33,8 @@ public class Player implements Serializable {
         this.hasMonkey = false;
         this.hasOldCellPhone = false;
         itemInventory = new ArrayList();
+        /*this.Health = 100;*/
+
     }
 
     public String getCharacterName() {
@@ -109,7 +112,15 @@ public class Player implements Serializable {
     public void addItemInventory(Item item) {
         this.itemInventory.add(item);
     }
+    
+    /*public double getHealth() {
+        return Health;
+    }
 
+    public void setHealth(double Health) {
+        this.Health = Health;
+    }*/
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -145,7 +156,7 @@ public class Player implements Serializable {
 
     @Override
     public String toString() {
-        return "Player{" + "characterName=" + characterName + ", location=" + location + ", coordinates=" + coordinates + '}';
+        return "Player{" + "characterName=" + characterName + ", location=" + location + ", coordinates=" + coordinates + /*"Health=" + Health +*/ '}';
     }
 
 }

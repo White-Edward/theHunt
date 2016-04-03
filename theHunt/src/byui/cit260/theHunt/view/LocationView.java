@@ -11,6 +11,7 @@ import byui.cit260.theHunt.control.QuestionControl;
 import byui.cit260.theHunt.model.Location;
 import byui.cit260.theHunt.model.Question;
 import byui.cit260.theHunt.model.QuestionType;
+/*import byui.cit260.theHunt.model.Health;*/
 import thehunt.TheHunt;
 
 /**
@@ -56,7 +57,7 @@ public class LocationView extends View {
         // Backup display and prompt message
         String displayMessage = this.displayMessage;
         String promptMessage = this.promptMessage;
-
+        
         Location location = TheHunt.getCurrentGame().getPlayer().getLocation();
         if (location.hasQuestion()) {
             Question question = location.getQuestion();
@@ -83,7 +84,7 @@ public class LocationView extends View {
                         this.console.println("Correct!  Clue Unlocked.");
                         // TODO: need to add clue to the clue bag
                     }
-                } else {
+                } else {                   
                     this.console.println("Sorry, try again");
                 }
             }
